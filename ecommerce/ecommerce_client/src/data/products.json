@@ -1,0 +1,16 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Short dress"
+        },
+        {
+            "id": 2,
+            "name": "Medium dress"
+        },
+        {
+            "id": 3,
+            "name": "Long dress"
+        }
+    ]
+}
