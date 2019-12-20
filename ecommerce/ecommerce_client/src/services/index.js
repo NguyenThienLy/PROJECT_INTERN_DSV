@@ -1,4 +1,4 @@
-import { CrudApi } from "./crud";
+import { CrudApi } from "./crud.js";
 
 import { AdminApi } from "./apis/admin";
 import { ClassApi } from "./apis/class";
@@ -32,6 +32,7 @@ const crudApi = new CrudApi();
 
 class api {
   constructor() { }
+  
   static imgur = new ImgurApi()
   static admin = new AdminApi();
   static class = new ClassApi();

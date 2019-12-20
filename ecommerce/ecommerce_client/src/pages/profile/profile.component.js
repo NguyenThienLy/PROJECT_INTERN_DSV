@@ -18,7 +18,7 @@ class MyAccount extends Component {
     render() {
         return (
             <div>
-               my account
+               profile
             </div>
         );
     }

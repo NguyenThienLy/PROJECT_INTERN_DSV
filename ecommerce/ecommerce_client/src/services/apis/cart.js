@@ -1,7 +1,8 @@
-import { CrudApi } from '../crud'
+import { CrudApi } from "../crud";
+import * as _ from "lodash";
 
 export class CartApi extends CrudApi {
-    constructor() {
-        super("cart")
-    }
+  constructor() {
+    super("statisticCourse");
+  }
 }

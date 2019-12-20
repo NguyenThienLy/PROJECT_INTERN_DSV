@@ -1,7 +1,5 @@
-import { api } from '../services'
-
 export class BaseAction {
-    constructor(name, api) {
+    constructor(name, api, storeName) {
         this.name = name.toUpperCase()
         this.api = api
     }
