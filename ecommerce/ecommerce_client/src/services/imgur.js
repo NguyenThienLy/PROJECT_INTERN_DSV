@@ -1,4 +1,4 @@
-import 'isomorphic-unfetch';
+//import 'isomorphic-unfetch';
 import { environment } from '../environments';
 
 export class ImgurApi {
