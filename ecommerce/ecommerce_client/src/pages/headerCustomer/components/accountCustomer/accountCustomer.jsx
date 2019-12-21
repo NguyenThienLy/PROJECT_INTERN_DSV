@@ -27,7 +27,7 @@ export class AccountCustomer extends React.Component {
 
     return (
       <div>
-        <Dropdown overlay={menu} placement="bottomRight">
+        <Dropdown className="text" overlay={menu} placement="bottomRight">
           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         </Dropdown>
       </div>

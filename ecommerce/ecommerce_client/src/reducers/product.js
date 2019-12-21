@@ -1,30 +1,44 @@
-import { BaseReducer } from "./base";
 import * as _ from "lodash";
+
+import { BaseReducer } from "./base";
+import ProductType from '../actions/types/product'
 
 export class ProductReducer extends BaseReducer {
   constructor() {
     super("product");
-   
+
+    const products = [
+      {
+        id: "1",
+        name: "sort dress",
+        link: "https://i.imgur.com/6RI3BOq.jpg"
+      },
+      {
+        id: "2",
+        name: "medium dress",
+        link: "https://i.imgur.com/t5DiPw1.jpg"
+      },
+      {
+        id: "3",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg"
+      }
+    ]
+
     this.initState = {
       productFilter: {
         fetching: false,
         fetchError: null,
-        data: []
+        data: products
       }
-    };
- 
-    this.actions = {
-      fetchProductFilterPending: `FETCHPRODUCTFILTER_${this.name}_PENDING`,
-      fetchProductFilterSuccess: `FETCHPRODUCTFILTER_${this.name}_SUCCESS`,
-      fetchProductFilterError: `FETCHPRODUCTFILTER_${this.name}_ERROR`,
     };
   }
 
   reducer = (state = this.initState, action) => {
     switch (action.type) {
-        
+
       // Getting data for product filter
-      case this.actions.fetchProductFilterPending:
+      case ProductType.FETCH_PRODUCTFILTER_PENDING:
         return _.merge(
           {},
           {
@@ -37,7 +51,7 @@ export class ProductReducer extends BaseReducer {
         );
 
       // Getting data for product filter
-      case this.actions.fetchProductFilterSuccess:
+      case ProductType.FETCH_PRODUCTFILTER_SUCCESS:
         return _.merge(
           {},
           {
@@ -50,7 +64,7 @@ export class ProductReducer extends BaseReducer {
         );
 
       // Getting data for product filter
-      case this.actions.fetchProductFilterError:
+      case ProductType.FETCH_PRODUCTFILTER_ERROR:
         return _.merge(
           {},
           {
