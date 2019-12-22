@@ -1,20 +1,25 @@
 import * as React from "react";
+import { Card, Icon, Avatar } from 'antd';
 
 import "./itemFastCart.scss";
-import { Badge, Icon } from 'antd'
 
-export class ItemFastCart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export function ItemFastCart({ }) {
+  const { Meta } = Card;
 
-  render() {
-    return (
-      <div>
-          item fast cart
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Card className="item-fast-cart"
+        style={{ width: 300 }}
+      >
+        <Meta
+          avatar={<Avatar shape="square" src="https://i.imgur.com/KhjpIwg.jpg" />}
+          title="New Balance Men's Street Backpack"
+          description="$485 S - Black - 1 pcs"
+        />
+      </Card>
+    </div>
+  );
+
 }
 
 export default ItemFastCart

@@ -3,36 +3,30 @@ import * as React from "react";
 import "./accountCustomer.scss";
 import { Menu, Dropdown, Avatar, Divider } from 'antd'
 
-export class AccountCustomer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const menu = (
-      <Menu>
-        <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-            Account setting
+export function AccountCustomer({ }) {
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+          Account setting
           </a>
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-            Logout
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+          Logout
           </a>
-        </Menu.Item>
-      </Menu>
-    );
+      </Menu.Item>
+    </Menu>
+  );
 
-    return (
-      <div>
-        <Dropdown className="text" overlay={menu} placement="bottomRight">
-          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        </Dropdown>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Dropdown className="text" overlay={menu} placement="bottomRight">
+        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+      </Dropdown>
+    </div>
+  );
 }
 
 export default AccountCustomer

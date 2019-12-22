@@ -7,7 +7,6 @@ import {
     Cart,
     Category,
     FastCart,
-    ItemFastCart,
     SearchCustomer,
     SubCategory
  } from './components/'
@@ -31,7 +30,6 @@ class HeaderCustomer extends Component {
                <Cart/>
                <Category/>
                <FastCart/>
-               <ItemFastCart/>
                <SearchCustomer/>
                <SubCategory/>
             </div>

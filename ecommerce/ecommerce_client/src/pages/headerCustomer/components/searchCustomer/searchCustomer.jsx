@@ -1,19 +1,21 @@
 import * as React from "react";
+import { Input } from 'antd';
 
 import "./searchCustomer.scss";
 
-export class SearchCustomer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export function SearchCustomer({ }) {
+  const { Search } = Input;
 
-  render() {
-    return (
-      <div>
-          search customer
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Search
+        placeholder="Search"
+        onSearch={value => console.log(value)}
+        style={{ width: 200 }}
+      />
+    </div>
+  );
+
 }
 
 export default SearchCustomer
