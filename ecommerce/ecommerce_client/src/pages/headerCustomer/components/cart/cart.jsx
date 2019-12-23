@@ -1,22 +1,23 @@
 import * as React from "react";
 
 import "./cart.scss";
-import { Badge, Icon } from 'antd'
+import { Badge, Icon, Dropdown } from 'antd'
+import { FastCart } from '../index'
 
-export class Cart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export function Cart({ }) {
+  const fastCart = (
+    <FastCart />
+  );
 
-  render() {
-    return (
-      <div>
+  return (
+    <div className="cart">
+      <Dropdown overlay={fastCart} placement="bottomRight">
         <Badge count={5} style={{ backgroundColor: '#ffa15f' }}>
-          <Icon type="shopping-cart" style={{ fontSize: '24px' }}/>
+          <Icon type="shopping-cart" style={{ fontSize: '24px' }} />
         </Badge>
-      </div>
-    );
-  }
+      </Dropdown>
+    </div>
+  );
 }
 
 export default Cart

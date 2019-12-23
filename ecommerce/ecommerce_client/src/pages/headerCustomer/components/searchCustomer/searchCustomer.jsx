@@ -11,7 +11,6 @@ export function SearchCustomer({ }) {
       <Search
         placeholder="Search"
         onSearch={value => console.log(value)}
-        style={{ width: 200 }}
       />
     </div>
   );

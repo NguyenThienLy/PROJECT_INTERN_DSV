@@ -22,7 +22,7 @@ export function AccountCustomer({ }) {
 
   return (
     <div>
-      <Dropdown className="text" overlay={menu} placement="bottomRight">
+      <Dropdown overlay={menu} placement="bottomRight">
         <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
       </Dropdown>
     </div>

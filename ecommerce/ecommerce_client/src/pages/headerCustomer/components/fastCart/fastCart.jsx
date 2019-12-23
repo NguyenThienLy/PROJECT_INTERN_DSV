@@ -19,7 +19,7 @@ export function FastCart({ }) {
         <Card.Grid style={gridStyle}>  <ItemFastCart /></Card.Grid>
         <Card.Grid style={gridStyle}>  <ItemFastCart /></Card.Grid>
         <Card.Grid style={gridStyle}>  <ItemFastCart /></Card.Grid>
-        <Card.Grid style={gridStyle}> <div className="wiew-cart"><Link  to="/shopping-cart">Wiew cart</Link></div> </Card.Grid>
+        <Card.Grid style={gridStyle}> <div className="view-cart"><Link  to="/shopping-cart">View cart</Link></div> </Card.Grid>
       </Card>
     </div>
   );

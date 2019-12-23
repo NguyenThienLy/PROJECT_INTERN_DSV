@@ -1,0 +1,54 @@
+.header-customer {
+    width: 100%;
+
+    .top {
+        height: 69px;
+        display: flex;
+
+        .left {
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .search-customer {
+                width: 30%;
+            }
+        }
+       
+        .center {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .logo {
+                width: 96px;
+                height: 20px;
+            }
+        }
+
+        .right {
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .account-customer {
+            }
+
+            .cart {
+              margin-left: 27px !important;
+            }
+        }
+       
+    }
+
+    .bottom {
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ececec;
+    }
+}

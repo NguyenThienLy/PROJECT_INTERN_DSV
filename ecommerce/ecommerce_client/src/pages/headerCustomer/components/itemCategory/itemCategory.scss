@@ -1,0 +1,18 @@
+.item-category {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        margin: 0px 4px 0px 0px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.57;
+        color: #202124;
+    }
+
+    .anticon {
+        margin-top: 4px;
+    }
+}
