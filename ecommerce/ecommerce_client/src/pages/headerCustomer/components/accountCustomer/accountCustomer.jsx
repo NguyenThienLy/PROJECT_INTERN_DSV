@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import "./accountCustomer.scss";
-import { Menu, Dropdown, Avatar, Divider } from 'antd'
+import { Menu, Dropdown, Avatar } from 'antd'
 
-export function AccountCustomer({ }) {
+export function AccountCustomer({}) {
   const menu = (
     <Menu>
       <Menu.Item>
@@ -28,5 +28,6 @@ export function AccountCustomer({ }) {
     </div>
   );
 }
+
 
 export default AccountCustomer
