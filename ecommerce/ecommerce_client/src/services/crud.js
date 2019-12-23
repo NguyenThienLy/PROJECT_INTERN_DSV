@@ -1,4 +1,3 @@
-import "isomorphic-unfetch";
 import { environment } from "../environments";
 import * as _ from "lodash";
 

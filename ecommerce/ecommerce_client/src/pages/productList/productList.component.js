@@ -1,27 +1,25 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
-class ProductList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        };
-    }
-    static async getInitialProps({ req, query }) {
+import {
+    Product,
+    Filter
+} from './components'
+import HeaderCustomer from '../headerCustomer/headerCustomer.component';
 
-    }
-    
-    async componentDidMount() {
-        
-    }
+function ProductList({ productFilter }) {
 
-    render() {
-        return (
-            <div>
-               product list
-            </div>
-        );
-    }
+    useEffect(() => {
+       console.log("productFilter", productFilter)
+    });
+
+    return (
+        <div>
+            <HeaderCustomer/>
+            {productFilter.data.map((element) => {
+               return <Product key={element.id} product={element} />
+            })}
+        </div>
+    );
 }
 
 export default ProductList;

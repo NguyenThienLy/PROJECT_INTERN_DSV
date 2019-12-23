@@ -1,0 +1,28 @@
+.fast-cart {
+    margin-top: 24px !important;
+    width: 270px !important;
+    height: 310px !important;
+    z-index: 1;
+
+    .ant-card-grid {
+        padding: 0px !important;
+    }
+    
+    .ant-card-body {
+        padding: 0px !important;
+
+        .view-cart {
+            height: 70px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                font-size: 14px;
+                font-weight: bold;
+                color: #ffa15f;
+             }
+          
+        }
+    }
+}

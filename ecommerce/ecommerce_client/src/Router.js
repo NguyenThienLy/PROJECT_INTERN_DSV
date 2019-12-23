@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import HomePage from './pages/homePage/homePage.component'
 import Profile from './pages/profile/profile.component'
 import ProductInfo from './pages/productInfo/productInfo.component'
-import ProductList from './pages/productList/productList.component'
+import ProductList from './pages/productList/productList.container'
 import ShoppingCart from './pages/shoppingCart/shoppingCart.component'
 
 import LoginSellerPage from './pages/seller/loginSellerPage/loginSellerPage.component'
@@ -18,7 +18,7 @@ const Router = () => (
         <Route exact path='/' component={HomePage} />
         <Route exact path='/profile' component={Profile} />
         <Route exact path='/product-info' component={ProductInfo} />
-        <Route exact path='/product-list' component={ProductList} />
+        <Route exact path='/product-list'><ProductList/></Route>
         <Route exact path='/shopping-cart' component={ShoppingCart} />
 
         <Route exact path='/login-seller-page' component={LoginSellerPage} />

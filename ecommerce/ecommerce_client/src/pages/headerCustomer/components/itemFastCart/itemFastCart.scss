@@ -1,0 +1,21 @@
+.item-fast-cart {
+    width: 270px !important;
+    height: 80px !important;
+   
+    .ant-card-body {
+        padding: 10px 7px !important; 
+
+        .ant-card-meta {
+            margin: 0px;
+    
+            .ant-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+}
+
+
+
+
