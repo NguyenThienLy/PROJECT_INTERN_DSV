@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom"
 import { Modal, Form, Icon, Input, Button, Checkbox } from 'antd';
 
-import "./register.scss";
+import "./forgotPassword.scss";
 
 export function ForgotPassword({ visible, onOk, onCancel, showModalLogin }) {
 
@@ -10,7 +10,7 @@ export function ForgotPassword({ visible, onOk, onCancel, showModalLogin }) {
         <div>
             <Modal
                 className="forgot-password"
-                title="Register"
+                title="forgot password"
                 visible={visible}
                 onOk={onOk}
                 onCancel={onCancel}
@@ -25,21 +25,12 @@ export function ForgotPassword({ visible, onOk, onCancel, showModalLogin }) {
 
                     <Form.Item className="footer">
 
-                        <div className="top">
-                            <p>By creating an account you agree to the</p>
-                            <div className="bottom">
-                                <Link className="link-primary">Terms of Service</Link>
-                                <p>and</p>
-                                <Link className="link-primary">Privacy Policy</Link>
-                            </div>
-                        </div>
-                        
                         <Button type="primary" htmlType="submit" className="login-form-button">
-                            Register
+                            Submit    
                         </Button>
 
                         <div className="bottom">
-                            <p className="text">Do have an account? </p>
+                            <p className="text">I remember my password now. </p>
                             <Button className="register" type="link" onClick={showModalLogin}> Log In </Button>
                         </div>
 

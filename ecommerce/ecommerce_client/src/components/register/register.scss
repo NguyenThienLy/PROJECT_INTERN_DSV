@@ -1,171 +1,167 @@
 .register {
-		.ant-modal-content {
-				border-radius: 0;
-				height: 703px;
-				width: 555px;
+  .ant-modal-content {
+    border-radius: 0;
+    width: 555px;
 
-				.ant-modal-header {
-						border: white;
-						padding: 0;
+    .ant-modal-header {
+      border: white;
+      padding: 0;
 
-						.ant-modal-title {
-								display: flex;
-								justify-content: center;
-								align-items: center;
-								height: 122px ;
-								text-align: center;
-								font-weight: bold;
-								font-size: 32px ;
-								border-color: white !important;
-						}
-				}
+      .ant-modal-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 122px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 32px;
+        border-color: white !important;
+      }
+    }
 
-				.ant-modal-body {
-            padding: 0 80px;
-            height: 581px;
+    .ant-modal-body {
+      padding: 0 80px;
+      height: 581px;
 
-						.ant-form {
-								.input-content {
-										margin-bottom: 12px;
+      .ant-form {
+        .input-content {
+          margin-bottom: 12px;
 
-										.ant-form-item-label {
-												height: 40px;
-											
-												label {
-														color: #202124;
-														font-size: 12px;
-														font-weight: bold;
-												}
-										}
-									
-										.ant-form-item-control-wrapper {
-												height: 46px; 
+          .ant-form-item-label {
+            height: 40px;
 
-												.ant-form-item-control {
-														height: 100%;
+            label {
+              color: #202124;
+              font-size: 12px;
+              font-weight: bold;
+            }
+          }
 
-														.ant-form-item-children {
-																height: 24px;
-												
-																.ant-input-affix-wrapper {
-																		height: 100%;
-											
-		
-																		.ant-input-prefix {
-																				display: none;
-																		}
-																}
-														}
-												}
-										}
-								}
+          .ant-form-item-control-wrapper {
+            height: 46px;
 
-								.footer {
-										height: 251px;
+            .ant-form-item-control {
+              height: 100%;
 
-										.ant-form-item-control-wrapper {
-												height: 100%;
+              .ant-form-item-children {
+                height: 24px;
 
-												.ant-form-item-control {
-														height: 100%;
-														position: relative;
+                .ant-input-affix-wrapper {
+                  height: 100%;
 
-														.ant-form-item-children {
-																height: 100% !important;
+                  .ant-input-prefix {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
 
-                                .top {
-                                  height: 44px;
-                                  margin-top: 10px;
-                                  
+        .footer {
+          height: 251px;
 
-                                  p {
-                                    margin: 0;
-                                    height: auto;
-                                    text-align: center;
-                                    font-size: 14px;
-                                    line-height: 22px;
-                                  }
+          .ant-form-item-control-wrapper {
+            height: 100%;
 
-                                  .bottom {
-                                    margin: 0;
-                                    padding: 0;
-                                    height: 22px;
+            .ant-form-item-control {
+              height: 100%;
+              position: relative;
 
-                                    p {
-                                      padding: 0px 5px;
-                                      margin: 0;
-                                      height: auto;
-                                      font-size: 14px;
-                                      line-height: 22px;
-                                    }
+              .ant-form-item-children {
+                height: 100% !important;
 
-                                    .link-primary {
-                                      height: auto;
-                                      line-height: 22px;
-                                      color: #ff7413;
-                                      font-weight: bold;
-                                    }
-                                  }
-                                }
+                .top {
+                  height: 44px;
+                  margin-top: 10px;
 
-																.login-form-button  {
-																		margin-top: 46px;
-																		height: 50px;
-																		width: 100%;
-																		background-color: #ffa15f;
-																		border: #ffa15f;
-																		border-radius: 0;
-																		font-size: 15px;
-																		font-weight: bold;
-																}
+                  p {
+                    margin: 0;
+                    height: auto;
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 22px;
+                  }
 
-																.bottom {
-																		display: flex;
-																		margin-top: 72px;
-																		justify-content: center;
-																		align-items: center;
-																		height: 65px;
+                  .bottom {
+                    margin: 0;
+                    padding: 0;
+                    height: 22px;
 
-																		.text {
-																				padding-right:5px;
-																				margin: 0;
-																		}
+                    p {
+                      padding: 0px 5px;
+                      margin: 0;
+                      height: auto;
+                      font-size: 14px;
+                      line-height: 22px;
+                    }
 
-																		.register {
-																				color: #ff7413;
-																				padding: 0;
-																				margin: 0;
-																				
-																				span {
-																						font-weight: 500;
-																						
-																				}
-																		}
-																}
-														}
-												}
-										}
-								}
-						}
-				}
+                    .link-primary {
+                      height: auto;
+                      line-height: 22px;
+                      color: #ff7413;
+                      font-weight: bold;
+                    }
+                  }
+                }
 
-				.ant-modal-footer {
-						display: none;
-				}
-		}
+                .login-form-button {
+                  margin-top: 46px;
+                  height: 50px;
+                  width: 100%;
+                  background-color: #ffa15f;
+                  border: #ffa15f;
+                  border-radius: 0;
+                  font-size: 15px;
+                  font-weight: bold;
+                }
+
+                .bottom {
+                  display: flex;
+                  margin-top: 72px;
+                  justify-content: center;
+                  align-items: center;
+                  height: 65px;
+
+                  .text {
+                    padding-right: 5px;
+					margin: 0;
+					font-weight: 500;
+                  }
+
+                  .register {
+                    color: #ff7413;
+                    padding: 0;
+                    margin: 0;
+
+                    span {
+                      font-weight: 500;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ant-modal-footer {
+      display: none;
+    }
+  }
 }
 
 .input-login {
-		input {
-				border-radius: 0;
-				color: #202124;
+  input {
+    border-radius: 0;
+    color: #202124;
+    font-weight: 600;
 
-				&:focus {
+    &:focus {
+    }
 
-				}
-
-				&:hover {
-
-				}
-		}
+    &:hover {
+    }
+  }
 }

@@ -50,17 +50,17 @@ export function HeaderCustomer({ }) {
         setShowModalRegister(false)
     }
 
-    const showModalForgotaPassword = () => {
+    const showModalForgotPassword = () => {
         setShowModalForgotPassword(true)
         setShowModalRegister(false)
         setShowModalLogin(false)
     }
 
-    const handleOkForgotaPassword = e => {
+    const handleOkForgotPassword = e => {
         setShowModalForgotPassword(false)
     }
 
-    const handleCancelForgotaPassword = e => {
+    const handleCancelForgotPassword = e => {
         setShowModalForgotPassword(false)
     }
 
@@ -70,7 +70,8 @@ export function HeaderCustomer({ }) {
                 visible={isShowModalLogin}
                 onOk={handleOkLogin}
                 onCancel={handleCancelLogin}
-                showModalRegister={showModalRegister} />
+                showModalRegister={showModalRegister} 
+                showModalForgotPassword={showModalForgotPassword}/>
 
             <Register
                 visible={isShowModalRegister}
@@ -78,7 +79,7 @@ export function HeaderCustomer({ }) {
                 onCancel={handleCancelRegister}
                 showModalLogin={showModalLogin} />
 
-            <Register
+            <ForgotPassword
                 visible={isShowModalForgotPassword}
                 onOk={handleOkForgotPassword}
                 onCancel={handleCancelForgotPassword}

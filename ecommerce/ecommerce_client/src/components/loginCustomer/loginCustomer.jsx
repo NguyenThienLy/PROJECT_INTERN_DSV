@@ -3,7 +3,7 @@ import { Modal, Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import "./loginCustomer.scss";
 
-export function LoginCustomer({ visible, onOk, onCancel, showModalRegister }) {
+export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, showModalForgotPassword }) {
 
     return (
         <div>
@@ -33,7 +33,7 @@ export function LoginCustomer({ visible, onOk, onCancel, showModalRegister }) {
                     <Form.Item className="footer">
                         <Checkbox>Remember me</Checkbox>
 
-                        <Button className="forgot-password" type="link"> Forgot password</Button>
+                        <Button className="forgot-password" type="link" onClick={showModalForgotPassword}> Forgot password</Button>
 
                         <Button type="primary" htmlType="submit" className="login-form-button">
                             Log in
