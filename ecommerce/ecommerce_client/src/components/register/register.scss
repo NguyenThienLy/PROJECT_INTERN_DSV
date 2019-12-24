@@ -1,0 +1,171 @@
+.register {
+		.ant-modal-content {
+				border-radius: 0;
+				height: 703px;
+				width: 555px;
+
+				.ant-modal-header {
+						border: white;
+						padding: 0;
+
+						.ant-modal-title {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								height: 122px ;
+								text-align: center;
+								font-weight: bold;
+								font-size: 32px ;
+								border-color: white !important;
+						}
+				}
+
+				.ant-modal-body {
+            padding: 0 80px;
+            height: 581px;
+
+						.ant-form {
+								.input-content {
+										margin-bottom: 12px;
+
+										.ant-form-item-label {
+												height: 40px;
+											
+												label {
+														color: #202124;
+														font-size: 12px;
+														font-weight: bold;
+												}
+										}
+									
+										.ant-form-item-control-wrapper {
+												height: 46px; 
+
+												.ant-form-item-control {
+														height: 100%;
+
+														.ant-form-item-children {
+																height: 24px;
+												
+																.ant-input-affix-wrapper {
+																		height: 100%;
+											
+		
+																		.ant-input-prefix {
+																				display: none;
+																		}
+																}
+														}
+												}
+										}
+								}
+
+								.footer {
+										height: 251px;
+
+										.ant-form-item-control-wrapper {
+												height: 100%;
+
+												.ant-form-item-control {
+														height: 100%;
+														position: relative;
+
+														.ant-form-item-children {
+																height: 100% !important;
+
+                                .top {
+                                  height: 44px;
+                                  margin-top: 10px;
+                                  
+
+                                  p {
+                                    margin: 0;
+                                    height: auto;
+                                    text-align: center;
+                                    font-size: 14px;
+                                    line-height: 22px;
+                                  }
+
+                                  .bottom {
+                                    margin: 0;
+                                    padding: 0;
+                                    height: 22px;
+
+                                    p {
+                                      padding: 0px 5px;
+                                      margin: 0;
+                                      height: auto;
+                                      font-size: 14px;
+                                      line-height: 22px;
+                                    }
+
+                                    .link-primary {
+                                      height: auto;
+                                      line-height: 22px;
+                                      color: #ff7413;
+                                      font-weight: bold;
+                                    }
+                                  }
+                                }
+
+																.login-form-button  {
+																		margin-top: 46px;
+																		height: 50px;
+																		width: 100%;
+																		background-color: #ffa15f;
+																		border: #ffa15f;
+																		border-radius: 0;
+																		font-size: 15px;
+																		font-weight: bold;
+																}
+
+																.bottom {
+																		display: flex;
+																		margin-top: 72px;
+																		justify-content: center;
+																		align-items: center;
+																		height: 65px;
+
+																		.text {
+																				padding-right:5px;
+																				margin: 0;
+																		}
+
+																		.register {
+																				color: #ff7413;
+																				padding: 0;
+																				margin: 0;
+																				
+																				span {
+																						font-weight: 500;
+																						
+																				}
+																		}
+																}
+														}
+												}
+										}
+								}
+						}
+				}
+
+				.ant-modal-footer {
+						display: none;
+				}
+		}
+}
+
+.input-login {
+		input {
+				border-radius: 0;
+				color: #202124;
+
+				&:focus {
+
+				}
+
+				&:hover {
+
+				}
+		}
+}

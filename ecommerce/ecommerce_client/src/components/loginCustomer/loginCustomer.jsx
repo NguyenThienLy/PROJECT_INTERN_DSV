@@ -3,7 +3,7 @@ import { Modal, Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import "./loginCustomer.scss";
 
-export function LoginCustomer({ visible, onOk, onCancel }) {
+export function LoginCustomer({ visible, onOk, onCancel, showModalRegister }) {
 
     return (
         <div>
@@ -14,11 +14,11 @@ export function LoginCustomer({ visible, onOk, onCancel }) {
                 onOk={onOk}
                 onCancel={onCancel}
             >
-                <Form className="login-form">
+                <Form>
                     <Form.Item className="input-content" label="E-MAIL">
                         <Input className="input-login"
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Username"
+                            placeholder="Enter your e-mail"
                         />
                     </Form.Item>
 
@@ -26,11 +26,11 @@ export function LoginCustomer({ visible, onOk, onCancel }) {
                         <Input className="input-login"
                             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             type="password"
-                            placeholder="Password"
+                            placeholder="Enter your password"
                         />
                     </Form.Item>
 
-                    <Form.Item className="footer-login">
+                    <Form.Item className="footer">
                         <Checkbox>Remember me</Checkbox>
 
                         <Button className="forgot-password" type="link"> Forgot password</Button>
@@ -41,7 +41,7 @@ export function LoginCustomer({ visible, onOk, onCancel }) {
 
                         <div className="bottom">
                             <p className="text">Don't have an account? </p>
-                            <Button className="register" type="link"> Register </Button>
+                            <Button className="register" type="link" onClick={showModalRegister}> Register </Button>
                         </div>
 
                     </Form.Item>
