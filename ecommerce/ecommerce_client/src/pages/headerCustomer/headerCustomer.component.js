@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Avatar } from 'antd'
+import React, { useState } from 'react'
+import { Avatar, Button } from 'antd'
 
 import { api } from '../../services'
 import './headerCustomer.component.scss'
@@ -7,16 +7,39 @@ import {
     AccountCustomer,
     Cart,
     Category,
-    SearchCustomer
-} from './components/'
+    SearchCustomer,
+    BtnLogin
+} from './components'
+import {
+    LoginCustomer
+} from '../../components'
 
 export function HeaderCustomer({ }) {
+    const [isLogin, setIsLogin] = useState(false)
+    const [isShowModalLogin, setShowModalLogin] = useState(false)
+
+    const showModalLogin = () => {
+        console.log("showmodal")
+        setShowModalLogin(true)
+    }
+
+    const handleOkLogin = e => {
+        setShowModalLogin(false)
+    }
+
+    const handleCancelLogin = e => {
+        setShowModalLogin(false)
+    }
+
     return (
         <div className="header-customer">
-            <div className="top">
-                <div className="space-start">
+            <LoginCustomer
+                visible={isShowModalLogin}
+                onOk={handleOkLogin}
+                onCancel={handleCancelLogin} />
 
-                </div>
+            <div className="top">
+                <div className="space-start" />
 
                 <div className="left">
                     <SearchCustomer className="search-customer" />
@@ -27,13 +50,22 @@ export function HeaderCustomer({ }) {
                 </div>
 
                 <div className="right">
-                    <AccountCustomer className="account-customer" />
+                    {isLogin && <AccountCustomer className="account-customer" />}
+
+                    {!isLogin &&
+                        <div className="log-in">
+                            <Button type="link" ghost>
+                                Register
+                            </Button>
+
+                            <BtnLogin className="btn-login" showModal={showModalLogin} />
+                        </div>
+                    }
+
                     <Cart className="cart" />
                 </div>
 
-                <div className="space-end">
-
-                </div>
+                <div className="space-end" />
             </div>
 
             <div className="bottom">
@@ -43,4 +75,4 @@ export function HeaderCustomer({ }) {
     );
 }
 
-export default HeaderCustomer;
+export default HeaderCustomer
