@@ -11,16 +11,21 @@ import {
     BtnLogin
 } from './components'
 import {
-    LoginCustomer
+    LoginCustomer,
+    Register,
+    ForgotPassword
 } from '../../components'
 
 export function HeaderCustomer({ }) {
     const [isLogin, setIsLogin] = useState(false)
     const [isShowModalLogin, setShowModalLogin] = useState(false)
+    const [isShowModalRegister, setShowModalRegister] = useState(false)
+    const [isShowModalForgotPassword, setShowModalForgotPassword] = useState(false)
 
     const showModalLogin = () => {
-        console.log("showmodal")
         setShowModalLogin(true)
+        setShowModalRegister(false)
+        setShowModalForgotPassword(false)
     }
 
     const handleOkLogin = e => {
@@ -31,12 +36,54 @@ export function HeaderCustomer({ }) {
         setShowModalLogin(false)
     }
 
+    const showModalRegister = () => {
+        setShowModalRegister(true)
+        setShowModalLogin(false)
+        setShowModalForgotPassword(false)
+    }
+
+    const handleOkRegister = e => {
+        setShowModalRegister(false)
+    }
+
+    const handleCancelRegister = e => {
+        setShowModalRegister(false)
+    }
+
+    const showModalForgotPassword = () => {
+        setShowModalForgotPassword(true)
+        setShowModalRegister(false)
+        setShowModalLogin(false)
+    }
+
+    const handleOkForgotPassword = e => {
+        setShowModalForgotPassword(false)
+    }
+
+    const handleCancelForgotPassword = e => {
+        setShowModalForgotPassword(false)
+    }
+
     return (
         <div className="header-customer">
             <LoginCustomer
                 visible={isShowModalLogin}
                 onOk={handleOkLogin}
-                onCancel={handleCancelLogin} />
+                onCancel={handleCancelLogin}
+                showModalRegister={showModalRegister} 
+                showModalForgotPassword={showModalForgotPassword}/>
+
+            <Register
+                visible={isShowModalRegister}
+                onOk={handleOkRegister}
+                onCancel={handleCancelRegister}
+                showModalLogin={showModalLogin} />
+
+            <ForgotPassword
+                visible={isShowModalForgotPassword}
+                onOk={handleOkForgotPassword}
+                onCancel={handleCancelForgotPassword}
+                showModalLogin={showModalLogin} />
 
             <div className="top">
                 <div className="space-start" />
@@ -54,7 +101,7 @@ export function HeaderCustomer({ }) {
 
                     {!isLogin &&
                         <div className="log-in">
-                            <Button type="link" ghost>
+                            <Button type="link" ghost onClick={showModalRegister}>
                                 Register
                             </Button>
 
