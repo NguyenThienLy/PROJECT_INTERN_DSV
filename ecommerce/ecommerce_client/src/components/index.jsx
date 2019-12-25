@@ -1,4 +1,4 @@
-export * from "./breadcrumb/breadcrumb"
+export * from "./breadcrumbMain/breadcrumbMain"
 export * from "./footerCustomer/footerCustomer";
 export * from "./forgotPassword/forgotPassword";
 export * from "./loginCustomer/loginCustomer";

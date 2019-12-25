@@ -7,13 +7,12 @@ export function Product({product}) {
     const { Meta } = Card;
 
     return (
-        <div>
+        <div className="product">
             <Card
                 hoverable
-                style={{ width: 240 }}
                 cover={<img alt="example" src={product.link} />}
             >
-                <Meta title={product.name}  description="www.instagram.com" />
+                <Meta title={product.name}  description={product.price}/>
             </Card>
         </div>
     );
