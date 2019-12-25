@@ -11,17 +11,121 @@ export class ProductReducer extends BaseReducer {
       {
         id: "1",
         name: "sort dress",
-        link: "https://i.imgur.com/6RI3BOq.jpg"
+        link: "https://i.imgur.com/6RI3BOq.jpg",
+        price: "$69.00"
       },
       {
         id: "2",
         name: "medium dress",
-        link: "https://i.imgur.com/t5DiPw1.jpg"
+        link: "https://i.imgur.com/6RI3BOq.jpg",
+        price: "$69.00"
       },
       {
         id: "3",
         name: "long dress",
-        link: "https://i.imgur.com/JizfqjJ.jpg"
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "4",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "5",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "6",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "7",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "8",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "9",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "10",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "11",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "12",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      }, {
+        id: "13",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "14",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "15",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "16",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "17",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "18",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "19",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
+      },
+      {
+        id: "20",
+        name: "long dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
+        price: "$69.00"
       }
     ]
 
