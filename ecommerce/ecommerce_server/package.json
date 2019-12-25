@@ -1,12 +1,42 @@
 {
-  "name": "ecommerce_server",
+  "name": "test2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
+    "start": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.0.1",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.3",
+    "child-process-promise": "^2.2.1",
+    "cookie-parser": "^1.4.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "http-errors": "^1.7.2",
+    "mime-types": "^2.1.24",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.3",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "nodemailer": "^6.2.1",
+    "numeral": "^2.0.6",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "sharp": "^0.22.1",
+    "shortid": "^2.2.14",
+    "uuid-v4": "^0.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
