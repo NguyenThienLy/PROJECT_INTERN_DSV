@@ -1,6 +1,14 @@
 .product {
+    width: 175px;
+    height: 340px;
     .ant-card {
-        width: 180px;
-        height: 345px;
+        .ant-card-body {
+           padding: 10px 0 24px 0;
+
+
+           .ant-card-meta-title {
+               margin-bottom: 3px;
+           }
+        }
     }
 }

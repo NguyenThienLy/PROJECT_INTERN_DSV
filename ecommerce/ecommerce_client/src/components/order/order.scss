@@ -1,0 +1,14 @@
+.order {
+    .ant-select {
+        width: 179px;
+
+        .ant-select-selection {
+            border-radius: 0px;
+
+            .ant-select-selection-selected-value {
+                font-weight: bold;
+                font-size: 13px;
+            }
+        }
+    }
+}

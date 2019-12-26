@@ -8,7 +8,8 @@ export function Product({product}) {
 
     return (
         <div className="product">
-            <Card
+            <Card 
+                bordered={false}
                 hoverable
                 cover={<img alt="example" src={product.link} />}
             >
