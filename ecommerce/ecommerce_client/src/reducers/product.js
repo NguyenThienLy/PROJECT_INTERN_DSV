@@ -10,19 +10,19 @@ export class ProductReducer extends BaseReducer {
     const products = [
       {
         id: "1",
-        name: "sort dress",
-        link: "https://i.imgur.com/6RI3BOq.jpg",
+        name: "Collete Stretch Linen Minidress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
         price: "$69.00"
       },
       {
         id: "2",
-        name: "medium dress",
-        link: "https://i.imgur.com/6RI3BOq.jpg",
+        name: "Button-Down Denim Mini Dress",
+        link: "https://i.imgur.com/JizfqjJ.jpg",
         price: "$69.00"
       },
       {
         id: "3",
-        name: "long dress",
+        name: "Plunge V-neck Denim Mini Dress",
         link: "https://i.imgur.com/JizfqjJ.jpg",
         price: "$69.00"
       },
@@ -99,30 +99,6 @@ export class ProductReducer extends BaseReducer {
       },
       {
         id: "16",
-        name: "long dress",
-        link: "https://i.imgur.com/JizfqjJ.jpg",
-        price: "$69.00"
-      },
-      {
-        id: "17",
-        name: "long dress",
-        link: "https://i.imgur.com/JizfqjJ.jpg",
-        price: "$69.00"
-      },
-      {
-        id: "18",
-        name: "long dress",
-        link: "https://i.imgur.com/JizfqjJ.jpg",
-        price: "$69.00"
-      },
-      {
-        id: "19",
-        name: "long dress",
-        link: "https://i.imgur.com/JizfqjJ.jpg",
-        price: "$69.00"
-      },
-      {
-        id: "20",
         name: "long dress",
         link: "https://i.imgur.com/JizfqjJ.jpg",
         price: "$69.00"

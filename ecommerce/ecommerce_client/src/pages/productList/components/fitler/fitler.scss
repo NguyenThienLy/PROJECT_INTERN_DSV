@@ -1,0 +1,16 @@
+.fitler {
+  .ant-menu {
+    border-color: white;
+
+    .ant-menu-submenu {
+      .ant-menu-submenu-title {
+        border-color: #4d4d4d !important;
+        padding: 0 0 0 0 !important;
+
+        .ant-menu-submenu {
+        }
+        
+      }
+    }
+  }
+}

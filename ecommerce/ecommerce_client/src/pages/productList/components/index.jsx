@@ -1,2 +1,3 @@
 export * from './product/product'
-export * from './filter/filter'
+export * from './fitler/fitler'
+export * from './categoryFitler/categoryFitler'
