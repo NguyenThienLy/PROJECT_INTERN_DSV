@@ -87,8 +87,6 @@ export function HeaderCustomer({ }) {
                 showModalLogin={showModalLogin} />
 
             <div className="top">
-                <div className="space-start" />
-
                 <div className="left">
                     <SearchCustomer className="search-customer" />
                 </div>
@@ -112,8 +110,6 @@ export function HeaderCustomer({ }) {
 
                     <Link to="/shopping-cart"><Cart className="cart" /></Link>
                 </div>
-
-                <div className="space-end" />
             </div>
 
             <div className="bottom">
