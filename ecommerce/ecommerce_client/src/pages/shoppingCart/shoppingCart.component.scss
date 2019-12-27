@@ -1,0 +1,40 @@
+.shopping-cart {
+  .container-header-cart {
+    height: 104px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .header-shopping-cart {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+
+  .divider-item-cart {
+    margin: 0;
+  }
+
+  .container-header {
+    height: 42px;
+
+    .header-item {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0px;
+      text-align: center;
+    }
+
+    .align-start {
+      text-align: start;
+    }
+
+    .align-end {
+      text-align: end;
+    }
+  }
+
+  .container-shopping-cart {
+      margin-bottom: 50px;
+  }
+}

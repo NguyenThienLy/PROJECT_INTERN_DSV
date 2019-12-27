@@ -110,7 +110,7 @@ export function HeaderCustomer({ }) {
                         </div>
                     }
 
-                    <Cart className="cart" />
+                    <Link to="/shopping-cart"><Cart className="cart" /></Link>
                 </div>
 
                 <div className="space-end" />
