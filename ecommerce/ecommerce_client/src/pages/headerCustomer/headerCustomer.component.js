@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Avatar, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 import { api } from '../../services'
 import './headerCustomer.component.scss'
@@ -93,7 +94,7 @@ export function HeaderCustomer({ }) {
                 </div>
 
                 <div className="center">
-                    <Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" />
+                   <Link to="/"> <Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" /> </Link>
                 </div>
 
                 <div className="right">

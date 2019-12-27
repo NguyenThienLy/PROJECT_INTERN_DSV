@@ -11,7 +11,8 @@ export function Fitler({ }) {
         marginRight: "5px",
         color: "#202124",
         borderColor: "#808080",
-        borderRadius: "0px"
+        borderRadius: "0px",
+        padding: "0px"
     }
 
     const styleColor = {
