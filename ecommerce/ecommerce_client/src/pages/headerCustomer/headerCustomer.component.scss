@@ -1,74 +1,65 @@
 .header-customer {
-    width: 100%;
+  width: 100%;
 
-    .top {
-        height: 69px;
-        display: flex;
+  .top {
+    padding: 0 100px;
+    height: 69px;
+    display: flex;
 
-        .space-start {
-            width: 9%;
-        }
+    .left {
+      width: 40%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
 
-        .left {
-            width: 31%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-
-            .search-customer {
-                width: 30%;
-            }
-        }
-       
-        .center {
-            width: 20%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .logo {
-                width: 96px;
-                height: 20px;
-            }
-        }
-
-        .right {
-            width: 31%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-
-            .account-customer {
-            }
-
-            .cart {
-              margin-left: 27px !important;
-            }
-
-            .log-in {
-                display: flex;
-
-                .ant-btn {
-                    color: #4d4d4d;
-                    font-size: 14px;
-                }
-                
-                .btn-login {
-                    margin-left: 9px;
-                }
-            }
-        }
-       
-        .space-end {
-            width: 9%;
-        }
+      .search-customer {
+        width: 30%;
+      }
     }
 
-    .bottom {
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #ececec;
+    .center {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .logo {
+        width: 96px;
+        height: 20px;
+      }
     }
+
+    .right {
+      width: 40%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .cart {
+        margin-left: 27px !important;
+      }
+
+      .log-in {
+        display: flex;
+
+        .ant-btn {
+          color: #4d4d4d;
+          font-size: 14px;
+        }
+
+        .btn-login {
+          margin-left: 9px;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+  }
 }

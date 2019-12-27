@@ -1,22 +1,22 @@
 .product-list {
+  .body-page {
+    padding: 0 100px 60px 100px;
+
     .top-product-list {
-        height: 80px;
+      height: 80px;
     }
 
     .header-fitler {
-        font-weight: bold;
-        font-size: 16px;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     .col-product {
-        margin: 15px 0px 15px 0px;
+      margin: 15px 0px 15px 0px;
     }
 
     .header-fitler {
-        margin: 20px 0 20px 0;
+      margin: 20px 0 20px 0;
     }
-
-    .bottom {
-        height: 60px;
-    }
+  }
 }

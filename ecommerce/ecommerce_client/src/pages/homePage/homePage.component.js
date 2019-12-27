@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Layout } from 'antd'
 
 import { api } from '../../services'
 
@@ -14,43 +14,37 @@ import {
 } from '../../components'
 
 export function HomePage({ }) {
+    const { Content } = Layout;
+
     return (
         <div className="home-page">
-            <Row>
-                <HeaderCustomer />
-            </Row>
+            <HeaderCustomer />
 
-            <Row>
-                <Col span={2}></Col>
-                <Col span={20}>
-                    <Row className="container-carousel" span={24}>
-                        <IntroCarousel />
-                    </Row>
+            <Content className="body-page">
+                <Row>
+                    <IntroCarousel />
+                </Row>
 
-                    <Row className="container-intro-product" gutter={20}>
-                        <Col span={6} >
-                            <IntroProduct />
-                        </Col>
+                <Row className="container-intro-product" gutter={20}>
+                    <Col span={6} >
+                        <IntroProduct />
+                    </Col>
 
-                        <Col span={6}>
-                            <IntroProduct />
-                        </Col>
+                    <Col span={6}>
+                        <IntroProduct />
+                    </Col>
 
-                        <Col span={6} >
-                            <IntroProduct />
-                        </Col>
+                    <Col span={6} >
+                        <IntroProduct />
+                    </Col>
 
-                        <Col span={6} >
-                            <IntroProduct />
-                        </Col>
-                    </Row>
-                </Col>
-                <Col span={2}></Col>
-            </Row>
+                    <Col span={6} >
+                        <IntroProduct />
+                    </Col>
+                </Row>
+            </Content>
 
-            <Row>
-                <FooterCustomer />
-            </Row>
+            <FooterCustomer />
         </div>
     );
 }
