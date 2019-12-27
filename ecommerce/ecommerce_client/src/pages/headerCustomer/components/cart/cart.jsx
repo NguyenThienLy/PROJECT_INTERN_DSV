@@ -12,8 +12,8 @@ export function Cart({ }) {
   return (
     <div className="cart">
       <Dropdown overlay={fastCart} placement="bottomRight">
-        <Badge count={5} style={{ backgroundColor: '#ffa15f' }}>
-          <Icon type="shopping-cart" style={{ fontSize: '24px' }} />
+        <Badge count={5} className="badge-cart">
+          <Icon type="shopping-cart" className="icon-cart" />
         </Badge>
       </Dropdown>
     </div>
