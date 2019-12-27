@@ -36,7 +36,7 @@ export function ProductInfo({ }) {
 
                 <Col span={20}>
                     <Row>
-                        <Col span={9}>
+                        <Col span={10}>
                             <ImageProduct/>                        
                         </Col>
 
@@ -44,7 +44,7 @@ export function ProductInfo({ }) {
                             <InfoProduct/>
                         </Col>
 
-                        <Col span={3} offset={2}>
+                        <Col span={2} offset={2}>
                             <FromBrand/>
                         </Col>
                     </Row>
@@ -67,7 +67,7 @@ export function ProductInfo({ }) {
                
                     <Divider orientation="left">You may also like</Divider>
 
-                    <Row type="flex" justify="space-between">
+                    <Row className="container-similar-product" type="flex" justify="space-between" gutter={20}>
                         <Col span={4}>
                             <SimilarProduct/>
                         </Col>

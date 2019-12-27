@@ -11,30 +11,25 @@ export function FromBrand({ }) {
     return (
         <div className="from-brand">
             <Row type="flex" justify="end">
-                <Col span={7}>
+                <Col>
+                    <p className="header">More from</p>
+                    <p className="name-brand">Zara</p>
                 </Col>
 
-                <Col span={17}>
-                    <Col>
-                        <p className="header">More from</p>
-                        <p className="name-brand">Zara</p>
-                    </Col>
+                <Col className="container-image">
+                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
+                </Col>
 
-                    <Col className="container-image">
-                        <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Col>
+                <Col container-image>
+                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
+                </Col>
 
-                    <Col container-image>
-                        <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Col>
+                <Col container-image>
+                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
+                </Col>
 
-                    <Col container-image>
-                        <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Col>
-
-                    <Col container-image>
-                        <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Col>
+                <Col container-image>
+                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
                 </Col>
             </Row>
         </div>
