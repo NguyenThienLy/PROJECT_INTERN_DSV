@@ -10,7 +10,7 @@ export function FromBrand({ }) {
 
     return (
         <div className="from-brand">
-            <Row type="flex" justify="end">
+            <Row type="flex" justify="start">
                 <Col>
                     <p className="header">More from</p>
                     <p className="name-brand">Zara</p>
