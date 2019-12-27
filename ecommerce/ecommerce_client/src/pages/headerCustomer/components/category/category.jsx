@@ -10,15 +10,17 @@ export function Category({ }) {
   );
 
   return (
-    <Dropdown overlay={subCategory} placement="bottomCenter">
-      <div className="category">
-        <ItemCategory className="item-category" />
-        <ItemCategory className="item-category" />
-        <ItemCategory className="item-category" />
-        <ItemCategory className="item-category" />
-        <ItemCategory className="item-category" />
-      </div>
-    </Dropdown>
+    <div className="category">
+      <Dropdown overlay={subCategory} placement="bottomCenter">
+        <div className="container-item">
+          <ItemCategory className="item-category" />
+          <ItemCategory className="item-category" />
+          <ItemCategory className="item-category" />
+          <ItemCategory className="item-category" />
+          <ItemCategory className="item-category" />
+        </div>
+      </Dropdown>
+    </div>
   );
 
 }

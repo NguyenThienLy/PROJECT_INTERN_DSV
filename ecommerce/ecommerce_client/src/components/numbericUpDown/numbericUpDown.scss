@@ -1,0 +1,33 @@
+.numberic-up-down {
+  display: flex;
+  justify-self: center;
+  align-content: center;
+
+  .ant-btn {
+    border-radius: 0px;
+    height: 42px;
+    width: 49px;
+    background-color: white;
+
+    .anticon {
+      margin: 0;
+    }
+  }
+
+//   .btn-plus {
+//     border-left: none;
+//   }
+
+//   .btn-sub {
+//     border-right: none;
+//   }
+
+  .ant-input {
+    border-radius: 0px;
+    height: 42px;
+    width: 50px;
+    text-align: center;
+    border-right: white;
+    border-left: white;
+  }
+}

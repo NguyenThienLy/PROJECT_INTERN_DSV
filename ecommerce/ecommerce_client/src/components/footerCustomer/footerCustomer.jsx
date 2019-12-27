@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom"
 
 import "./footerCustomer.scss";
 import { Icon, Avatar } from 'antd'
@@ -11,7 +12,7 @@ export function FooterCustomer({ }) {
         <div className="space-start"></div>
 
         <div className="left">
-          <Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" />
+          <Link to="/"><Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" /></Link>
         </div>
 
         <div className="center">

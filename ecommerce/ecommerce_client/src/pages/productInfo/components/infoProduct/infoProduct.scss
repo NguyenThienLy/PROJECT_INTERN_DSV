@@ -1,0 +1,92 @@
+.info-product {
+  .header {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.33;
+    margin: 0;
+    color: #202124;
+  }
+
+  .price {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.33;
+    margin: 0;
+    color: #202124;
+  }
+
+  .review {
+    margin: 0;
+    color: #202124;
+    font-size: 12px;
+    line-height: 1.83;
+  }
+
+  .ant-rate {
+    .ant-rate-star {
+      margin-right: 3px;
+      .ant-rate-star-second {
+        .anticon {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .row-container {
+    margin-top: 28px;
+    .name-props {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.57;
+      color: #202124;
+      margin: 0;
+    }
+  }
+
+  .btn-size {
+    width: 35px;
+    height: 35px;
+    margin-top: 9px;
+    margin-right: 5px;
+    color: #202124 !important;
+    border-color: #808080 !important;
+    border-radius: 0px;
+    text-emphasis: center;
+    padding: 0;
+  }
+
+  .avt-color {
+    width: 30px;
+    height: 30px;
+    margin-top: 9px;
+    background-color: #ff5f6d;
+    margin-bottom: 10px;
+  }
+
+  .btn-add-to-cart {
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+    background-color: #5f6dff;
+    border-color: #5f6dff;
+    font-weight: 500;
+  }
+
+  .descripton {
+    .header-descripton {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.57;
+    }
+
+    .content-descripton {
+      p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.81;
+      }
+    }
+  }
+}
