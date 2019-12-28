@@ -53,7 +53,7 @@ export function Register({ visible, onOk, onCancel, showModalLogin }) {
                             Register
                         </Button>
 
-                        <div className="bottom">
+                        <div className="bottom-register">
                             <p className="text">Do have an account? </p>
                             <Button className="register" type="link" onClick={showModalLogin}> Log In </Button>
                         </div>

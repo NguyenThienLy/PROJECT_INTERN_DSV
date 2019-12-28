@@ -11,7 +11,6 @@ export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, show
                 className="login-customer"
                 title="Log In"
                 visible={visible}
-                onOk={onOk}
                 onCancel={onCancel}
             >
                 <Form>
@@ -35,7 +34,7 @@ export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, show
 
                         <Button className="forgot-password" type="link" onClick={showModalForgotPassword}> Forgot password</Button>
 
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+                        <Button type="primary" htmlType="submit" className="login-form-button" onClick={onOk}>
                             Log in
                         </Button>
 

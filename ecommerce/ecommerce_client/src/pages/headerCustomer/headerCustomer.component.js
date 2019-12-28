@@ -31,6 +31,7 @@ export function HeaderCustomer({ }) {
 
     const handleOkLogin = e => {
         setShowModalLogin(false)
+        setIsLogin(true);
     }
 
     const handleCancelLogin = e => {
