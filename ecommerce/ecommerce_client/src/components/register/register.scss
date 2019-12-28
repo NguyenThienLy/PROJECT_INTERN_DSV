@@ -87,6 +87,9 @@
                     margin: 0;
                     padding: 0;
                     height: 22px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     p {
                       padding: 0px 5px;
@@ -101,6 +104,7 @@
                       line-height: 22px;
                       color: #ff7413;
                       font-weight: bold;
+                      border-bottom: 1px solid #ff7413;
                     }
                   }
                 }
@@ -116,7 +120,8 @@
                   font-weight: bold;
                 }
 
-                .bottom {
+                .bottom-register {
+                  border-top: 1px solid rgba(0, 0, 0, 0.14);
                   display: flex;
                   margin-top: 72px;
                   justify-content: center;
@@ -125,8 +130,8 @@
 
                   .text {
                     padding-right: 5px;
-					margin: 0;
-					font-weight: 500;
+                    margin: 0;
+                    font-weight: 500;
                   }
 
                   .register {

@@ -1,0 +1,94 @@
+.form-edit-info {
+    width: 100%;
+    padding: 26px 50px;
+    background-color: #f9f9f9;
+  
+    .ant-form {
+      .input-content {
+        margin-bottom: 12px;
+  
+        .ant-form-item-label {
+          height: 40px;
+  
+          label {
+            color: #202124;
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+  
+        .ant-form-item-control-wrapper {
+          height: 46px;
+  
+          .ant-form-item-control {
+            height: 100%;
+  
+            .ant-form-item-children {
+              height: 24px;
+  
+              .ant-input-affix-wrapper {
+                height: 100%;
+  
+                .ant-input-prefix {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+  
+      .footer {
+        margin-bottom: 0;
+        .ant-form-item-control-wrapper {
+          height: 100%;
+  
+          .ant-form-item-control {
+            height: 100%;
+            position: relative;
+  
+            .ant-form-item-children {
+              height: 100% !important;
+              display: flex;
+              justify-content: flex-end;
+  
+              .primary-form-button {
+                margin-top: 33px;
+                height: 35px;
+                width: 120px;
+                background-color: #ffa15f;
+                border: #ffa15f;
+                border-radius: 0;
+                font-size: 15px;
+                font-weight: bold;
+              }
+
+              .secondary-form-button {
+                margin-top: 33px;
+                height: 35px;
+                width: 120px;
+                font-size: 15px;
+                font-weight: bold;
+                color: #202124;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .input-login {
+    input {
+      border-radius: 0;
+      color: #202124;
+      font-weight: 600;
+  
+      &:focus {
+      }
+  
+      &:hover {
+      }
+    }
+  }
+  

@@ -1,0 +1,38 @@
+.sub-account-customer {
+  width: 181px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 6px 12px rgba(209, 202, 202, 0.25), 0 6px 12px rgba(169, 164, 164, 0.22);
+  background-color: white;
+  margin-top: 19px;
+
+  ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+
+    .divider-sub-account-customer {
+      margin: 0;
+    }
+
+    li {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.83;
+      padding: 6.7px 13px;
+      color: #4d4d4d;
+
+      .ant-btn-link {
+        padding: 0;
+        span {
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 1.83;
+          color: #4d4d4d;
+        }
+      }
+    }
+  }
+}
