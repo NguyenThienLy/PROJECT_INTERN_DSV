@@ -1,27 +1,23 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Avatar} from 'antd'
 
-class LoginSellerPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        };
-    }
-    static async getInitialProps({ req, query }) {
+import { api } from '../../../reducers'
 
-    }
-    
-    async componentDidMount() {
-        
-    }
+import './loginSellerPage.component.scss'
+import {
+  LoginSeller
+} from './components/'
 
-    render() {
-        return (
-            <div>
-               login seller page
-            </div>
-        );
-    }
+export function LoginSellerPage({ }) {
+
+    return (
+        <div className="login-seller-page">
+
+<Link to="/"> <Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" /> </Link>
+            <LoginSeller/>
+        </div >
+    );
 }
 
 export default LoginSellerPage;

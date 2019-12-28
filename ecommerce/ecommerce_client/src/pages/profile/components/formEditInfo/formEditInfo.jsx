@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Modal, Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 
 import "./formEditInfo.scss";
 
