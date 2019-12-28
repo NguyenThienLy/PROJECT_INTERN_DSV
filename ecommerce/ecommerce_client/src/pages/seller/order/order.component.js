@@ -1,27 +1,30 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Avatar, Layout, Col } from 'antd'
 
-class Order extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        };
-    }
-    static async getInitialProps({ req, query }) {
+import { api } from '../../../reducers'
 
-    }
-    
-    async componentDidMount() {
-        
-    }
+import './order.component.scss'
+import {
+   
+} from './components/'
+import {
+ sideNav, SideNav
+} from '../../../components'
 
-    render() {
-        return (
-            <div>
-               order
-            </div>
-        );
-    }
+export function Order({ }) {
+    const { Content } = Layout;
+    return (
+        <div className="order">
+          <Content className="body-page">
+              <Col span={4}>
+                  <SideNav/>
+              </Col>
+
+              <Col span={19} offset={1}></Col>
+          </Content>
+        </div >
+    );
 }
 
 export default Order;

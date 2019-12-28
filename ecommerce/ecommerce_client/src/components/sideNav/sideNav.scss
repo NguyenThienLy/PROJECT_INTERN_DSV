@@ -1,0 +1,17 @@
+.side-nav {
+  .container-logo {
+    height: 104px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      width: 96px;
+      height: 20px;
+    }
+  }
+
+  .menu-seller {
+      border: none;
+  }
+}
