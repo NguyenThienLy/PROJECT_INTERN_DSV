@@ -2,7 +2,6 @@ export * from "./breadcrumbMain/breadcrumbMain"
 export * from "./footerCustomer/footerCustomer";
 export * from "./forgotPassword/forgotPassword";
 export * from "./loginCustomer/loginCustomer";
-export * from "./loginSeller/loginSeller";
 export * from "./numbericUpDown/numbericUpDown";
 export * from "./order/order";
 export * from "./paginationCustomer/paginationCustomer";

@@ -21,11 +21,11 @@ const Router = () => (
         <Route exact path='/product-list'><ProductList/></Route>
         <Route exact path='/shopping-cart' component={ShoppingCart} />
 
-        <Route exact path='/login-seller-page' component={LoginSellerPage} />
-        <Route exact path='/order' component={Order} />
-        <Route exact path='/product-add' component={ProductAdd} />
-        <Route exact path='/product-main' component={ProductMain} />
-        <Route exact path='/product-update' component={ProductUpdate} />
+        <Route exact path='/seller/login-seller' component={LoginSellerPage} />
+        <Route exact path='/seller/order' component={Order} />
+        <Route exact path='/seller/product-add' component={ProductAdd} />
+        <Route exact path='/seller/product-main' component={ProductMain} />
+        <Route exact path='/seller/product-update' component={ProductUpdate} />
     </Switch>
 )
 

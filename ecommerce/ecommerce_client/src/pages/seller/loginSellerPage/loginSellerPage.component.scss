@@ -1,0 +1,18 @@
+.login-seller-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://i.imgur.com/M9EFkBu.jpg");
+  position: relative;
+
+  .logo {
+    position: absolute;
+    width: 96px;
+    height: 20px;
+    left: 0;
+    top: 0;
+    margin-top: 32px;
+    margin-left: 44px;
+  }
+}
