@@ -1,6 +1,9 @@
 .side-nav {
+  background-color: #ededed;
+  height: 100vh;
+  border-right: 1px solid #cccccc;
   .container-logo {
-    height: 104px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +15,49 @@
   }
 
   .menu-seller {
-      border: none;
+    border: none;
+    background-color: #ededed;
+
+    .ant-menu-item {
+      color: #3d3d3f;
+      font-size: 14px;
+      border-right: 1px solid #cccccc;
+      font-weight: 500;
+
+      &:hover {
+        color: #ffa15f;
+      }
+    }
+
+    .ant-menu-item-selected::after {
+      right: unset !important;
+      left: 0;
+      border-right: unset !important;
+      border-left: 4px solid #ffa15f !important;
+    }
+
+    .ant-menu-item-selected {
+      color: #ffa15f;
+      left: 0;
+    }
+
+    .ant-menu-sub {
+      background-color: #ededed;
+    }
+
+    .ant-menu-submenu-title {
+      color: #3d3d3f;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        .ant-menu-submenu-arrow::before,
+        .ant-menu-submenu-arrow::after {
+          background: #ffa15f;
+        }
+
+        color: #ffa15f;
+      }
+    }
   }
 }

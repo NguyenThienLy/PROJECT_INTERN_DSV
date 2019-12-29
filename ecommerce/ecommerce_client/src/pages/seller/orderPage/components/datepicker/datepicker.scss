@@ -1,0 +1,17 @@
+.date-picker {
+  height: 100%;
+
+  .ant-calendar-picker {
+    height: 100%;
+    .ant-calendar-picker-input {
+      border-radius: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .ant-calendar-range-picker-separator {
+        height: 20px;
+      }
+    }
+  }
+}

@@ -7,7 +7,6 @@ import './sideNav.scss'
 export function SideNav({ }) {
     const { SubMenu } = Menu;
 
-
     return (
         <div className="side-nav">
             <div className="container-logo">

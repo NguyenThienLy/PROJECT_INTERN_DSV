@@ -8,7 +8,7 @@ import ProductList from './pages/productList/productList.container'
 import ShoppingCart from './pages/shoppingCart/shoppingCart.component'
 
 import LoginSellerPage from './pages/seller/loginSellerPage/loginSellerPage.component'
-import Order from './pages/seller/order/order.component'
+import OrderPage from './pages/seller/orderPage/orderPage.component'
 import ProductAdd from './pages/seller/product/add/add.component'
 import ProductMain from './pages/seller/product/main/main.component'
 import ProductUpdate from './pages/seller/product/update/update.component'
@@ -22,7 +22,7 @@ const Router = () => (
         <Route exact path='/shopping-cart' component={ShoppingCart} />
 
         <Route exact path='/seller/login-seller' component={LoginSellerPage} />
-        <Route exact path='/seller/order' component={Order} />
+        <Route exact path='/seller/order-page' component={OrderPage} />
         <Route exact path='/seller/product-add' component={ProductAdd} />
         <Route exact path='/seller/product-main' component={ProductMain} />
         <Route exact path='/seller/product-update' component={ProductUpdate} />

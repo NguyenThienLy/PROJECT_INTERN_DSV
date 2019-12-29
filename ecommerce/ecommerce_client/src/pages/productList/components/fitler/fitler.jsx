@@ -114,9 +114,7 @@ export function Fitler({ }) {
                         <span>Price </span>
                     }
                 >
-                    <div>
-                        <Slider marks={marks} defaultValue={300} step={5} />
-                    </div>
+                    <Slider marks={marks} defaultValue={300} step={5} />
                 </SubMenu>
 
                 <SubMenu
