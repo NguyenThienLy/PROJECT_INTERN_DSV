@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Input } from 'antd';
 
-import "./searchCustomer.scss";
+import "./searchSeller.scss";
 
-export function SearchCustomer({ }) {
+export function SearchSeller({ }) {
   const { Search } = Input;
 
   return (
-    <div className="search-customer">
+    <div className="search-seller">
       <Search
         placeholder="Search"
         onSearch={value => console.log(value)}
@@ -17,4 +17,4 @@ export function SearchCustomer({ }) {
 
 }
 
-export default SearchCustomer
+export default SearchSeller

@@ -1,0 +1,40 @@
+.header-seller {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #ededed;
+
+  .txt-primary {
+    color: #202124;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.29;
+  }
+
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #202124;
+    height: 48px;
+    display: flex;
+    align-items: center !important;
+    justify-content: flex-start;
+  }
+
+  .avt-seller {
+    height: 48px;
+    width: 48px;
+    border-color: 2px solid red !important;
+  }
+
+  .container-badge {
+    display: flex;
+    align-items: center;
+    height: 48px;
+
+    .container-icon {
+      font-size: 18px;
+    }
+  }
+}

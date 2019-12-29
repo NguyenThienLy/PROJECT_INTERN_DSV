@@ -6,10 +6,18 @@
       .ant-menu-submenu-title {
         border-color: #4d4d4d !important;
         padding: 0 0 0 0 !important;
+        color: #3d3d3f;
+        font-size: 14px;
+        font-weight: 500;
 
-        .ant-menu-submenu {
+        &:hover {
+          .ant-menu-submenu-arrow::before,
+          .ant-menu-submenu-arrow::after {
+            background: #ffa15f;
+          }
+
+          color: #ffa15f;
         }
-        
       }
     }
   }

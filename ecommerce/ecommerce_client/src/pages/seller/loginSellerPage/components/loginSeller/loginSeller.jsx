@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Icon, Input, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 import './loginSeller.scss'
 
@@ -26,9 +27,11 @@ export function LoginSeller({ }) {
                 </Form.Item>
 
                 <Form.Item className="footer">
-                    <Button type="primary" htmlType="submit" className="btn-primary">
-                        Log in
-                    </Button>
+                    <Link to="/seller/order">
+                        <Button type="primary" htmlType="submit" className="btn-primary">
+                            Log in
+                        </Button>
+                    </Link>
 
                     <Button type="link" className="btn-link">Forgot password</Button>
                 </Form.Item>
