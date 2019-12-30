@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema({
         enum: ['#ff5f6d', 'rgba(255, 195, 113, 0.5)', 'rgba(95, 109, 255, 0.5)', 'rgba(255, 161, 95, 0.5)', 'rgba(61, 61, 63, 0.5)'],
         default: []
     },
+    comment: {
+        type: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+        default: []
+    },
     size: {
         type: String,
         enum: ['S', 'M', 'L'],
