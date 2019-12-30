@@ -4,6 +4,7 @@ const commentRoute = require("../routes/v1/comment");
 const customerRoute = require("../routes/v1/customer");
 const orderRoute = require("../routes/v1/order");
 const orderItemRoute = require("../routes/v1/orderItem");
+const sellerRoute = require("../routes/v1/seller");
 const productRoute = require("../routes/v1/product");
 
 module.exports = function(app) {
@@ -35,6 +36,11 @@ module.exports = function(app) {
   app.use(
     "/v1/orderItem",
     orderItemRoute
+  );
+
+  app.use(
+    "/v1/seller",
+    sellerRoute
   );
 
   app.use(
