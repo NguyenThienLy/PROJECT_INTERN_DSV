@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
@@ -27,6 +28,8 @@ const customerSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    collection: 'customer'
 });
 
 module.exports = mongoose.model('Customer', customerSchema);

@@ -22,6 +22,8 @@ const orderItemSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    collection: 'orderItem'
 });
 
 module.exports = mongoose.model('OrderItem', orderItemSchema);
