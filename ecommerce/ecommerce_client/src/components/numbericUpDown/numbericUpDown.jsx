@@ -4,6 +4,17 @@ import { Input, Button, Icon } from 'antd'
 import './numbericUpDown.scss'
 
 export function NumbericUpDown({ }) {
+    const [quantity, setQuantity] = useState(1)
+
+    const increase = () => {
+        if (quantity < 100)
+            setQuantity(quantity + 1)
+    }
+
+    const decrease = () => {
+        if (quantity > 1)
+            setQuantity(quantity - 1)
+    }
 
     useEffect(() => {
 
@@ -11,9 +22,9 @@ export function NumbericUpDown({ }) {
 
     return (
         <div className="numberic-up-down">
-                <Button className="btn-sub"> <Icon type="plus" /></Button>
-                <Input value="1"></Input>
-                <Button className="btn-plus"> <Icon type="minus" /></Button>
+            <Button className="btn-sub" onClick={decrease}> <Icon type="minus" /></Button>
+            <Input value={quantity}></Input>
+            <Button className="btn-plus" onClick={increase}> <Icon type="plus" /></Button>
         </div>
     );
 }
