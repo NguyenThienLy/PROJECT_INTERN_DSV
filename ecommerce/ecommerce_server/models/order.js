@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
     orderCode: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     customer: {
         type: String,
@@ -12,7 +13,6 @@ const orderSchema = new mongoose.Schema({
     },
     total: {
         type: Number,
-        default: 1.00,
         required: true
     },
     orderItem: {
@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        ref: ['completed', 'pending', 'canceled'],
+        enum: ['completed', 'pending', 'canceled'],
         default: 'pending'
     },
     createdAt: {

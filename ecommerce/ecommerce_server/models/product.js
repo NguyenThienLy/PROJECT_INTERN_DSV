@@ -38,12 +38,10 @@ const productSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        default: 1.00,
         required: true
     },
     quantity: {
         type: Number, 
-        default: 1,
         required: true
     },
     status: {
@@ -52,7 +50,8 @@ const productSchema = new mongoose.Schema({
         default: 'In-store'
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
