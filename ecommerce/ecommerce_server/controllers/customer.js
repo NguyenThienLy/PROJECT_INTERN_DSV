@@ -1,4 +1,4 @@
-const model = require('../models/comment');
+const model = require('../models/customer');
 const { ObjectId } = require('bson');
 
 module.exports.getList = async () => {

@@ -1,33 +1,33 @@
-const Category = require('../models/category');
+const model = require('../models/category');
 const { ObjectId } = require('bson');
 
 module.exports.getList = async () => {
-    const categories = await Category.find();
+    const list = await model.find();
 
-    return categories;
+    return list;
 };
 
 module.exports.getItem = async (id) => {
-    const category = await Category.findOne({ _id:new ObjectId(id) });
+    const item = await model.findOne({ _id:new ObjectId(id) });
 
-    return category;
+    return item;
 };
 
 module.exports.create = async (body) => {
-    const category = await Category.create(body);
+    const item = await model.create(body);
 
-    return category;
+    return item;
 };
 
 module.exports.update = async (id, body) => {
-    const category = await Category.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
+    const item = await model.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
 
-    return category;
+    return item;
 };
 
 module.exports.delete = async (id) => {
-    const category = await Category.findOne({ _id: new ObjectId(id) });
-    await category.deleteOne({ _id: new ObjectId(id) });
+    const item = await model.findOne({ _id: new ObjectId(id) });
+    await item.deleteOne({ _id: new ObjectId(id) });
 
-    return category;
+    return item;
 };

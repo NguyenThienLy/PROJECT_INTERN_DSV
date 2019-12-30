@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+const model = require('../models/product');
 const { ObjectId } = require('bson');
 
 module.exports.productFilter = (req, res) => {
@@ -12,32 +12,32 @@ module.exports.productFilter = (req, res) => {
 };
 
 module.exports.getList = async () => {
-    const products = await Product.find();
+    const list = await model.find();
 
-    return products;
+    return list;
 };
 
 module.exports.getItem = async (id) => {
-    const product = await Product.findOne({ _id:new ObjectId(id) });
+    const item = await model.findOne({ _id:new ObjectId(id) });
 
-    return product;
+    return item;
 };
 
 module.exports.create = async (body) => {
-    const product = await Product.create(body);
+    const item = await model.create(body);
 
-    return product;
+    return item;
 };
 
 module.exports.update = async (id, body) => {
-    const product = await Product.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
+    const item = await model.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
 
-    return product;
+    return item;
 };
 
 module.exports.delete = async (id) => {
-    const product = await Product.findOne({ _id: new ObjectId(id) });
-    await Product.deleteOne({ _id: new ObjectId(id) });
+    const item = await model.findOne({ _id: new ObjectId(id) });
+    await item.deleteOne({ _id: new ObjectId(id) });
 
-    return product;
+    return item;
 };

@@ -1,33 +1,33 @@
-const Brand = require('../models/brand');
+const model = require('../models/brand');
 const { ObjectId } = require('bson');
 
 module.exports.getList = async () => {
-    const brands = await Brand.find();
+    const list = await model.find();
 
-    return brands;
+    return list;
 };
 
 module.exports.getItem = async (id) => {
-    const brand = await Brand.findOne({ _id:new ObjectId(id) });
+    const item = await model.findOne({ _id:new ObjectId(id) });
 
-    return brand;
+    return item;
 };
 
 module.exports.create = async (body) => {
-    const brand = await Brand.create(body);
+    const item = await model.create(body);
 
-    return brand;
+    return item;
 };
 
 module.exports.update = async (id, body) => {
-    const brand = await Brand.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
+    const item = await model.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
 
-    return brand;
+    return item;
 };
 
 module.exports.delete = async (id) => {
-    const brand = await Brand.findOne({ _id: new ObjectId(id) });
-    await brand.deleteOne({ _id: new ObjectId(id) });
+    const item = await model.findOne({ _id: new ObjectId(id) });
+    await item.deleteOne({ _id: new ObjectId(id) });
 
-    return brand;
+    return item;
 };
