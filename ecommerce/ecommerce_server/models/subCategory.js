@@ -6,7 +6,7 @@ const subCategorySchema = new mongoose.Schema({
         required: true
     },
     product: {
-        type: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
         default: []
     },
     createdAt: {

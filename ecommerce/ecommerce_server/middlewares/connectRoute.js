@@ -4,8 +4,9 @@ const commentRoute = require("../routes/v1/comment");
 const customerRoute = require("../routes/v1/customer");
 const orderRoute = require("../routes/v1/order");
 const orderItemRoute = require("../routes/v1/orderItem");
-const sellerRoute = require("../routes/v1/seller");
 const productRoute = require("../routes/v1/product");
+const sellerRoute = require("../routes/v1/seller");
+const subCategoryRoute = require("../routes/v1/subCategory");
 
 module.exports = function(app) {
   app.use(
@@ -39,12 +40,12 @@ module.exports = function(app) {
   );
 
   app.use(
-    "/v1/seller",
-    sellerRoute
+    "/v1/product",
+    productRoute
   );
 
   app.use(
-    "/v1/product",
-    productRoute
+    "/v1/subCategory",
+    subCategoryRoute
   );
 };
