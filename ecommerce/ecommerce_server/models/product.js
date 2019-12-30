@@ -5,10 +5,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    brand: {
-        type: [{ type: Schema.Types.ObjectId, ref: "Brand" }],
-        default: []
-    },
     color: {
         type: String,
         enum: ['#ff5f6d', 'rgba(255, 195, 113, 0.5)', 'rgba(95, 109, 255, 0.5)', 'rgba(255, 161, 95, 0.5)', 'rgba(61, 61, 63, 0.5)'],
