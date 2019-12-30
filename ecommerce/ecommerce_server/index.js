@@ -11,7 +11,6 @@ const port = 3000;
 
 const app = express();
 
-
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
