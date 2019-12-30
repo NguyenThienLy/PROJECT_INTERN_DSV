@@ -16,7 +16,7 @@ const sellerSchema = new mongoose.Schema({
     },
     status: {
         type: String, 
-        ref: ['active', 'deactive'], 
+        enum: ['active', 'deactive'], 
         default: 'active'
     },
     role: {

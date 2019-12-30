@@ -1,12 +1,8 @@
 const express = require("express");
 
-const controller = require("../../controllers/product");
+const controller = require("../../controllers/brand");
 
 const router = express.Router();
-
-router.get("/filter", (req, res) => {
-    res.send(controller.productFilter(req, res));
-});
 
 // Get all
 router.get('/', async (req, res) => {

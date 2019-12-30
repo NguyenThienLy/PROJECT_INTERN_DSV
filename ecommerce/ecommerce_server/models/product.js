@@ -6,26 +6,21 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     color: {
-        type: String,
+        type: [{ type: String }],
         enum: ['#ff5f6d', 'rgba(255, 195, 113, 0.5)', 'rgba(95, 109, 255, 0.5)', 'rgba(255, 161, 95, 0.5)', 'rgba(61, 61, 63, 0.5)'],
         default: []
     },
     comment: {
-        type: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+        type: [{ type: mongoose.Schema.Types.Object, ref: "Comment" }],
         default: []
     },
     size: {
-        type: String,
+        type: [{ type: String }],
         enum: ['S', 'M', 'L'],
         default: []
     },
-    subCategory: {
-        type: Schema.Types.ObjectId, 
-        ref: "SubCategory", 
-        required: true
-    },
     subImage: {
-        type: [{ type: string}],
+        type: [{ type: String }],
         default: []
     },
     mainImage: {
@@ -37,7 +32,7 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     quantity: {
-        type: Number, 
+        type: Number,
         required: true
     },
     status: {
