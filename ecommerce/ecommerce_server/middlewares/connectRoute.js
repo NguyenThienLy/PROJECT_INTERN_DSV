@@ -10,42 +10,42 @@ const subCategoryRoute = require("../routes/v1/subCategory");
 
 module.exports = function(app) {
   app.use(
-    "/v1/brand",
+    "/api/v1/brand",
     brandRoute
   );
 
   app.use(
-    "/v1/category",
+    "/api/v1/category",
     categoryRoute
   );
 
   app.use(
-    "/v1/comment",
+    "/api/v1/comment",
     commentRoute
   );
 
   app.use(
-    "/v1/customer",
+    "/api/v1/customer",
     customerRoute
   );
 
   app.use(
-    "/v1/order",
+    "/api/v1/order",
     orderRoute
   );
 
   app.use(
-    "/v1/orderItem",
+    "/api/v1/orderItem",
     orderItemRoute
   );
 
   app.use(
-    "/v1/product",
+    "/api/v1/product",
     productRoute
   );
 
   app.use(
-    "/v1/subCategory",
+    "/api/v1/subCategory",
     subCategoryRoute
   );
 };

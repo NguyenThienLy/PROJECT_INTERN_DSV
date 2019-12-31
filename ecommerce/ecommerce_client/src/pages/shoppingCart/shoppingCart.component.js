@@ -4,7 +4,7 @@ import { Row, Col, Divider, Layout } from 'antd'
 import { api } from '../../services'
 
 import './shoppingCart.component.scss'
-import HeaderCustomer from '../headerCustomer/headerCustomer.component'
+import HeaderCustomer from '../headerCustomer/headerCustomer.container'
 import {
     ItemDetailCart,
     TotalCart

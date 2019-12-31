@@ -8,7 +8,7 @@ import {
     SimilarProduct,
     InfoProduct
 } from './components'
-import HeaderCustomer from '../headerCustomer/headerCustomer.component'
+import HeaderCustomer from '../headerCustomer/headerCustomer.container'
 import {
     BreadcrumbMain,
     FooterCustomer,

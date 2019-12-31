@@ -16,19 +16,19 @@ export function FromBrand({ }) {
                     <p className="name-brand">Zara</p>
                 </Col>
 
-                <Col className="container-image">
+                <Col>
                     <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
                 </Col>
 
-                <Col container-image>
+                <Col>
                     <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
                 </Col>
 
-                <Col container-image>
+                <Col>
                     <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
                 </Col>
 
-                <Col container-image>
+                <Col>
                     <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
                 </Col>
             </Row>

@@ -17,6 +17,8 @@ const subCategorySchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    collection: 'subCategory'
 });
 
 module.exports = mongoose.model('SubCategory', subCategorySchema);

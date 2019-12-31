@@ -5,37 +5,24 @@ export class BaseAction {
     }
 
     ////////////////////////////////////////////////////////////
-    fetch = (option = {}) => {
+    getList = (option = {}) => {
         return dispatch => {
-            dispatch(this.fetchPending())
+            dispatch({
+                type: `FETCH_${this.name}_PENDING`
+            })
             this.api.getList(option)
                 .then(res => {
-                    dispatch(this.fetchSuccess(res.results.objects.rows))
-                    return res
+                    dispatch({
+                        type: `FETCH_${this.name}_SUCCESS`,
+                        payload: res.result.object
+                    })
                 })
                 .catch(error => {
-                    dispatch(this.fetchError(error))
+                    dispatch({
+                        type: `FETCH_${this.name}_ERROR`,
+                        payload: error
+                    })
                 })
-        }
-    }
-
-    fetchPending() {
-        return {
-            type: `FETCH_${this.name}_PENDING`
-        }
-    }
-
-    fetchSuccess(data) {
-        return {
-            type: `FETCH_${this.name}_SUCCESS`,
-            payload: data
-        }
-    }
-
-    fetchError(error) {
-        return {
-            type: `FETCH_${this.name}_ERROR`,
-            payload: error
         }
     }
 
@@ -66,7 +53,7 @@ export class BaseAction {
     }
     
     ////////////////////////////////////////////////////////////
-    add = (body, option = {}) => {
+    create = (body, option = {}) => {
         return dispatch => {
             dispatch({
                 type: `ADD_${this.name}_PENDING`
@@ -77,7 +64,6 @@ export class BaseAction {
                         type: `ADD_${this.name}_SUCCESS`,
                         payload: res.result.object
                     })
-                    return res
                 })
                 .catch(error => {
                     dispatch({
@@ -110,7 +96,6 @@ export class BaseAction {
                         type: `GET_${this.name}_SUCCESS`,
                         payload: res.result.object
                     })
-                    return res
                 })
                 .catch(error => {
                     dispatch({
@@ -135,7 +120,6 @@ export class BaseAction {
                         type: `UPDATE_${this.name}_SUCCESS`,
                         payload: res.result.object
                     })
-                    return res
                 })
                 .catch(error => {
                     dispatch({
@@ -146,29 +130,4 @@ export class BaseAction {
                 })
         }
     }
-
-    // ////////////////////////////////////////////////////////////
-    // concat(option) {
-    //     return dispatch => {
-    //         dispatch({
-    //             type: `CONCAT_${this.name}_PENDING`,
-    //             payload: id
-    //         })
-    //         this.api.getList(option)
-    //             .then(res => {
-    //                 dispatch({
-    //                     type: `CONCAT_${this.name}_SUCCESS`,
-    //                     payload: res.result.object
-    //                 })
-    //                 return res
-    //             })
-    //             .catch(error => {
-    //                 dispatch({
-    //                     type: `CONCAT_${this.name}_ERROR`,
-    //                     payload: error
-    //                 })
-
-    //             })
-    //     }
-    // }
 }

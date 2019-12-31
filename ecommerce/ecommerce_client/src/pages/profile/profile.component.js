@@ -4,7 +4,7 @@ import { Row, Col, Divider, Layout, Button, Tabs } from 'antd'
 import { api } from '../../services'
 
 import './profile.component.scss'
-import HeaderCustomer from '../headerCustomer/headerCustomer.component'
+import HeaderCustomer from '../headerCustomer/headerCustomer.container'
 import {
     InfoAccount,
     FormChangePassword,
