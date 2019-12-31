@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar, Button } from 'antd';
 import { Link } from 'react-router-dom';
+import * as moment from 'moment';
 
 import { api } from '../../services';
 import './headerCustomer.component.scss';
@@ -16,9 +17,13 @@ import {
     Register,
     ForgotPassword
 } from '../../components';
+import NameLocal from '../../config/localStorage'
 
 export function HeaderCustomer({ category, subCategory, resultLogin, login, register, logout }) {
     const [isLogin, setIsLogin] = useState(false);
+    const [userInfo, setUserInfo] = useState({
+        avatar: "https://i.imgur.com/1MUJP60.jpg"
+    });
     const [isShowModalLogin, setShowModalLogin] = useState(false);
     const [isShowModalRegister, setShowModalRegister] = useState(false);
     const [isShowModalForgotPassword, setShowModalForgotPassword] = useState(false);
@@ -66,6 +71,16 @@ export function HeaderCustomer({ category, subCategory, resultLogin, login, regi
         setShowModalForgotPassword(false);
     }
 
+    useEffect(() => {
+        const expiredToken = localStorage.getItem(NameLocal.EXPIRED_TOKEN);
+
+        if (expiredToken && moment(JSON.parse(expiredToken)).isAfter(moment().format())) {
+            const userInfo = JSON.parse(localStorage.getItem(NameLocal.USER_INFO));
+            
+           setUserInfo(userInfo);
+        }
+    });
+
     return (
         <div className="header-customer">
             <LoginCustomer
@@ -99,7 +114,7 @@ export function HeaderCustomer({ category, subCategory, resultLogin, login, regi
                 </div>
 
                 <div className="right">
-                    {isLogin && <AccountCustomer className="account-customer" />}
+                    {isLogin && <AccountCustomer userInfo={userInfo} className="account-customer" />}
 
                     {!isLogin &&
                         <div className="log-in">

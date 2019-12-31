@@ -6,7 +6,7 @@ import {
     Fitler,
     CategoryFitler
 } from './components'
-import HeaderCustomer from '../headerCustomer/headerCustomer.component';
+import HeaderCustomer from '../headerCustomer/headerCustomer.container';
 import {
     FooterCustomer,
     BreadcrumbMain,
@@ -54,7 +54,7 @@ function ProductList({ productFilter }) {
                     <Col span={19} offset={1}>
                         <Row gutter={20}>
                             {productFilter.data.map((element) => {
-                                return (<Col className="col-product" span={6}>
+                                return (<Col className="col-product" key={element.id} span={6}>
                                     <Product key={element.id} product={element} />
                                 </Col>)
                             })}

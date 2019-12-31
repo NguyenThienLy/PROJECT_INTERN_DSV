@@ -9,21 +9,22 @@ const { ObjectId } = require('bson');
 const saltRounds = 10;
 
 module.exports.login = async (body) => {
-    console.log("emai", body)
     const item = await model.findOne({ email: body.email });
 
     if (item) {
         const isEqual = await bcrypt.compare(body.password, item.password);
 
         if (isEqual) {
-            const payload = { role: "customer", _id: item._id};
-            const jwtToken = jwt.sign({ payload,  expiresIn: '3d' }, process.env.JWT_SECRET);
+            const payload = { role: "customer", _id: item._id };
+            const expired = moment().add(3, 'days').format();
+            const jwtToken = jwt.sign({ payload, expiresIn: expired }, process.env.JWT_SECRET);
 
             return {
                 isLogin: true,
                 message: "Logged in successfully!",
                 customer: item,
-                accessToken: jwtToken
+                accessToken: jwtToken,
+                expired: expired
             };
         }
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from 'react';
 
 import "./accountCustomer.scss";
 import { Menu, Dropdown, Avatar } from 'antd'
@@ -7,7 +7,7 @@ import {
   SubAccountCustomer
 } from '../index'
 
-export function AccountCustomer({ }) {
+export function AccountCustomer({ userInfo }) {
   const menu = (
     <SubAccountCustomer />
   );
@@ -15,7 +15,7 @@ export function AccountCustomer({ }) {
   return (
     <div className="account-customer">
       <Dropdown overlay={menu} placement="bottomRight">
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Avatar src={userInfo.avatar} />
       </Dropdown>
     </div>
   );

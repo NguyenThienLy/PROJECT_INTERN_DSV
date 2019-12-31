@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { Modal, Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
 
 import "./loginCustomer.scss";
@@ -17,8 +16,13 @@ export function LoginCustomer({ visible, onOk, onCancel, login, resultLogin, sho
     }
 
     useEffect(() => {
+        // login fail
         if (resultLogin.data && !resultLogin.data.isLogin) {
             setErrMessage(resultLogin.data.message);
+        }
+        // login sucess
+        else if (resultLogin.data && resultLogin.data.isLogin){
+            onOk();
         }
     });
 

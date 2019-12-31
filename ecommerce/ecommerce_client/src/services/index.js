@@ -3,16 +3,12 @@ import { ImgurApi } from "./imgur";
 import { BrandApi } from "./apis/brand";
 import { CartApi } from "./apis/cart";
 import { CategoryApi } from "./apis/category";
-import { ColorApi } from "./apis/color";
 import { CommentApi } from "./apis/comment";
 import { CustomerApi } from "./apis/customer";
-import { ImageApi } from "./apis/image";
 import { OrderApi } from "./apis/order";
 import { OrderItemApi } from "./apis/orderItem";
-import { OrderStatusApi } from "./apis/orderStatus";
 import { ProductApi } from "./apis/product";
 import { SellerApi } from "./apis/seller";
-import { SizeApi } from "./apis/size";
 import { SubCategoryApi } from "./apis/subCategory";
 
 const crudApi = new CrudApi();
@@ -24,16 +20,12 @@ class api {
   static brand = new BrandApi()
   static cart = new CartApi()
   static category = new CategoryApi()
-  static color = new ColorApi()
   static comment = new CommentApi()
   static customer = new CustomerApi()
-  static image = new ImageApi()
   static order = new OrderApi()
   static orderItem = new OrderItemApi()
-  static orderStatus = new OrderStatusApi()
   static product = new ProductApi()
   static seller = new SellerApi()
-  static size = new SizeApi()
   static subCategory = new SubCategoryApi()
 }
 
