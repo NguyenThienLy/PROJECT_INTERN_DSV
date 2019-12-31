@@ -9,6 +9,7 @@ const { ObjectId } = require('bson');
 const saltRounds = 10;
 
 module.exports.login = async (body) => {
+    console.log("emai", body)
     const item = await model.findOne({ email: body.email });
 
     if (item) {
@@ -16,9 +17,7 @@ module.exports.login = async (body) => {
 
         if (isEqual) {
             const payload = { role: "customer", _id: item._id};
-            const jwtToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '3d' });
-
-            console.log(jwtToken);
+            const jwtToken = jwt.sign({ payload,  expiresIn: '3d' }, process.env.JWT_SECRET);
 
             return {
                 isLogin: true,
@@ -36,7 +35,7 @@ module.exports.login = async (body) => {
 
     return {
         isLogin: false,
-        massage: "Email does not exist!"
+        message: "Email does not exist!"
     };
 }
 

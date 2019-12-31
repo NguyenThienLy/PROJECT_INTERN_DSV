@@ -13,7 +13,7 @@ import { OrderStatusAction } from "./orderStatus"
 import { ProductAction } from "./product"
 import { SellerAction } from "./seller"
 import { SizeAction } from "./size"
-import { suCategoryAction } from "./subCategory"
+import { SubCategoryAction } from "./subCategory"
 
 class action {
     constructor() {

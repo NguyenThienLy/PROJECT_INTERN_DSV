@@ -1,9 +1,26 @@
-import * as React from "react";
-import { Modal, Form, Icon, Input, Button, Checkbox } from 'antd';
+import React, { useState, useEffect } from 'react';
+
+import { Modal, Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
 
 import "./loginCustomer.scss";
 
-export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, showModalForgotPassword }) {
+export function LoginCustomer({ visible, onOk, onCancel, login, resultLogin, showModalRegister, showModalForgotPassword }) {
+    const [errMessage, setErrMessage] = useState("");
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        login(
+            e.target.email.value,
+            e.target.password.value
+        );
+    }
+
+    useEffect(() => {
+        if (resultLogin.data && !resultLogin.data.isLogin) {
+            setErrMessage(resultLogin.data.message);
+        }
+    });
 
     return (
         <div>
@@ -11,21 +28,24 @@ export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, show
                 className="login-customer"
                 title="Log In"
                 visible={visible}
+                onOk={onOk}
                 onCancel={onCancel}
             >
-                <Form>
+                <Form onSubmit={handleFormSubmit}>
                     <Form.Item className="input-content" label="E-MAIL">
                         <Input className="input-login"
-                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            prefix={<Icon type="email" />}
                             placeholder="Enter your e-mail"
+                            name="email"
                         />
                     </Form.Item>
 
                     <Form.Item className="input-content" label="PASSWORD">
                         <Input className="input-login"
-                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            prefix={<Icon type="lock" />}
                             type="password"
                             placeholder="Enter your password"
+                            name="password"
                         />
                     </Form.Item>
 
@@ -34,9 +54,12 @@ export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, show
 
                         <Button className="forgot-password" type="link" onClick={showModalForgotPassword}> Forgot password</Button>
 
-                        <Button type="primary" htmlType="submit" className="login-form-button" onClick={onOk}>
+                        <Button type="primary" htmlType="submit" className="login-form-button" >
                             Log in
                         </Button>
+
+                        {errMessage != "" &&
+                            <Alert className="alert-content" closeText="Close Now" message={errMessage} type="error" />}
 
                         <div className="bottom">
                             <p className="text">Don't have an account? </p>
@@ -46,7 +69,7 @@ export function LoginCustomer({ visible, onOk, onCancel, showModalRegister, show
                     </Form.Item>
                 </Form>
             </Modal>
-        </div>
+        </div >
     );
 }
 

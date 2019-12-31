@@ -9,7 +9,7 @@ export class BaseReducer {
     this.initState = _.merge(
       {
         items: [],
-
+        
         fetching: false,
         fetchError: null,
        

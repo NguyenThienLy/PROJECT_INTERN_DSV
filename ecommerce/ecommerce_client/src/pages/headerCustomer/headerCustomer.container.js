@@ -1,0 +1,18 @@
+import { connect } from 'react-redux'
+import { action } from '../../actions'
+import HeaderCustomer from './headerCustomer.component'
+
+const mapStateToProps = (state, ownProps) => ({
+    category: state.category.items,
+    subCategory: state.subCategory.items,
+    resultLogin: state.customer.login
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    login: (email, password) => dispatch( action.customer.login(email, password))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HeaderCustomer)

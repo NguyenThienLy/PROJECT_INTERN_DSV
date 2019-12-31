@@ -4,7 +4,7 @@ import { Row, Col, Layout } from 'antd'
 import { api } from '../../services'
 
 import './homePage.component.scss'
-import HeaderCustomer from '../headerCustomer/headerCustomer.component'
+import HeaderCustomer from '../headerCustomer/headerCustomer.container'
 import {
     IntroCarousel,
     IntroProduct

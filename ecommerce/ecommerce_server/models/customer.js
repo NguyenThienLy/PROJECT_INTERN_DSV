@@ -20,6 +20,10 @@ const customerSchema = new mongoose.Schema({
         enum: ['active', 'deactive'], 
         default: 'active'
     },
+    avatar: {
+        type: String,
+        default: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+    },
     createdAt: {
         type: Date,
         default: Date.now

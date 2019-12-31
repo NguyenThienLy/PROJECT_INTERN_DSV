@@ -146,29 +146,4 @@ export class BaseAction {
                 })
         }
     }
-
-    // ////////////////////////////////////////////////////////////
-    // concat(option) {
-    //     return dispatch => {
-    //         dispatch({
-    //             type: `CONCAT_${this.name}_PENDING`,
-    //             payload: id
-    //         })
-    //         this.api.getList(option)
-    //             .then(res => {
-    //                 dispatch({
-    //                     type: `CONCAT_${this.name}_SUCCESS`,
-    //                     payload: res.result.object
-    //                 })
-    //                 return res
-    //             })
-    //             .catch(error => {
-    //                 dispatch({
-    //                     type: `CONCAT_${this.name}_ERROR`,
-    //                     payload: error
-    //                 })
-
-    //             })
-    //     }
-    // }
 }

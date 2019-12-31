@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 
 import { BaseReducer } from "./base";
-import ProductType from '../actions/types/product'
+import ProductType from '../actions/types/product';
 
 export class ProductReducer extends BaseReducer {
   constructor() {
@@ -103,7 +103,7 @@ export class ProductReducer extends BaseReducer {
         link: "https://i.imgur.com/JizfqjJ.jpg",
         price: "$69.00"
       }
-    ]
+    ];
 
     this.initState = {
       productFilter: {
@@ -158,5 +158,5 @@ export class ProductReducer extends BaseReducer {
     }
 
     return state;
-  };
+  }
 }

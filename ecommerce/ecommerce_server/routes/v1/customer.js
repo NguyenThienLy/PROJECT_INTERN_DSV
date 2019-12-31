@@ -8,8 +8,9 @@ const router = express.Router();
 // Login
 router.post('/login', async (req, res) => {
     try {
+        console.log("req.body", req.body.email)
         const result = await controller.login(req.body);
-        res.status(200).json(result)
+        res.status(200).json({ code: 200, result: { object: result }})
     } catch (err) {
         res.status(500).json({ message: err.message })
     }

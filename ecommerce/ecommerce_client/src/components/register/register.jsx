@@ -43,9 +43,9 @@ export function Register({ visible, onOk, onCancel, showModalLogin }) {
                         <div className="top">
                             <p>By creating an account you agree to the</p>
                             <div className="bottom">
-                                <Link className="link-primary">Terms of Service</Link>
+                                <Link to="/" className="link-primary">Terms of Service</Link>
                                 <p>and</p>
-                                <Link className="link-primary">Privacy Policy</Link>
+                                <Link to="/" className="link-primary">Privacy Policy</Link>
                             </div>
                         </div>
                         

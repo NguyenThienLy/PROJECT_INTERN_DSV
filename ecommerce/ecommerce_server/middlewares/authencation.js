@@ -11,7 +11,7 @@ exports.isAuth = async (req, res, next) => {
         const authorization = req.headers['authorization'];
         if (!authorization) res.status(401).json({ message: 'You need login!' });
 
-        const jwtToken = authorization.split(' ')[0];
+        const jwtToken = authorization.split(' ')[1];
         const payload = jwt.verify(jwtToken, process.env.JWT_SECRET);
 
         if (payload.role === "customer") {
