@@ -72,12 +72,26 @@ export function HeaderCustomer({ category, subCategory, resultLogin, login, regi
     }
 
     useEffect(() => {
-        const expiredToken = localStorage.getItem(NameLocal.EXPIRED_TOKEN);
+        const expiredToken = JSON.parse(localStorage.getItem(NameLocal.EXPIRED_TOKEN));
+        const userInfoLocal = JSON.parse(localStorage.getItem(NameLocal.USER_INFO));
 
-        if (expiredToken && moment(JSON.parse(expiredToken)).isAfter(moment().format())) {
-            const userInfo = JSON.parse(localStorage.getItem(NameLocal.USER_INFO));
-            
-           setUserInfo(userInfo);
+        const expiredDate = moment(expiredToken).unix();
+        const momentDate = moment().unix();
+
+        if (expiredToken &&
+            JSON.stringify(userInfoLocal) !== JSON.stringify(userInfo) &&
+            expiredDate > momentDate) {
+
+            setUserInfo(userInfoLocal);
+            setIsLogin(true);
+        }
+        else {
+            localStorage.removeItem(NameLocal.EXPIRED_TOKEN);
+            localStorage.removeItem(NameLocal.TOKEN_JWT);
+            localStorage.removeItem(NameLocal.USER_INFO);
+
+            setUserInfo(userInfoLocal);
+            setIsLogin(true);
         }
     });
 
