@@ -3,11 +3,11 @@ import { ProductAction } from '../../actions/product'
 import ProductList from './productList.component'
 
 const mapStateToProps = (state, ownProps) => ({
-    productFilter: state.product.productFilter
+    product: state.product
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    getProductFilter: (order, color, brand, size, status, subCategory, category, token) => dispatch(ProductAction.fetchProductFilter(order, color, brand, size, status, subCategory, category, token))
+    getProductFilter: (order, color, brand, size, status, subCategory, category) => dispatch(ProductAction.getProductFilter(order, color, brand, size, status, subCategory, category))
 })
 
 export default connect(

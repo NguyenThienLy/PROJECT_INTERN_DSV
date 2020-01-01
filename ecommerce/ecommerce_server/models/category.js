@@ -3,7 +3,12 @@ const mongoose = require('mongoose');
 const categorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+    avatar: {
+        type: String,
+        default: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
     },
     subCategory: {
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: "SubCategory" }],

@@ -1,7 +1,48 @@
-import { BaseReducer } from './base'
+import { BaseReducer } from './base';
 
-export class CategoryReducer extends BaseReducer {
+import CategoryType from '../actions/types/category';
+
+export class CategoryReducer {
     constructor() {
-        super("category")
+        this.initState = {
+            items: [],
+
+            fetching: false,
+            fetchError: null
+        };
+    }
+
+    reducer = (state = this.initState, action) => {
+        switch (action.type) {
+            // Getting data pending
+            case CategoryType.FETCH_CATEGORY_PENDING:
+                state = {
+                    ...state,
+                    fetching: true,
+                    fetchError: null
+                };
+                break;
+
+            // Getting data success
+            case CategoryType.FETCH_CATEGORY_SUCCESS:
+                state = {
+                    ...state,
+                    fetching: false,
+                    fetchError: null,
+                    items: action.payload
+                };
+                break;
+
+            // Getting data error
+            case CategoryType.FETCH_CATEGORY_ERROR:
+                state = {
+                    ...state,
+                    fetching: false,
+                    fetchError: action.payload
+                };
+                break;
+        }
+
+        return state;
     }
 }

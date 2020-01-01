@@ -2,13 +2,23 @@ const model = require('../models/category');
 const { ObjectId } = require('bson');
 
 module.exports.getList = async () => {
-    const list = await model.find();
+    const list = await model.aggregate([
+        {
+            $lookup:
+            {
+                from: "subCategory",
+                localField: "subCategory",
+                foreignField: "_id",
+                as: "listSub"
+            }
+        }
+    ]);
 
     return list;
 };
 
 module.exports.getItem = async (id) => {
-    const item = await model.findOne({ _id:new ObjectId(id) });
+    const item = await model.findOne({ _id: new ObjectId(id) });
 
     return item;
 };

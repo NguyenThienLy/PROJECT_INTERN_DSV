@@ -1,8 +1,31 @@
-import { BaseAction } from './base'
-import { api } from '../services'
+import { BaseAction } from './base';
+import { api } from '../services';
+import CategoryType from './types/category';
 
-export class CategoryAction extends BaseAction {
+export class CategoryAction {
     constructor() {
-        super("category", api.category, "category")
+    }
+
+    getList = (option = {}) => {
+        return dispatch => {
+            dispatch({
+                type: CategoryType.FETCH_CATEGORY_PENDING
+            })
+            api
+                .category
+                .getList(option)
+                .then(res => {
+                    dispatch({
+                        type: CategoryType.FETCH_CATEGORY_SUCCESS,
+                        payload: res.result.object
+                    })
+                })
+                .catch(error => {
+                    dispatch({
+                        type: CategoryType.FETCH_CATEGORY_ERROR,
+                        payload: error
+                    })
+                })
+        }
     }
 }

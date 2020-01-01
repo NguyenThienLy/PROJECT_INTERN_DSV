@@ -22,8 +22,8 @@ import NameLocal from '../../config/localStorage';
 
 export function HeaderCustomer({
     category,
-    subCategory,
     customer,
+    getListCategory,
     login,
     register,
     logout
@@ -83,6 +83,9 @@ export function HeaderCustomer({
     }
 
     useEffect(() => {
+        // load list category
+        // getListCategory();
+
         // local storage not exist
         if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== null &&
             localStorage.getItem(NameLocal.USER_INFO) !== null) {
@@ -167,7 +170,7 @@ export function HeaderCustomer({
             </div>
 
             <div className="bottom">
-                <Category />
+                <Category getListCategory={getListCategory} category={category}/>
             </div>
         </div>
     );
