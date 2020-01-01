@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
-import { ProductAction } from '../../actions/product'
 import ProductList from './productList.component'
+import { action } from '../../actions'
 
 const mapStateToProps = (state, ownProps) => ({
     product: state.product
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    getProductFilter: (order, color, brand, size, status, subCategory, category) => dispatch(ProductAction.getProductFilter(order, color, brand, size, status, subCategory, category))
+    getProductFilter: (filter = {}) => dispatch(action.product.getProductFilter(filter))
 })
 
 export default connect(

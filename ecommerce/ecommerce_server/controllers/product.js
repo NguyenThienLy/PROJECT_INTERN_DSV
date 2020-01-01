@@ -1,14 +1,10 @@
 const model = require('../models/product');
 const { ObjectId } = require('bson');
 
-module.exports.productFilter = (req, res) => {
-    const product = {
-        id: 1,
-        name: "Nguyen Thien Ly",
-        age: 22
-    }
+module.exports.getListFitler = async (params) => {
+    const list = await model.find();
 
-    return product;
+    return list;
 };
 
 module.exports.getList = async () => {

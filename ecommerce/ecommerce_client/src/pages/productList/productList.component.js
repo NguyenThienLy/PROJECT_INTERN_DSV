@@ -15,12 +15,16 @@ import {
 } from '../../components'
 import './productList.component.scss'
 
-function ProductList({ productFilter }) {
+function ProductList({ 
+    product,
+    getProductFilter
+ }) {
     const { Content } = Layout;
 
     useEffect(() => {
-
-    });
+        //order, color, brand, size, status, subCategory, category
+        getProductFilter({order: 11});
+    }, []);
 
     return (
         <div className="product-list">
@@ -48,14 +52,14 @@ function ProductList({ productFilter }) {
                         <CategoryFitler />
                         <Divider />
                         <p className="header-fitler">Fitler</p>
-                        <Fitler />
+                        {/* <Fitler /> */}
                     </Col>
 
                     <Col span={19} offset={1}>
                         <Row gutter={20}>
-                            {productFilter.data.map((element) => {
-                                return (<Col className="col-product" key={element.id} span={6}>
-                                    <Product key={element.id} product={element} />
+                            {product.items.map((item) => {
+                                return (<Col className="col-product" key={item._id} span={6}>
+                                    <Product productItem={item}/>
                                 </Col>)
                             })}
                         </Row>
