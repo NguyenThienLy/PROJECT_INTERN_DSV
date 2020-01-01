@@ -7,19 +7,20 @@ import {
   SubAccountCustomer
 } from '../index'
 
-export function AccountCustomer({ userInfo }) {
-  const menu = (
-    <SubAccountCustomer />
-  );
+export function AccountCustomer({ 
+  customer,
+  onLogout, 
+  logout, 
+  userInfo 
+}) {
 
   useEffect(() => {
-    console.log(userInfo)
-    console.log(userInfo.avatar)
+  
   })
 
   return (
     <div className="account-customer">
-      <Dropdown overlay={menu} placement="bottomRight">
+      <Dropdown overlay={<SubAccountCustomer customer={customer} onLogout={onLogout} logout={logout}/>} placement="bottomRight">
         <Avatar src={userInfo.avatar} />
       </Dropdown>
     </div>

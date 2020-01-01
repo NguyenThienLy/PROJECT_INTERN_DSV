@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
 const model = require('../models/customer');
+const invalidToken = require('../models/invalidToken');
 const { ObjectId } = require('bson');
 const saltRounds = 10;
 
@@ -38,6 +39,12 @@ module.exports.login = async (body) => {
         isLogin: false,
         message: "Email does not exist!"
     };
+}
+
+module.exports.logout = async (token) => {
+    const item = await invalidToken.create({ token });
+
+    return item
 }
 
 module.exports.getList = async () => {

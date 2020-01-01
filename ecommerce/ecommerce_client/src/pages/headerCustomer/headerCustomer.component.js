@@ -18,15 +18,15 @@ import {
     Register,
     ForgotPassword
 } from '../../components';
-import NameLocal from '../../config/localStorage'
+import NameLocal from '../../config/localStorage';
 
-export function HeaderCustomer({ 
-    category, 
-    subCategory, 
+export function HeaderCustomer({
+    category,
+    subCategory,
     customer,
-    login, 
-    register, 
-    logout 
+    login,
+    register,
+    logout
 }) {
     const [isLogin, setIsLogin] = useState(false);
     const [userInfo, setUserInfo] = useState({});
@@ -77,9 +77,15 @@ export function HeaderCustomer({
         setShowModalForgotPassword(false);
     }
 
+    const onLogout = () => {
+        setIsLogin(false);
+        setUserInfo({});
+    }
+
     useEffect(() => {
-        if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== "undefined" &&
-            localStorage.getItem(NameLocal.USER_INFO) !== "undefined") {
+        // local storage not exist
+        if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== null &&
+            localStorage.getItem(NameLocal.USER_INFO) !== null) {
 
             const expiredToken = JSON.parse(localStorage.getItem(NameLocal.EXPIRED_TOKEN));
             const userInfoLocal = JSON.parse(localStorage.getItem(NameLocal.USER_INFO));
@@ -88,8 +94,8 @@ export function HeaderCustomer({
                 moment(expiredToken).isAfter(moment()) &&
                 !_.isEqual(userInfoLocal, userInfo)) {
 
-                setUserInfo(userInfoLocal);
                 setIsLogin(true);
+                setUserInfo(userInfoLocal);
             }
             else if (expiredToken &&
                 !_.isEqual({}, userInfo) &&
@@ -99,11 +105,14 @@ export function HeaderCustomer({
                 localStorage.removeItem(NameLocal.TOKEN_JWT);
                 localStorage.removeItem(NameLocal.USER_INFO);
 
-                setUserInfo({});
                 setIsLogin(false);
+                setUserInfo({});
             }
         }
-
+        else if (!_.isEqual({}, userInfo)) {
+            setIsLogin(false);
+            setUserInfo({});
+        }
     });
 
     return (
@@ -141,7 +150,7 @@ export function HeaderCustomer({
                 </div>
 
                 <div className="right">
-                    {isLogin && <AccountCustomer userInfo={userInfo} className="account-customer" />}
+                    {isLogin && <AccountCustomer customer={customer} onLogout={onLogout} logout={logout} userInfo={userInfo} className="account-customer" />}
 
                     {!isLogin &&
                         <div className="log-in">

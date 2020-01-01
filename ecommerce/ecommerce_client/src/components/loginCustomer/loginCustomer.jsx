@@ -25,15 +25,17 @@ export function LoginCustomer({
 
     useEffect(() => {
         // login fail
-        if (customer.isFetchLoginSuccess &&
-            customer.dataLogin &&
+        if (!customer.fetchingLogin &&
+            customer.isFetchLoginSuccess &&
+            customer.dataLogin !== null &&
             !customer.dataLogin.isLogin) {
-                
+
             setErrMessage(customer.dataLogin.message);
         }
         // login sucess
-        else if (customer.isFetchLoginSuccess &&
-            customer.dataLogin &&
+        else if (!customer.fetchingLogin &&
+            customer.isFetchLoginSuccess &&
+            customer.dataLogin !== null &&
             customer.dataLogin.isLogin) {
 
             onOk();
