@@ -12,6 +12,11 @@ export function AccountCustomer({ userInfo }) {
     <SubAccountCustomer />
   );
 
+  useEffect(() => {
+    console.log(userInfo)
+    console.log(userInfo.avatar)
+  })
+
   return (
     <div className="account-customer">
       <Dropdown overlay={menu} placement="bottomRight">

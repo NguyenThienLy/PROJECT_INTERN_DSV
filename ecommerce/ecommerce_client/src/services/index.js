@@ -16,17 +16,17 @@ const crudApi = new CrudApi();
 class api {
   constructor() { }
   
-  static imgur = new ImgurApi()
-  static brand = new BrandApi()
-  static cart = new CartApi()
-  static category = new CategoryApi()
-  static comment = new CommentApi()
-  static customer = new CustomerApi()
-  static order = new OrderApi()
-  static orderItem = new OrderItemApi()
-  static product = new ProductApi()
-  static seller = new SellerApi()
-  static subCategory = new SubCategoryApi()
+  static imgur = new ImgurApi();
+  static brand = new BrandApi();
+  static cart = new CartApi();
+  static category = new CategoryApi();
+  static comment = new CommentApi();
+  static customer = new CustomerApi();
+  static order = new OrderApi();
+  static orderItem = new OrderItemApi();
+  static product = new ProductApi();
+  static seller = new SellerApi();
+  static subCategory = new SubCategoryApi();
 }
 
 export { crudApi, api };

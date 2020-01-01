@@ -49,10 +49,7 @@ export class BaseReducer {
         updatePending: `UPDATE_${this.name}_PENDING`,
         updateSuccess: `UPDATE_${this.name}_SUCCESS`,
         updateError: `UPDATE_${this.name}_ERROR`,
-        updateRefresh: `UPDATE_${this.name}_REFRESH`,
-        concatPending: `CONCAT_${this.name}_PENDING`,
-        concatSuccess: `CONCAT_${this.name}_SUCCESS`,
-        concatError: `CONCAT_${this.name}_ERROR`
+        updateRefresh: `UPDATE_${this.name}_REFRESH`
       },
       this.customActions
     );
@@ -75,6 +72,7 @@ export class BaseReducer {
         state = { ...state, adding: true };
         break;
       case this.actions.addSuccess:
+        console.log("action.payload", action.payload);
         state = { ...state, adding: false, isAddSuccess: true };
         state.items.unshift(action.payload);
         break;
@@ -151,16 +149,6 @@ export class BaseReducer {
           updateError: null,
           isUpdateSuccess: false
         };
-        break;
-      case this.actions.concatPending:
-        break;
-      case this.actions.concat:
-        const actionPayload = Array.isArray(action.payload)
-          ? action.payload
-          : [action.payload];
-        state = _.unionBy(state.concat(action.payload), "_id");
-        break;
-      case this.actions.concatError:
         break;
       default:
         return this.customReducer(state, action);

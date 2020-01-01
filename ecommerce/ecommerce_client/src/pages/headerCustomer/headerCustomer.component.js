@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Avatar, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
+import * as _ from 'lodash';
 
 import { api } from '../../services';
 import './headerCustomer.component.scss';
@@ -19,11 +20,16 @@ import {
 } from '../../components';
 import NameLocal from '../../config/localStorage'
 
-export function HeaderCustomer({ category, subCategory, resultLogin, login, register, logout }) {
+export function HeaderCustomer({ 
+    category, 
+    subCategory, 
+    customer,
+    login, 
+    register, 
+    logout 
+}) {
     const [isLogin, setIsLogin] = useState(false);
-    const [userInfo, setUserInfo] = useState({
-        avatar: "https://i.imgur.com/1MUJP60.jpg"
-    });
+    const [userInfo, setUserInfo] = useState({});
     const [isShowModalLogin, setShowModalLogin] = useState(false);
     const [isShowModalRegister, setShowModalRegister] = useState(false);
     const [isShowModalForgotPassword, setShowModalForgotPassword] = useState(false);
@@ -72,27 +78,32 @@ export function HeaderCustomer({ category, subCategory, resultLogin, login, regi
     }
 
     useEffect(() => {
-        const expiredToken = JSON.parse(localStorage.getItem(NameLocal.EXPIRED_TOKEN));
-        const userInfoLocal = JSON.parse(localStorage.getItem(NameLocal.USER_INFO));
+        if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== "undefined" &&
+            localStorage.getItem(NameLocal.USER_INFO) !== "undefined") {
 
-        const expiredDate = moment(expiredToken).unix();
-        const momentDate = moment().unix();
+            const expiredToken = JSON.parse(localStorage.getItem(NameLocal.EXPIRED_TOKEN));
+            const userInfoLocal = JSON.parse(localStorage.getItem(NameLocal.USER_INFO));
 
-        if (expiredToken &&
-            JSON.stringify(userInfoLocal) !== JSON.stringify(userInfo) &&
-            expiredDate > momentDate) {
+            if (expiredToken &&
+                moment(expiredToken).isAfter(moment()) &&
+                !_.isEqual(userInfoLocal, userInfo)) {
 
-            setUserInfo(userInfoLocal);
-            setIsLogin(true);
+                setUserInfo(userInfoLocal);
+                setIsLogin(true);
+            }
+            else if (expiredToken &&
+                !_.isEqual({}, userInfo) &&
+                !moment(expiredToken).isAfter(moment())) {
+
+                localStorage.removeItem(NameLocal.EXPIRED_TOKEN);
+                localStorage.removeItem(NameLocal.TOKEN_JWT);
+                localStorage.removeItem(NameLocal.USER_INFO);
+
+                setUserInfo({});
+                setIsLogin(false);
+            }
         }
-        else {
-            localStorage.removeItem(NameLocal.EXPIRED_TOKEN);
-            localStorage.removeItem(NameLocal.TOKEN_JWT);
-            localStorage.removeItem(NameLocal.USER_INFO);
 
-            setUserInfo(userInfoLocal);
-            setIsLogin(true);
-        }
     });
 
     return (
@@ -102,13 +113,15 @@ export function HeaderCustomer({ category, subCategory, resultLogin, login, regi
                 onOk={handleOkLogin}
                 onCancel={handleCancelLogin}
                 login={login}
-                resultLogin={resultLogin}
+                customer={customer}
                 showModalRegister={showModalRegister}
                 showModalForgotPassword={showModalForgotPassword} />
 
             <Register
                 visible={isShowModalRegister}
                 onOk={handleOkRegister}
+                register={register}
+                customer={customer}
                 onCancel={handleCancelRegister}
                 showModalLogin={showModalLogin} />
 
