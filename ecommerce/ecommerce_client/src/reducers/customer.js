@@ -16,13 +16,18 @@ export class CustomerReducer {
 
             creating: true,
             isCreateSuccess: false,
-            createError: null
+            createError: null,
+
+            fetchingLogout: true,
+            isFetchLogoutSuccess: false,
+            fetchLogoutError: null,
+            dataLogout: null,
         };
     }
 
     reducer = (state = this.initState, action) => {
         switch (action.type) {
-            // Getting data for login
+            // Getting data for login pending
             case CustomerType.FETCH_LOGIN_PENDING:
                 state = {
                     ...state,
@@ -33,7 +38,7 @@ export class CustomerReducer {
                 };
                 break;
 
-            // Getting data for login
+            // Getting data for login success
             case CustomerType.FETCH_LOGIN_SUCCESS:
                 if (action.payload.isLogin) {
                     localStorage.setItem(NameItem.TOKEN_JWT, action.payload.accessToken);
@@ -46,11 +51,15 @@ export class CustomerReducer {
                     fetchingLogin: false,
                     isFetchLoginSuccess: true,
                     fetchLoginError: null,
-                    dataLogin: action.payload
+                    dataLogin: action.payload,
+                    fetchingLogout: true,
+                    isFetchLogoutSuccess: false,
+                    fetchLogoutError: null,
+                    dataLogout: null,
                 };
                 break;
 
-            // Getting data for login
+            // Getting data for login error
             case CustomerType.FETCH_LOGIN_ERROR:
                 state = {
                     ...state,
@@ -91,6 +100,47 @@ export class CustomerReducer {
                     creating: false,
                     isCreateSuccess: false,
                     createError: null
+                };
+                break;
+
+            // Getting data for logout pending
+            case CustomerType.FETCH_LOGOUT_PENDING:
+                state = {
+                    ...state,
+                    fetchingLogout: true,
+                    isFetchLogoutSuccess: false,
+                    fetchLogoutError: null,
+                    dataLogout: null
+                };
+                break;
+
+            // Getting data for logout success
+            case CustomerType.FETCH_LOGOUT_SUCCESS:
+                localStorage.removeItem(NameItem.TOKEN_JWT);
+                localStorage.removeItem(NameItem.USER_INFO);
+                localStorage.removeItem(NameItem.EXPIRED_TOKEN);
+
+                state = {
+                    ...state,
+                    fetchingLogout: false,
+                    isFetchLogoutSuccess: true,
+                    fetchLogoutError: null,
+                    dataLogout: action.payload,
+                    fetchingLogin: true,
+                    isFetchLoginSuccess: false,
+                    fetchLoginError: null,
+                    dataLogin: null,
+                };
+                break;
+
+            // Getting data for logout error
+            case CustomerType.FETCH_LOGOUT_ERROR:
+                state = {
+                    ...state,
+                    fetchingLogout: false,
+                    isFetchLogoutSuccess: false,
+                    dataLogout: null,
+                    fetchError: action.payload
                 };
                 break;
         }

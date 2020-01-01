@@ -52,4 +52,27 @@ export class CustomerAction {
         })
     }
   }
+
+  logout = () => {
+    return dispatch => {
+      dispatch({
+        type: CustomerType.FETCH_LOGOUT_PENDING
+      })
+      api
+        .customer
+        .logout()
+        .then(res => {
+          dispatch({
+            type: CustomerType.FETCH_LOGOUT_SUCCESS,
+            payload: res.result.object
+          })
+        })
+        .catch(error => {
+          dispatch({
+            type: CustomerType.FETCH_LOGOUT_ERROR,
+            payload: error
+          })
+        })
+    }
+  }
 }

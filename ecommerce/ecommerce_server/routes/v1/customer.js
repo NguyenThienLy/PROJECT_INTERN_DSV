@@ -15,6 +15,18 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Logout
+router.get('/logout', async (req, res) => {
+    try {
+        const token = req.headers['authorization'].split(' ')[1];
+        console.log("token", token);
+        const result = await controller.logout(token);
+        res.status(200).json({ code: 200, result: { object: result }});
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
+
 // Get all
 router.get('/', authencation.isAuth, async (req, res) => {
     try {
