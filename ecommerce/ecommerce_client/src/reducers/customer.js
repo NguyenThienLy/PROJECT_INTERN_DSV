@@ -1,6 +1,5 @@
 import * as _ from "lodash";
 
-import { BaseReducer } from './base';
 import CustomerType from '../actions/types/customer';
 import NameItem from '../config/localStorage';
 

@@ -3,15 +3,15 @@ import { action } from '../../actions'
 import HeaderCustomer from './headerCustomer.component'
 
 const mapStateToProps = (state, ownProps) => ({
-    category: state.category.items,
-    subCategory: state.subCategory.items,
+    category: state.category,
     customer: state.customer,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    login: (email, password) => dispatch( action.customer.login(email, password)),
+    getListCategory: () => dispatch(action.category.getList()),
+    login: (email, password) => dispatch(action.customer.login(email, password)),
     register: (body) => dispatch(action.customer.register(body)),
-    logout: () => dispatch(action.customer.logout())
+    logout: () => dispatch(action.customer.logout()),
 })
 
 export default connect(
