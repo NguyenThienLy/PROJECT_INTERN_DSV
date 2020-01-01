@@ -5,7 +5,7 @@ import ProductType from './types/product'
 export class ProductAction {
   constructor() { }
 
-  getProductFilter = (order, color, brand, size, status, subCategory, category) => {
+  getProductFilter = (fitler) => {
     return dispatch => {
       dispatch({
         type: ProductType.FETCH_PRODUCTFILTER_PENDING
@@ -13,7 +13,7 @@ export class ProductAction {
 
       api
         .product
-        .fetchProductFilter(order, color, brand, size, status, subCategory, category)
+        .getProductFilter(fitler)
         .then(res => {
           dispatch({
             type: ProductType.FETCH_PRODUCTFILTER_SUCCESS,
