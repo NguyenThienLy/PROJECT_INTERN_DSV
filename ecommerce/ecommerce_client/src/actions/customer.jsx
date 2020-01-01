@@ -2,9 +2,8 @@ import { BaseAction } from './base'
 import { api } from '../services'
 import CustomerType from './types/customer'
 
-export class CustomerAction extends BaseAction {
+export class CustomerAction {
   constructor() {
-    super("customer", api.customer, "customer")
   }
 
   login = (email, password) => {
@@ -13,7 +12,8 @@ export class CustomerAction extends BaseAction {
         type: CustomerType.FETCH_LOGIN_PENDING
       });
 
-      this.api
+      api
+        .customer
         .login(email, password)
         .then(res => {
           dispatch({
@@ -29,4 +29,27 @@ export class CustomerAction extends BaseAction {
         });
     };
   };
+
+  register = (body, option = {}) => {
+    return dispatch => {
+      dispatch({
+        type: CustomerType.CREATE_REGISTER_PENDING
+      })
+      api
+        .customer
+        .create(body, option)
+        .then(res => {
+          dispatch({
+            type: CustomerType.CREATE_REGISTER_SUCCESS,
+            payload: res.result.object
+          })
+        })
+        .catch(error => {
+          dispatch({
+            type: CustomerType.CREATE_REGISTER_ERROR,
+            payload: error
+          })
+        })
+    }
+  }
 }

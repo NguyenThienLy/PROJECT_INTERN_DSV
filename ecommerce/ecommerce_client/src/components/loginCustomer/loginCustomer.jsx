@@ -3,7 +3,15 @@ import { Modal, Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
 
 import "./loginCustomer.scss";
 
-export function LoginCustomer({ visible, onOk, onCancel, login, resultLogin, showModalRegister, showModalForgotPassword }) {
+export function LoginCustomer({
+    visible,
+    onOk,
+    onCancel,
+    login,
+    customer,
+    showModalRegister,
+    showModalForgotPassword
+}) {
     const [errMessage, setErrMessage] = useState("");
 
     const handleFormSubmit = (e) => {
@@ -17,11 +25,17 @@ export function LoginCustomer({ visible, onOk, onCancel, login, resultLogin, sho
 
     useEffect(() => {
         // login fail
-        if (resultLogin.data && !resultLogin.data.isLogin) {
-            setErrMessage(resultLogin.data.message);
+        if (customer.isFetchLoginSuccess &&
+            customer.dataLogin &&
+            !customer.dataLogin.isLogin) {
+                
+            setErrMessage(customer.dataLogin.message);
         }
         // login sucess
-        else if (resultLogin.data && resultLogin.data.isLogin){
+        else if (customer.isFetchLoginSuccess &&
+            customer.dataLogin &&
+            customer.dataLogin.isLogin) {
+
             onOk();
         }
     });

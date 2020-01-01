@@ -1,27 +1,27 @@
 import { combineReducers } from "redux";
 
-import { BrandReducer } from './brand'
-import { CartReducer } from './cart'
-import { CategoryReducer } from './category'
-import { CommentReducer } from './comment'
-import { CustomerReducer } from './customer'
-import { OrderReducer } from './order'
-import { OrderItemReducer } from './orderItem'
-import { ProductReducer } from './product'
-import { SellerReducer } from './seller'
-import { SubCategoryReducer } from './subCategory'
+import { BrandReducer } from './brand';
+import { CartReducer } from './cart';
+import { CategoryReducer } from './category';
+import { CommentReducer } from './comment';
+import { CustomerReducer } from './customer';
+import { OrderReducer } from './order';
+import { OrderItemReducer } from './orderItem';
+import { ProductReducer } from './product';
+import { SellerReducer } from './seller';
+import { SubCategoryReducer } from './subCategory';
 
 
-const brandReducer = new BrandReducer()
-const cartReducer = new CartReducer()
-const categoryReducer = new CategoryReducer()
-const commentReducer = new CommentReducer()
-const customerReducer = new CustomerReducer()
-const orderReducer = new OrderReducer()
-const orderItemReducer = new OrderItemReducer()
-const productReducer = new ProductReducer()
-const sellerReducer = new SellerReducer()
-const subCategoryReducer = new SubCategoryReducer()
+const brandReducer = new BrandReducer();
+const cartReducer = new CartReducer();
+const categoryReducer = new CategoryReducer();
+const commentReducer = new CommentReducer();
+const customerReducer = new CustomerReducer();
+const orderReducer = new OrderReducer();
+const orderItemReducer = new OrderItemReducer();
+const productReducer = new ProductReducer();
+const sellerReducer = new SellerReducer();
+const subCategoryReducer = new SubCategoryReducer();
 
 const store = combineReducers({
   brand: brandReducer.reducer,

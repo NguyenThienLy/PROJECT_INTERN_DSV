@@ -118,6 +118,13 @@
                   border-radius: 0;
                   font-size: 15px;
                   font-weight: bold;
+                  position: relative;
+                }
+
+                .alert-content {
+                  width: 100%;
+                  margin-top: 5px;
+                  position: absolute;
                 }
 
                 .bottom-register {

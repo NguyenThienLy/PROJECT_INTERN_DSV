@@ -5,12 +5,12 @@ import HeaderCustomer from './headerCustomer.component'
 const mapStateToProps = (state, ownProps) => ({
     category: state.category.items,
     subCategory: state.subCategory.items,
-    resultLogin: state.customer.login
+    customer: state.customer,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     login: (email, password) => dispatch( action.customer.login(email, password)),
-    register: (body) => dispatch(action.customer.create(body))
+    register: (body) => dispatch(action.customer.register(body))
 })
 
 export default connect(

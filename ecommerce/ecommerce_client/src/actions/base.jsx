@@ -53,13 +53,14 @@ export class BaseAction {
     }
     
     ////////////////////////////////////////////////////////////
-    create = (body, option = {}) => {
+    add = (body, option = {}) => {
         return dispatch => {
             dispatch({
                 type: `ADD_${this.name}_PENDING`
             })
             this.api.create(body, option)
                 .then(res => {
+                    console.log(res);
                     dispatch({
                         type: `ADD_${this.name}_SUCCESS`,
                         payload: res.result.object
@@ -70,7 +71,6 @@ export class BaseAction {
                         type: `ADD_${this.name}_ERROR`,
                         payload: error
                     })
-
                 })
         }
     }
