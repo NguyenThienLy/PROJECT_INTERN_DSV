@@ -6,7 +6,7 @@ export class ProductApi extends CrudApi {
     super("statisticCourse");
   }
 
-  async fetchProductFilter(order, color, brand, size, status, subCategory, category, token) {
+  async getProductFilter(order, color, brand, size, status, subCategory, category) {
     let url = this.baseUrl("filter");
     
     const query = this._serialize({
@@ -25,8 +25,7 @@ export class ProductApi extends CrudApi {
       method: "GET",
       headers: _.merge({
         "User-Agent": "Request-Promise",
-        "Content-Type": "Application/json",
-        "x-token": token
+        "Content-Type": "Application/json"
       })
     };
     const res = await this.exec(url, options);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 
-import HomePage from './pages/homePage/homePage.component'
+import HomePage from './pages/homePage/homePage.container'
 import Profile from './pages/profile/profile.component'
 import ProductInfo from './pages/productInfo/productInfo.component'
 import ProductList from './pages/productList/productList.container'
@@ -18,7 +18,7 @@ const Router = () => (
         <Route exact path='/' component={HomePage} />
         <Route exact path='/profile' component={Profile} />
         <Route exact path='/product-info' component={ProductInfo} />
-        <Route exact path='/product-list'><ProductList/></Route>
+        <Route exact path='/product-list/:category'><ProductList/></Route>
         <Route exact path='/shopping-cart' component={ShoppingCart} />
 
         <Route exact path='/seller/login-seller' component={LoginSellerPage} />

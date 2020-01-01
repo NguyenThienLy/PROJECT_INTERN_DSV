@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
-import { action } from '../../actions'
-import HeaderCustomer from './headerCustomer.component'
+import { connect } from 'react-redux';
+import { action } from '../../actions';
+import HeaderCustomer from './headerCustomer.component';
 
 const mapStateToProps = (state, ownProps) => ({
     category: state.category,

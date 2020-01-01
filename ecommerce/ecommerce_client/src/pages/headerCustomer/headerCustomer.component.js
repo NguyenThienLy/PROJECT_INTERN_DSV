@@ -84,7 +84,7 @@ export function HeaderCustomer({
 
     useEffect(() => {
         // load list category
-        getListCategory();
+        // getListCategory();
 
         // local storage not exist
         if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== null &&
@@ -170,7 +170,7 @@ export function HeaderCustomer({
             </div>
 
             <div className="bottom">
-                <Category category={category}/>
+                <Category getListCategory={getListCategory} category={category}/>
             </div>
         </div>
     );

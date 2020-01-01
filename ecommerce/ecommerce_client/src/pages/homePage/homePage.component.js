@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Layout } from 'antd'
 
 import { api } from '../../services'
@@ -13,8 +13,15 @@ import {
     FooterCustomer
 } from '../../components'
 
-export function HomePage({ }) {
+export function HomePage({
+    category,
+    getListCategory
+}) {
     const { Content } = Layout;
+
+    useEffect(() => {
+        getListCategory();
+    }, []);
 
     return (
         <div className="home-page">
@@ -26,21 +33,11 @@ export function HomePage({ }) {
                 </Row>
 
                 <Row className="container-intro-product" gutter={20}>
-                    <Col span={6} >
-                        <IntroProduct />
-                    </Col>
-
-                    <Col span={6}>
-                        <IntroProduct />
-                    </Col>
-
-                    <Col span={6} >
-                        <IntroProduct />
-                    </Col>
-
-                    <Col span={6} >
-                        <IntroProduct />
-                    </Col>
+                    {category.items.map((item) => {
+                        return (<Col key={item._id} span={6} >
+                            <IntroProduct categoryItem= {item} />
+                        </Col>);
+                    })}
                 </Row>
             </Content>
 

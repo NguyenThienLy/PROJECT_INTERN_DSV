@@ -1,13 +1,19 @@
 .sub-category {
   margin-top: 9px !important;
-  width: 620px;
+  width: auto;
+  display: flex;
+  background: white;
+  justify-items: center;
+  align-items: center;
+  height: 55px;
+  box-shadow: 0 6px 12px rgba(209, 202, 202, 0.25), 0 6px 12px rgba(169, 164, 164, 0.22);
 
-  .ant-card-grid {
+  .name-sub-category {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 88.4px;
-    height: 55px;
+    width: 90px;
+    height: 100%;
     padding: 0px;
   }
 }
