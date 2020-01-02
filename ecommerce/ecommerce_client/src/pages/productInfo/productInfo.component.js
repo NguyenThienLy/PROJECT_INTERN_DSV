@@ -22,8 +22,8 @@ export function ProductInfo({
     getItem,
     match
 }) {
-    const [productItem, setProductItem] = useState({});
     const { Content } = Layout;
+    const [productItem, setProductItem] = useState({});
 
     useEffect(() => {
         const item = product.items.find(item => item.slug === match.params.slug);

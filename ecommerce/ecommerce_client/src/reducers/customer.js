@@ -8,16 +8,16 @@ export class CustomerReducer {
         this.initState = {
             items: [],
 
-            fetchingLogin: true,
+            fetchingLogin: false,
             isFetchLoginSuccess: false,
             fetchLoginError: null,
             dataLogin: null,
 
-            creating: true,
+            creating: false,
             isCreateSuccess: false,
             createError: null,
 
-            fetchingLogout: true,
+            fetchingLogout: false,
             isFetchLogoutSuccess: false,
             fetchLogoutError: null,
             dataLogout: null,

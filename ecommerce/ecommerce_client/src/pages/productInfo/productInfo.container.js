@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    getItem: (slug, option = {}) => dispatch(action.product.getItem(slug))
+    getItem: (slug, option = {}) => dispatch(action.product.getItem(slug)),
+    getItemFromBrand: (idBrand, idProduct, option = {}) => dispatch(action.brand.getItemFromBrand(idBrand, idProduct, option)),
 });
 
 export default connect(
