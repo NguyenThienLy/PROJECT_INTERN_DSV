@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { Input, Button, Icon } from 'antd'
 
-import './numbericUpDown.scss'
+import './numbericUpDown.scss';
 
-export function NumbericUpDown({ }) {
-    const [quantity, setQuantity] = useState(1)
+export function NumbericUpDown({
+    valueQuantity,
+    quantityProduct,
+    getCurrQuantity
+ }) {
+    const [quantity, setQuantity] = useState(valueQuantity);
 
     const increase = () => {
-        if (quantity < 100)
-            setQuantity(quantity + 1)
+        if (quantity < quantityProduct) {
+            getCurrQuantity(quantity + 1);
+            setQuantity(quantity + 1);
+        }
     }
 
     const decrease = () => {
-        if (quantity > 1)
-            setQuantity(quantity - 1)
+        if (quantity > 1) {
+            getCurrQuantity(quantity - 1);
+            setQuantity(quantity - 1);
+        }
     }
 
     useEffect(() => {

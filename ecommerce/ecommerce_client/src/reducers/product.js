@@ -65,9 +65,9 @@ export class ProductReducer {
           fetchError: null
         };
         // Check exist in state yet
-        const item = state.items.find(item => item._id === action.payload._id);
+        const index = state.items.findIndex(item => item._id === action.payload._id);
 
-        if (item === undefined)
+        if (index === -1)
           state.items.unshift(action.payload);
         break;
 

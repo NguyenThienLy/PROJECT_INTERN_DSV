@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     getItem: (slug, option = {}) => dispatch(action.product.getItem(slug)),
     getListFromBrand: (idBrand, idProduct, option = {}) => dispatch(action.brand.getListFromBrand(idBrand, idProduct, option)),
     getListSimilarProduct: (idSubCategory, idProduct, option = {}) => dispatch(action.subCategory.getListSimilarProduct(idSubCategory, idProduct, option)),
+    addItemCart: (item) => dispatch(action.cart.addItemCart(item)) 
 });
 
 export default connect(

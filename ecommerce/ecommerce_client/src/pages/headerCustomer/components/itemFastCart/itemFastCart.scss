@@ -19,11 +19,14 @@
     .tilte {
       height: 60%;
       color: #4d4d4d;
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.33;
-      display: flex;
-      justify-content: flex-start;
+      p {
+        margin: 0;
+        width: 100%;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.33;
+        text-align: start;
+      }
     }
 
     .container-description {
@@ -40,8 +43,8 @@
       }
 
       .props {
-          display: flex;
-          justify-content: flex-end;
+        display: flex;
+        justify-content: flex-end;
         width: 70%;
         font-size: 12px;
         line-height: 1.83;

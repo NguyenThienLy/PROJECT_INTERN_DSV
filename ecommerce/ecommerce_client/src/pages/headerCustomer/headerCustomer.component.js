@@ -84,9 +84,6 @@ export function HeaderCustomer({
     }
 
     useEffect(() => {
-        // load list category
-        // getListCategory();
-
         // local storage not exist
         if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== null &&
             localStorage.getItem(NameLocal.USER_INFO) !== null) {

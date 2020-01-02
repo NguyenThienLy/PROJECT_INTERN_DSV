@@ -9,7 +9,7 @@ export class CartReducer {
         let itemsCart = localStorage.getItem(NameItem.ITEMS_CART);
         let quantityCart = localStorage.getItem(NameItem.QUANTITY_CART);
 
-        if (itemsCart === null) 
+        if (itemsCart === null)
             itemsCart = [];
 
         if (quantityCart === null)
@@ -48,10 +48,37 @@ export class CartReducer {
 
             // add item in cart
             case CartType.ADD_ITEM_CART:
-                state = {
-                    ...state,
+                // update
+                const indexUpdate = state.items.findIndex(item => item._id === action.payload._id
+                    && item.size === action.payload.size
+                    && item.color.code === action.payload.color.code);
+                // add new
+                const indexNew = state.items.findIndex(item => item._id === action.payload._id);
+                const indexNewSize = state.items.findIndex(item => item._id === action.payload._id
+                    && item.size === action.payload.size);
+                const indexNewColor = state.items.findIndex(item => item._id === action.payload._id
+                    && item.color.code === action.payload.color.code);
 
-                };
+
+                // Not equal id, equal id not equal size, equal id not equal color 
+                if (indexNew === -1 || indexNewSize === -1 || indexNewColor === -1) {
+                    state.items.unshift(action.payload);
+                    const quantity = state.items.reduce((sum, item) => sum + item.quantity, 0);
+                    state = {
+                        ...state,
+                        quantity: quantity
+                    }
+                }
+                // Exist just update quantity 
+                if (indexUpdate !== -1) {
+                    state.items[indexUpdate].quantity += action.payload.quantity;
+                    const quantity = state.items.reduce((sum, item) => sum + item.quantity, 0)
+                    state = {
+                        ...state,
+                        quantity: quantity
+                    }
+                }
+
                 break;
 
             // add item in cart

@@ -6,19 +6,21 @@ import {
     NumbericUpDown
 } from '../../../../components'
 
-export function ItemDetailCart({ }) {
+export function ItemDetailCart({ 
+    cartItem
+}) {
     return (
         <div className="item-detail-cart">
             <Row type="flex" justify="center" align="middle">
                 <Col span={9}>
                     <Col span={7}>
-                        <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
+                        <img className="image" src={cartItem.mainImage}></img>
                     </Col>
 
                     <Col span={15} offset={2}>
                         <div className="container-description">
                             <p className="name-product">
-                                Collete Stretch Linen Minidress
+                            {cartItem.name}
                             </p>
 
                             <span className="action">Change</span>
@@ -29,19 +31,19 @@ export function ItemDetailCart({ }) {
                 </Col>
 
                 <Col span={2} className="container-color">
-                    <Avatar className="avt-color"></Avatar>
+                    <Avatar className="avt-color" style={{ backgroundColor: `${cartItem.color.code}` }}></Avatar>
                 </Col>
 
                 <Col span={3}>
-                    <p className="size">S</p>
+                    <p className="size">{cartItem.size}</p>
                 </Col>
 
                 <Col span={7} className="container-quantity">
-                    <NumbericUpDown />
+                    <NumbericUpDown valueQuantity = {cartItem.quantity}/>
                 </Col>
 
                 <Col span={3} className="container-amount">
-                    <p className="amount">$69.00</p>
+                    <p className="amount">${cartItem.price}</p>
                 </Col>
             </Row>
         </div>

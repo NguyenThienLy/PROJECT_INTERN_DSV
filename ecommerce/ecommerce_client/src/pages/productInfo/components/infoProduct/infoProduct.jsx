@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Row, Col, Rate, Button, Avatar, Divider, Descriptions } from 'antd'
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Rate, Button, Avatar, Divider, Descriptions } from 'antd';
 
 import {
     NumbericUpDown
@@ -7,8 +7,32 @@ import {
 import './infoProduct.scss'
 
 export function InfoProduct({
-    productItem
+    productItem,
+    addItemCart
 }) {
+    const [currQuantity, setCurrQuantity] = useState(1);
+    const [color, setColor] = useState(productItem.color[0]);
+    const [size, setSize] = useState(productItem.size[0]);
+
+    const getCurrQuantity = (quantity) => {
+        setCurrQuantity(quantity);
+    }
+
+    const onAddToCart = () => {
+        const item = {
+            _id: productItem._id,
+            name: productItem.name,
+            mainImage: productItem.mainImage,
+            price: productItem.price,
+            color: color,
+            size: size,
+            quantity: currQuantity
+        };
+
+        addItemCart(item);
+
+
+    }
 
     useEffect(() => {
 
@@ -49,7 +73,7 @@ export function InfoProduct({
                     {
                         productItem.size.map((item, index) => {
                             return (<Col key={index} span={3}>
-                                <Button className="btn-size" type="primary" ghost>{item}</Button>
+                                <Button onClick={() => setSize(item)} className="btn-size" type="primary" ghost>{item}</Button>
                             </Col>);
                         })
                     }
@@ -65,26 +89,37 @@ export function InfoProduct({
                 <Row>
                     {productItem.color.map((item, index) => {
                         return (<Col key={index} span={3}>
-                            <Avatar className="avt-color" style={{ backgroundColor: `${item}` }}></Avatar>
+                            <Avatar onClick={() => setColor(item)} className="avt-color" style={{ backgroundColor: `${item.code}` }}></Avatar>
                         </Col>);
                     })}
                 </Row>
 
-                <Row type="flex" align="middle" className="row-container">
-                    <Col span={5} >
-                        <p className="name-props">Quantity</p>
-                    </Col>
+                {productItem.quantity !== 0 &&
+                    <div>
+                        <Row type="flex" align="middle" className="row-container">
+                            <Col span={5} >
+                                <p className="name-props">Quantity</p>
+                            </Col>
 
-                    <Col span={10} className="name-props">
-                        <NumbericUpDown />
-                    </Col>
-                </Row>
+                            <Col span={10} className="name-props">
+                                <NumbericUpDown valueQuantity={currQuantity} getCurrQuantity={getCurrQuantity} quantityProduct={productItem.quantity} />
+                            </Col>
+                        </Row>
 
-                <Row className="row-container">
-                    <Button type="primary" className="btn-add-to-cart">
-                        Add to cart
-                    </Button>
-                </Row>
+                        <Row className="row-container">
+                            <Button type="primary" className="btn-add-to-cart" onClick={onAddToCart}>
+                                Add to cart
+                            </Button>
+                        </Row>
+                    </div>
+                }
+
+                {
+                    !productItem.quantity &&
+                    <div className="sold-out">
+                        sold out
+                   </div>
+                }
 
                 <Divider />
 

@@ -24,6 +24,7 @@ export function ProductInfo({
     getItem,
     getListFromBrand,
     getListSimilarProduct,
+    addItemCart,
     match
 }) {
     const { Content } = Layout;
@@ -58,7 +59,7 @@ export function ProductInfo({
                     </Col>
 
                     <Col span={9} offset={1} productItem={productItem}>
-                        {!_.isEqual(productItem, {}) && <InfoProduct productItem={productItem} />}
+                        {!_.isEqual(productItem, {}) && <InfoProduct addItemCart={addItemCart} productItem={productItem} />}
                     </Col>
 
                     <Col span={2} offset={2}>

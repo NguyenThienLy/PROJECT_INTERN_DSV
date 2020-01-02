@@ -5,7 +5,7 @@ import HomePage from './pages/homePage/homePage.container'
 import Profile from './pages/profile/profile.component'
 import ProductInfo from './pages/productInfo/productInfo.container'
 import ProductList from './pages/productList/productList.container'
-import ShoppingCart from './pages/shoppingCart/shoppingCart.component'
+import ShoppingCart from './pages/shoppingCart/shoppingCart.container'
 
 import LoginSellerPage from './pages/seller/loginSellerPage/loginSellerPage.component'
 import OrderPage from './pages/seller/orderPage/orderPage.component'
