@@ -1,0 +1,9 @@
+export class SubCategoryType {
+    constructor() {}
+
+    static FETCH_SIMILARPRODUCT_PENDING = 'FETCH_SIMILARPRODUCT_PENDING';
+    static FETCH_SIMILARPRODUCT_SUCCESS = 'FETCH_SIMILARPRODUCT_SUCCESS';
+    static FETCH_SIMILARPRODUCT_ERROR = 'FETCH_SIMILARPRODUCT_ERROR';
+}
+
+export default SubCategoryType;

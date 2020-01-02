@@ -1,6 +1,5 @@
 import * as _ from "lodash";
 
-import { BaseReducer } from "./base";
 import ProductType from '../actions/types/product';
 
 export class ProductReducer {
@@ -9,13 +8,17 @@ export class ProductReducer {
       items: [],
 
       fetching: false,
-      fetchError: null
+      fetchError: null,
+
+      getting: false,
+      isGetSuccess: false,
+      getError: null,
     };
   }
 
   reducer = (state = this.initState, action) => {
     switch (action.type) {
-      // Getting data pending
+      // Fetching data pending
       case ProductType.FETCH_PRODUCTFILTER_PENDING:
         state = {
           ...state,
@@ -24,7 +27,7 @@ export class ProductReducer {
         };
         break;
 
-      // Getting data success
+      // Fetching data success
       case ProductType.FETCH_PRODUCTFILTER_SUCCESS:
         state = {
           ...state,
@@ -34,11 +37,46 @@ export class ProductReducer {
         };
         break;
 
-      // Getting data error
+      // Fetching data error
       case ProductType.FETCH_PRODUCTFILTER_ERROR:
         state = {
           ...state,
           fetching: false,
+          fetchError: action.payload
+        };
+        break;
+
+      // Getting data pending
+      case ProductType.GET_PRODUCT_PENDING:
+        state = {
+          ...state,
+          getting: true,
+          isGetSuccess: false,
+          fetchError: null
+        };
+        break;
+
+      // Getting data success
+      case ProductType.GET_PRODUCT_SUCCESS:
+        state = {
+          ...state,
+          getting: false,
+          isGetSuccess: true,
+          fetchError: null
+        };
+        // Check exist in state yet
+        const item = state.items.find(item => item._id === action.payload._id);
+
+        if (item === undefined)
+          state.items.unshift(action.payload);
+        break;
+
+      // Getting data error
+      case ProductType.GET_PRODUCT_ERROR:
+        state = {
+          ...state,
+          getting: false,
+          isGetSuccess: false,
           fetchError: action.payload
         };
         break;

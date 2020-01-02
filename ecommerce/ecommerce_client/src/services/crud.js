@@ -90,8 +90,8 @@ export class CrudApi {
     }
   }
  
-  async getItem(id, option = {}) {
-    let url = this.baseUrl(id);
+  async getItem(slug, option = {}) {
+    let url = this.baseUrl(slug);
     const query = this._serialize(option.query || {});
     url += `${query}`;
     const options = {

@@ -16,7 +16,7 @@ export function IntroProduct({
                 <Divider className="divider-intro" />
 
                 <div className="container-btn">
-                    <Link to={`/product-list/${categoryItem.name}`}>
+                    <Link to={`/product-list/${categoryItem.slug}`}>
                         <Button className="btn-intro" type="primary" >Shop now</Button>
                     </Link>
                 </div>

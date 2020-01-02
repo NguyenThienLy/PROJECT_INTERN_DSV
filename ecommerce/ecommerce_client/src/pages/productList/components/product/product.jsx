@@ -4,22 +4,20 @@ import { Link } from 'react-router-dom'
 import "./product.scss";
 import { Card } from 'antd';
 
-export function Product({ 
-    productItem 
+export function Product({
+    productItem
 }) {
     const { Meta } = Card;
 
     return (
-        <div className="product">
-            <Link to="/product-info">
+        <div className="product">     
                 <Card
                     bordered={false}
                     hoverable
                     cover={<img alt="example" src={productItem.mainImage} />}
                 >
-                    <Meta src={`/product-info/${productItem._id}`} title={productItem.name} description={productItem.price} />
+                      <Link to={`/product-info/${productItem.slug}`}><Meta title={productItem.name} description={productItem.price} /> </Link>
                 </Card>
-            </Link>
         </div>
     );
 

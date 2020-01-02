@@ -6,4 +6,4 @@ export class CategoryType {
     static FETCH_CATEGORY_ERROR = 'FETCH_CATEGORY_ERROR'
 }
 
-export default CategoryType
+export default CategoryType;

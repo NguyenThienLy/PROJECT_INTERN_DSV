@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Card } from 'antd'
-import moment from 'moment';
+import React, { useState, useEffect } from 'react';
+import { Card } from 'antd';
+import { Link } from 'react-router-dom';
 
 import './similarProduct.scss'
 
-export function SimilarProduct({ }) {
+export function SimilarProduct({
+    productItem
+ }) {
     const { Meta } = Card;
 
     useEffect(() => {
@@ -16,9 +18,9 @@ export function SimilarProduct({ }) {
             <Card
                 hoverable
                 bordered={false}
-                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                cover={<img alt="example" src={productItem.mainImage} />}
             >
-                <Meta title="Europe Street beat" />
+                <Link to={`/product-info/${productItem.slug}`}><Meta title={productItem.name} /></Link>
             </Card>
         </div>
     );
