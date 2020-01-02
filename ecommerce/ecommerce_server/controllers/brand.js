@@ -1,6 +1,39 @@
 const model = require('../models/brand');
 const { ObjectId } = require('bson');
 
+module.exports.getFromBrand = async (idBrand, idProduct) => {
+    const item = await model.aggregate([
+        {
+            $match: { _id: new ObjectId(`${idBrand}`) }
+        },
+        {
+            $lookup:
+            {
+                from: "product",
+                localField: "product",
+                foreignField: "_id",
+                as: "listProduct"
+            }
+        },
+        {
+            $project: {
+                listProduct: {
+                    $filter: {
+                        input: "$listProduct",
+                        as: "element",
+                        cond: { $ne: ["$$element._id", new ObjectId(`${idProduct}`)] }
+                    }
+                }
+            }
+        },
+        {
+            $limit: 4
+        }
+    ]);
+
+    return item;
+};
+
 module.exports.getList = async () => {
     const list = await model.find();
 
@@ -8,7 +41,7 @@ module.exports.getList = async () => {
 };
 
 module.exports.getItem = async (id) => {
-    const item = await model.findOne({ _id:new ObjectId(id) });
+    const item = await model.findOne({ _id: new ObjectId(id) });
 
     return item;
 };

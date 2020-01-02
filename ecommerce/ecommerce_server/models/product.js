@@ -15,6 +15,11 @@ const productSchema = new mongoose.Schema({
         ref: "Brand", 
         required: true
     },
+    category: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Category", 
+        required: true
+    },
     color: {
         type: [{ type: String }],
         enum: ['#ff5f6d', 'rgba(255, 195, 113, 0.5)', 'rgba(95, 109, 255, 0.5)', 'rgba(255, 161, 95, 0.5)', 'rgba(61, 61, 63, 0.5)'],
