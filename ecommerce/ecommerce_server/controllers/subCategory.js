@@ -1,6 +1,39 @@
 const model = require('../models/subCategory');
 const { ObjectId } = require('bson');
 
+module.exports.getListSimilarProduct = async (idSubCategory, idProduct) => {
+    const item = await model.aggregate([
+        {
+            $match: { _id: new ObjectId(`${idSubCategory}`) }
+        },
+        {
+            $lookup:
+            {
+                from: "product",
+                localField: "product",
+                foreignField: "_id",
+                as: "listProduct"
+            }
+        },
+        {
+            $project: {
+                listProduct: {
+                    $filter: {
+                        input: "$listProduct",
+                        as: "element",
+                        cond: { $ne: ["$$element._id", new ObjectId(`${idProduct}`)] }
+                    }
+                }
+            }
+        },
+        {
+            $limit: 6
+        }
+    ]);
+
+    return item[0].listProduct;
+};
+
 module.exports.getList = async () => {
     const list = await model.find();
 

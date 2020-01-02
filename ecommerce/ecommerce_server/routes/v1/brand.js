@@ -6,7 +6,7 @@ const router = express.Router();
 // Get from brand
 router.get('/:idBrand/:idProduct', async (req, res) => {
     try {
-        const result = await controller.getFromBrand(req.params.idBrand, req.params.idProduct);
+        const result = await controller.getListFromBrand(req.params.idBrand, req.params.idProduct);
         res.status(200).json({ code: 200, result: { object: result }});
     } catch (err) {
         res.status(500).json({ message: err.message });

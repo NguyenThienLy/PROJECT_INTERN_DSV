@@ -1,7 +1,7 @@
 const model = require('../models/brand');
 const { ObjectId } = require('bson');
 
-module.exports.getFromBrand = async (idBrand, idProduct) => {
+module.exports.getListFromBrand = async (idBrand, idProduct) => {
     const item = await model.aggregate([
         {
             $match: { _id: new ObjectId(`${idBrand}`) }
