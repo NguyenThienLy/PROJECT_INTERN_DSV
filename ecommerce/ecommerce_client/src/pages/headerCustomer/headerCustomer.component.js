@@ -26,7 +26,8 @@ export function HeaderCustomer({
     getListCategory,
     login,
     register,
-    logout
+    logout,
+    cart
 }) {
     const [isLogin, setIsLogin] = useState(false);
     const [userInfo, setUserInfo] = useState({});
@@ -165,7 +166,7 @@ export function HeaderCustomer({
                         </div>
                     }
 
-                    <Link to="/shopping-cart"><Cart className="cart" /></Link>
+                    <Link to="/shopping-cart"><Cart cart={cart} className="cart" /></Link>
                 </div>
             </div>
 

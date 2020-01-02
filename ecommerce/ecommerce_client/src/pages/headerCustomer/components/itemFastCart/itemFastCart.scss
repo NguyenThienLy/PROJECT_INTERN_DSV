@@ -1,21 +1,52 @@
 .item-fast-cart {
-    width: 270px !important;
-    height: 80px !important;
-   
-    .ant-card-body {
-        padding: 10px 7px !important; 
+  width: 100%;
+  height: 80px;
+  display: flex;
+  padding: 7px 10px;
 
-        .ant-card-meta {
-            margin: 0px;
-    
-            .ant-avatar {
-                width: 60px;
-                height: 60px;
-            }
-        }
+  .container-image {
+    width: 25%;
+
+    img {
+      height: 60px;
+      width: 60px;
     }
+  }
+
+  .container-content {
+    width: 75%;
+    padding-left: 10px;
+    .tilte {
+      height: 60%;
+      color: #4d4d4d;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.33;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .container-description {
+      display: flex;
+      height: 40%;
+
+      .price {
+        font-size: 12px;
+        line-height: 1.83;
+        width: 30%;
+        color: #202124;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .props {
+          display: flex;
+          justify-content: flex-end;
+        width: 70%;
+        font-size: 12px;
+        line-height: 1.83;
+        color: #202124;
+      }
+    }
+  }
 }
-
-
-
-

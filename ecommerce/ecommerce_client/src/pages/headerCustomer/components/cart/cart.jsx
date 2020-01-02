@@ -4,15 +4,14 @@ import "./cart.scss";
 import { Badge, Icon, Dropdown } from 'antd'
 import { FastCart } from '../index'
 
-export function Cart({ }) {
-  const fastCart = (
-    <FastCart />
-  );
+export function Cart({
+  cart
+}) {
 
   return (
     <div className="cart">
-      <Dropdown overlay={fastCart} placement="bottomRight">
-        <Badge count={5} className="badge-cart">
+      <Dropdown overlay={<FastCart cart={cart} />} placement="bottomRight">
+        <Badge count={cart.quantity} className="badge-cart">
           <Icon type="shopping-cart" className="icon-cart" />
         </Badge>
       </Dropdown>

@@ -5,6 +5,7 @@ import HeaderCustomer from './headerCustomer.component';
 const mapStateToProps = (state, ownProps) => ({
     category: state.category,
     customer: state.customer,
+    cart: state.cart
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
