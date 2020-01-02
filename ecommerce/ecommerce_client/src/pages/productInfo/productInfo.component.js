@@ -6,7 +6,7 @@ import {
     CommentCustomer,
     FromBrand,
     ImageProduct,
-    SimilarProduct,
+    ListSimilarProduct,
     InfoProduct
 } from './components'
 import HeaderCustomer from '../headerCustomer/headerCustomer.container'
@@ -20,11 +20,14 @@ import './productInfo.component.scss'
 export function ProductInfo({
     product,
     brand,
+    subCategory,
     getItem,
     getListFromBrand,
+    getListSimilarProduct,
     match
 }) {
     const { Content } = Layout;
+    const [isProductChange, setIsProductChange] = useState(false);
     const [productItem, setProductItem] = useState({});
 
     useEffect(() => {
@@ -74,31 +77,7 @@ export function ProductInfo({
 
                 <Divider orientation="left">You may also like</Divider>
 
-                <Row type="flex" justify="space-between" gutter={20}>
-                    <Col span={4}>
-                        <SimilarProduct />
-                    </Col>
-
-                    <Col span={4}>
-                        <SimilarProduct />
-                    </Col>
-
-                    <Col span={4}>
-                        <SimilarProduct />
-                    </Col>
-
-                    <Col span={4}>
-                        <SimilarProduct />
-                    </Col>
-
-                    <Col span={4}>
-                        <SimilarProduct />
-                    </Col>
-
-                    <Col span={4}>
-                        <SimilarProduct />
-                    </Col>
-                </Row>
+                {!_.isEqual(productItem, {}) && <ListSimilarProduct idSubCategory={productItem.subCategory} idProduct={productItem._id} getListSimilarProduct={getListSimilarProduct} subCategory={subCategory} />}
             </Content>
 
             <FooterCustomer />

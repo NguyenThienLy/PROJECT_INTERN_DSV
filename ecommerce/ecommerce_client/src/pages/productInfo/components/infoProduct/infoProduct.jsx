@@ -90,11 +90,7 @@ export function InfoProduct({
 
                 <Row>
                     <div className="descripton">
-                        <p className="header-descripton">Model wearing size S</p>
-                        <div className="content-descripton">
-                            <p> - Chest: 36”</p>
-                            <p>  - Length: 25.75”</p>
-                        </div>
+                        <p className="header-descripton">{productItem.description}</p>
                     </div>
                 </Row>
             </Row>

@@ -1,6 +1,5 @@
 import * as _ from "lodash";
 
-import { BaseReducer } from "./base";
 import ProductType from '../actions/types/product';
 
 export class ProductReducer {
@@ -14,11 +13,6 @@ export class ProductReducer {
       getting: false,
       isGetSuccess: false,
       getError: null,
-
-      gettingSimilarProduct: false,
-      isGetSimilarProductSuccess: false,
-      getSimilarProductError: null,
-      dataSimilarProduct: []
     };
   }
 
@@ -84,39 +78,6 @@ export class ProductReducer {
           getting: false,
           isGetSuccess: false,
           fetchError: action.payload
-        };
-        break;
-
-      // getting similar product pending
-      case ProductType.FETCH_SIMILARPRODUCT_PENDING:
-        state = {
-          ...state,
-          gettingSimilarProduct: true,
-          isGetSimilarProductSuccess: false,
-          getSimilarProductError: null,
-          dataSimilarProduct: []
-        };
-        break;
-
-      // getting similar product success
-      case ProductType.FETCH_SIMILARPRODUCT_SUCCESS:
-        state = {
-          ...state,
-          gettingSimilarProduct: false,
-          isGetSimilarProductSuccess: true,
-          getSimilarProductError: null,
-          dataSimilarProduct: action.payload
-        };
-        break;
-
-      // getting similar product error
-      case ProductType.FETCH_SIMILARPRODUCT_ERROR:
-        state = {
-          ...state,
-          gettingSimilarProduct: false,
-          isGetSimilarProductSuccess: true,
-          getSimilarProductError: action.payload,
-          dataSimilarProduct: []
         };
         break;
     }
