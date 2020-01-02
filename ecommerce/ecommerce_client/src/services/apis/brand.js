@@ -6,7 +6,7 @@ export class BrandApi extends CrudApi {
         super("brand")
     }
 
-    async getItemFromBrand(idBrand, idProduct, option) {
+    async getListFromBrand(idBrand, idProduct, option) {
         let url = this.baseUrl(`${idBrand}/${idProduct}`);
 
         const query = this._serialize(option);

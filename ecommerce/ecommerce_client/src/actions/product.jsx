@@ -51,4 +51,27 @@ export class ProductAction {
         })
     }
   }
+
+  getListSimilarProduct = (idCategory, idProduct, option = {}) => {
+    return dispatch => {
+        dispatch({
+            type: ProductType.FETCH_SIMILARPRODUCT_PENDING
+        })
+        api
+            .brand
+            .getListFromBrand(idCategory, idProduct, option)
+            .then(res => {
+                dispatch({
+                    type: ProductType.FETCH_SIMILARPRODUCT_SUCCESS,
+                    payload: res.result.object
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: ProductType.FETCH_SIMILARPRODUCT_ERROR,
+                    payload: error
+                })
+            })
+    }
+}
 }

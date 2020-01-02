@@ -3,10 +3,15 @@ import { Col, Row } from 'antd'
 
 import './fromBrand.scss'
 
-export function FromBrand({ }) {
+export function FromBrand({
+    idBrand,
+    idProduct,
+    getListFromBrand,
+    brand
+}) {
     useEffect(() => {
-
-    });
+        getListFromBrand(idBrand, idProduct);
+    }, []);
 
     return (
         <div className="from-brand">
@@ -16,21 +21,14 @@ export function FromBrand({ }) {
                     <p className="name-brand">Zara</p>
                 </Col>
 
-                <Col>
-                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                </Col>
+                {
+                    brand.dataFromBrand.map(item => {
+                        return (<Col key={item._id}>
+                            <img className="image" src={item.mainImage}></img>
+                        </Col>);
+                    })
+                }
 
-                <Col>
-                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                </Col>
-
-                <Col>
-                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                </Col>
-
-                <Col>
-                    <img className="image" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                </Col>
             </Row>
         </div>
     );

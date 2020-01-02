@@ -14,6 +14,11 @@ export class ProductReducer {
       getting: false,
       isGetSuccess: false,
       getError: null,
+
+      gettingSimilarProduct: false,
+      isGetSimilarProductSuccess: false,
+      getSimilarProductError: null,
+      dataSimilarProduct: []
     };
   }
 
@@ -65,7 +70,11 @@ export class ProductReducer {
           isGetSuccess: true,
           fetchError: null
         };
-        state.items.unshift(action.payload);
+        // Check exist in state yet
+        const item = state.items.find(item => item._id === action.payload._id);
+
+        if (item === undefined)
+          state.items.unshift(action.payload);
         break;
 
       // Getting data error
@@ -75,6 +84,39 @@ export class ProductReducer {
           getting: false,
           isGetSuccess: false,
           fetchError: action.payload
+        };
+        break;
+
+      // getting similar product pending
+      case ProductType.FETCH_SIMILARPRODUCT_PENDING:
+        state = {
+          ...state,
+          gettingSimilarProduct: true,
+          isGetSimilarProductSuccess: false,
+          getSimilarProductError: null,
+          dataSimilarProduct: []
+        };
+        break;
+
+      // getting similar product success
+      case ProductType.FETCH_SIMILARPRODUCT_SUCCESS:
+        state = {
+          ...state,
+          gettingSimilarProduct: false,
+          isGetSimilarProductSuccess: true,
+          getSimilarProductError: null,
+          dataSimilarProduct: action.payload
+        };
+        break;
+
+      // getting similar product error
+      case ProductType.FETCH_SIMILARPRODUCT_ERROR:
+        state = {
+          ...state,
+          gettingSimilarProduct: false,
+          isGetSimilarProductSuccess: true,
+          getSimilarProductError: action.payload,
+          dataSimilarProduct: []
         };
         break;
     }

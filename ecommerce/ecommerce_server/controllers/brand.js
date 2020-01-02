@@ -31,7 +31,7 @@ module.exports.getFromBrand = async (idBrand, idProduct) => {
         }
     ]);
 
-    return item;
+    return item[0].listProduct;
 };
 
 module.exports.getList = async () => {

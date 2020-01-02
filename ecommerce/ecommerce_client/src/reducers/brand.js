@@ -14,25 +14,25 @@ export class BrandReducer {
             gettingfromBrand: false,
             isGetFromBrandSuccess: false,
             getFromBrandError: null,
-            dataFromBrand: null
+            dataFromBrand: []
         };
     }
 
     reducer = (state = this.initState, action) => {
         switch (action.type) {
             // getting from brand pending
-            case BrandType.GET_FROMBRAND_PENDING:
+            case BrandType.FETCH_FROMBRAND_PENDING:
                 state = {
                     ...state,
                     gettingfromBrand: true,
                     isGetFromBrandSuccess: false,
                     getFromBrandError: null,
-                    dataFromBrand: null
+                    dataFromBrand: []
                 };
                 break;
 
             // getting from brand success
-            case BrandType.GET_FROMBRAND_SUCCESS:
+            case BrandType.FETCH_FROMBRAND_SUCCESS:
                 state = {
                     ...state,
                     gettingfromBrand: false,
@@ -43,13 +43,13 @@ export class BrandReducer {
                 break;
 
             // getting from brand error
-            case BrandType.GET_FROMBRAND_ERROR:
+            case BrandType.FETCH_FROMBRAND_ERROR:
                 state = {
                     ...state,
                     gettingfromBrand: false,
                     isGetFromBrandSuccess: false,
                     getFromBrandError: action.payload,
-                    dataFromBrand: null
+                    dataFromBrand: []
                 };
                 break;
         }

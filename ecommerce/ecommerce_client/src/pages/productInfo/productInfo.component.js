@@ -19,7 +19,9 @@ import './productInfo.component.scss'
 
 export function ProductInfo({
     product,
+    brand,
     getItem,
+    getListFromBrand,
     match
 }) {
     const { Content } = Layout;
@@ -30,11 +32,8 @@ export function ProductInfo({
 
         // haven't item in redux-state
         // get item in DB
-        if (item === undefined && !_.isEqual(productItem, item)) {
+        if (item === undefined) {
             getItem(match.params.slug);
-
-            if (item !== undefined)
-                setProductItem(item);
         }
         else if (!_.isEqual(productItem, item)) {
             setProductItem(item);
@@ -52,15 +51,15 @@ export function ProductInfo({
 
                 <Row >
                     <Col span={10}>
-                        { !_.isEqual(productItem,{}) && <ImageProduct productItem={productItem} />}
+                        {!_.isEqual(productItem, {}) && <ImageProduct productItem={productItem} />}
                     </Col>
 
                     <Col span={9} offset={1} productItem={productItem}>
-                        { !_.isEqual(productItem,{}) && <InfoProduct productItem={productItem} />}
+                        {!_.isEqual(productItem, {}) && <InfoProduct productItem={productItem} />}
                     </Col>
 
                     <Col span={2} offset={2}>
-                        <FromBrand />
+                        {!_.isEqual(productItem, {}) && <FromBrand idBrand={productItem.brand} idProduct={productItem._id} getListFromBrand={getListFromBrand} brand={brand} />}
                     </Col>
                 </Row>
 
