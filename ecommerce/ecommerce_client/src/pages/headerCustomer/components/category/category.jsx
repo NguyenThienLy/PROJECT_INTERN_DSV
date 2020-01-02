@@ -16,9 +16,9 @@ export function Category({
   return (
     <div className="category">
       {category.items.map(item => {
-        return (<Dropdown key={item._id} overlay={<SubCategory key={item._id} listSub={item.listSub} />} placement="bottomCenter">
+        return (<Dropdown key={item._id} overlay={<SubCategory slugCategory={item.slug} key={item._id} listSub={item.listSub} />} placement="bottomCenter">
           <div>
-          <Link to={`/product-list/${item.name}`}><ItemCategory name={item.name} className="item-category" /></Link>
+          <Link to={`/product-list/${item.slug}`}><ItemCategory name={item.name} className="item-category" /></Link>
           </div>
         </Dropdown>);
       })}

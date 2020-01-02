@@ -6,6 +6,11 @@ const categorySchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    slug: {
+        type: String, 
+        required: true,
+        unique: true
+    },
     avatar: {
         type: String,
         default: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Col, Row, Layout, Divider } from 'antd'
+import React, { useState, useEffect } from 'react';
+import { Col, Row, Layout, Divider } from 'antd';
+import * as _ from 'lodash';
 
 import {
     CommentCustomer,
@@ -16,11 +17,28 @@ import {
 } from '../../components'
 import './productInfo.component.scss'
 
-export function ProductInfo({ }) {
+export function ProductInfo({
+    product,
+    getItem,
+    match
+}) {
+    const [productItem, setProductItem] = useState({});
     const { Content } = Layout;
 
     useEffect(() => {
+        const item = product.items.find(item => item.slug === match.params.slug);
 
+        // haven't item in redux-state
+        // get item in DB
+        if (item === undefined && !_.isEqual(productItem, item)) {
+            getItem(match.params.slug);
+
+            if (item !== undefined)
+                setProductItem(item);
+        }
+        else if (!_.isEqual(productItem, item)) {
+            setProductItem(item);
+        }
     });
 
     return (
@@ -34,11 +52,11 @@ export function ProductInfo({ }) {
 
                 <Row >
                     <Col span={10}>
-                        <ImageProduct />
+                        { !_.isEqual(productItem,{}) && <ImageProduct productItem={productItem} />}
                     </Col>
 
-                    <Col span={9} offset={1}>
-                        <InfoProduct />
+                    <Col span={9} offset={1} productItem={productItem}>
+                        { !_.isEqual(productItem,{}) && <InfoProduct productItem={productItem} />}
                     </Col>
 
                     <Col span={2} offset={2}>
@@ -52,7 +70,7 @@ export function ProductInfo({ }) {
                     <Row><CommentCustomer /></Row>
                     <Row><CommentCustomer /></Row>
                     <Row><CommentCustomer /></Row>
-                    <Row type="flex" justify="end"><PaginationCustomer/></Row>
+                    <Row type="flex" justify="end"><PaginationCustomer /></Row>
                 </Row>
 
                 <Divider orientation="left">You may also like</Divider>

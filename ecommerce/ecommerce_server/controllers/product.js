@@ -13,8 +13,8 @@ module.exports.getList = async () => {
     return list;
 };
 
-module.exports.getItem = async (id) => {
-    const item = await model.findOne({ _id:new ObjectId(id) });
+module.exports.getItem = async (slug) => {
+    const item = await model.findOne({ slug });
 
     return item;
 };

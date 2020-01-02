@@ -3,36 +3,27 @@ import { Col, Row } from 'antd'
 
 import './imageProduct.scss'
 
-export function ImageProduct({ }) {
-
-    useEffect(() => {
-
-    });
+export function ImageProduct({
+    productItem
+}) {
 
     return (
         <div className="image-product">
             <Row>
                 <Col span={5}>
-                    <Row>
-                        <img className="sub-img" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Row>
+                    {
+                        productItem.subImage.map((item, index) => {
+                            return (<Row key={index}>
+                                <img className="sub-img" src={item}></img>
+                            </Row>);
+                        })
+                    }
 
-                    <Row>
-                        <img className="sub-img" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Row>
-
-                    <Row>
-                        <img className="sub-img" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Row>
-
-                    <Row>
-                        <img className="sub-img" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
-                    </Row>
                 </Col>
 
                 <Col span={18} offset={1}>
                     <Row>
-                        <img className="main-img" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"></img>
+                        <img className="main-img" src={productItem.mainImage}></img>
                     </Row>
                 </Col>
             </Row>

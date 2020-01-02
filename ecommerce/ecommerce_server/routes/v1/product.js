@@ -25,9 +25,9 @@ router.get('/', async (req, res) => {
 });
 
 // Get one
-router.get('/:id', async (req, res) => {
+router.get('/:slug', async (req, res) => {
     try {
-        const result = await controller.getItem(req.params.id);
+        const result = await controller.getItem(req.params.slug);
         res.status(200).json({ code: 200, result: { object: result }});
     } catch (err) {
         res.status(500).json({ message: err.message });
