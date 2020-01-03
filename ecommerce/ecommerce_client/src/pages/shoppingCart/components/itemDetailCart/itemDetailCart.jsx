@@ -41,14 +41,12 @@ export function ItemDetailCart({
     };
 
     const increaseItem = () => {
-        console.log("increaseItem")
         increaseItemCart(cartItem._id);
         increaseQuantityProduct(cartItem._id, 1);
     }
 
 
     const decreaseItem = () => {
-        console.log("decreaseItem")
         decreaseItemCart(cartItem._id);
         decreaseQuantityProduct(cartItem._id, 1);
     }
@@ -105,7 +103,7 @@ export function ItemDetailCart({
                 </Col>
 
                 <Col span={3} className="container-amount">
-                    <p className="amount">${+cartItem.price * currQuantity}</p>
+                    <p className="amount">$Mat{+cartItem.price * currQuantity}</p>
                 </Col>
             </Row>
         </div>
