@@ -10,6 +10,7 @@ import {
 import {
     ProductTable
 } from '../components';
+import './main.component.scss';
 
 export function ProductMain({
 
@@ -17,14 +18,14 @@ export function ProductMain({
     const { Content } = Layout;
 
     return (
-        <div className="order-page">
+        <div className="product-main-page">
             <Content className="body-page">
                 <Col span={4}>
-                    <SideNav />
+                    <SideNav selectDefault="3"/>
                 </Col>
 
                 <Col span={20} className="container-content">
-                    <HeaderSeller />
+                    <HeaderSeller namePage="Products"/>
                     <Row className="container-header">
                         <Col span={2} className="container-titler">SORT BY</Col>
                         <Col span={3} className="container-btn"><Order/></Col>

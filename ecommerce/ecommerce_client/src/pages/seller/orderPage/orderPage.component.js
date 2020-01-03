@@ -21,11 +21,11 @@ export function OrderPage({ }) {
         <div className="order-page">
             <Content className="body-page">
                 <Col span={4}>
-                    <SideNav />
+                    <SideNav selectDefault="2"/>
                 </Col>
 
                 <Col span={20} className="container-content">
-                    <HeaderSeller />
+                    <HeaderSeller namePage="Orders"/>
                     <Row className="container-header">
                         <Col span={3} className="container-titler">ORDERED DATE</Col>
                         <Col span={5} className="container-datapicker"><Datepicker /></Col>

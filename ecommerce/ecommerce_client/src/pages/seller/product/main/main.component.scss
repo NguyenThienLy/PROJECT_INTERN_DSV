@@ -1,0 +1,50 @@
+.product-main-page {
+    height: 100vh;
+    background-color: #ededed;
+  
+    .container-content {
+      .container-header {
+        height: 48px;
+        padding: 0 20px;
+  
+        .container-titler {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.5;
+          color: #acacac;
+        }
+  
+        .container-datapicker {
+          height: 100%;
+        }
+  
+        .container-search {
+          height: 100%;
+        }
+  
+        .container-btn {
+          height: 100%;
+          padding-left: 20px;
+          .btn-primary {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            background-color: white;
+            border: 1px solid #cccccc;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3d3d3f;
+          }
+        }
+      }
+  
+      .container-table {
+        padding: 32px 20px;
+        height: 100%;
+      }
+    }
+  }
+  
