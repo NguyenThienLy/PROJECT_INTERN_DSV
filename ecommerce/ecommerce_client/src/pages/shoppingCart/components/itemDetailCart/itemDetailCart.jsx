@@ -1,16 +1,71 @@
-import React, { Component } from 'react'
-import { Row, Col, Avatar, Divider } from 'antd'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col, Avatar, Modal, Button } from 'antd';
 
-import './itemDetailCart.scss'
+import './itemDetailCart.scss';
 import {
     NumbericUpDown
 } from '../../../../components'
 
-export function ItemDetailCart({ 
-    cartItem
+export function ItemDetailCart({
+    cartItem,
+    increaseItemCart,
+    decreaseItemCart,
+    removeItemCart,
+    increaseQuantityProduct,
+    decreaseQuantityProduct
 }) {
+    const [currQuantity, setCurrQuantity] = useState(cartItem.quantity);
+    const [visibleRemoveItem, setVisibleRemoveItem] = useState(false);
+
+    const getCurrQuantity = (quantity) => {
+        setCurrQuantity(quantity);
+    }
+
+    const onConfirmRemoveItem = () => {
+        onShowModalRemoveItem();
+    }
+
+    const onOkeModalRemoveItem = () => {
+        removeItemCart(cartItem._id, cartItem.size, cartItem.color);
+        increaseQuantityProduct(cartItem._id, currQuantity);
+        setVisibleRemoveItem(false);
+    };
+
+    const onCancelModalRemoveItem = () => {
+        setVisibleRemoveItem(false);
+    };
+
+    const onShowModalRemoveItem = () => {
+        setVisibleRemoveItem(true);
+    };
+
+    const increaseItem = () => {
+        console.log("increaseItem")
+        increaseItemCart(cartItem._id);
+        increaseQuantityProduct(cartItem._id, 1);
+    }
+
+
+    const decreaseItem = () => {
+        console.log("decreaseItem")
+        decreaseItemCart(cartItem._id);
+        decreaseQuantityProduct(cartItem._id, 1);
+    }
+
     return (
         <div className="item-detail-cart">
+            <Modal
+                title="Confirm delete"
+                visible={visibleRemoveItem}
+                onOk={onOkeModalRemoveItem}
+                onCancel={onCancelModalRemoveItem}
+                okText="Cancel"
+                cancelText="Oke"
+            >
+                Delete item in cart?
+            </Modal>
+
             <Row type="flex" justify="center" align="middle">
                 <Col span={9}>
                     <Col span={7}>
@@ -19,13 +74,15 @@ export function ItemDetailCart({
 
                     <Col span={15} offset={2}>
                         <div className="container-description">
-                            <p className="name-product">
-                            {cartItem.name}
-                            </p>
+                            <Link to={`/product-info/${cartItem.slug}`}>
+                                <p className="name-product">
+                                    {cartItem.name}
+                                </p>
+                            </Link>
 
                             <span className="action">Change</span>
                             <span className="action">|</span>
-                            <span className="action">Remove</span>
+                            <Button className="action" type="link" onClick={onConfirmRemoveItem}>Remove</Button>
                         </div>
                     </Col>
                 </Col>
@@ -39,11 +96,16 @@ export function ItemDetailCart({
                 </Col>
 
                 <Col span={7} className="container-quantity">
-                    <NumbericUpDown valueQuantity = {cartItem.quantity}/>
+                    <NumbericUpDown
+                        increaseItem={increaseItem}
+                        decreaseItem={decreaseItem}
+                        quantityProduct={cartItem.maxQuantity}
+                        valueQuantity={currQuantity}
+                        getCurrQuantity={getCurrQuantity} />
                 </Col>
 
                 <Col span={3} className="container-amount">
-                    <p className="amount">${cartItem.price}</p>
+                    <p className="amount">${+cartItem.price * currQuantity}</p>
                 </Col>
             </Row>
         </div>

@@ -11,9 +11,15 @@ export class CartReducer {
 
         if (itemsCart === null)
             itemsCart = [];
+        else {
+            itemsCart = JSON.parse(itemsCart);
+        }
 
         if (quantityCart === null)
             quantityCart = 0;
+        else {
+            quantityCart = JSON.parse(quantityCart);
+        }
 
         this.initState = {
             items: itemsCart,
@@ -25,25 +31,49 @@ export class CartReducer {
         switch (action.type) {
             // increase item in cart
             case CartType.INCREASE_ITEM_CART:
-                state = {
-                    ...state,
-                };
+                const indexIncrease = state.items.findIndex(item => item._id === action.payload);
+
+                if (indexIncrease !== -1) {
+                    const itemsUpdate = state.items;
+                    itemsUpdate[indexIncrease].quantity ++;
+                    state = {
+                        ...state,
+                        items: itemsUpdate,
+                        quantity:  itemsUpdate[indexIncrease].quantity
+                    };
+                }
                 break;
 
             // decrease item in cart
             case CartType.DECREASE_ITEM_CART:
-                state = {
-                    ...state,
+                const indexDecrease = state.items.findIndex(item => item._id === action.payload);
 
-                };
+                if (indexDecrease !== -1) {
+                    const itemsUpdate = state.items;
+                    itemsUpdate[indexDecrease].quantity --;
+                    state = {
+                        ...state,
+                        items: itemsUpdate,
+                        quantity:  itemsUpdate[indexDecrease].quantity
+                    };
+                }
                 break;
 
             // remove item in cart
             case CartType.REMOVE_ITEM_CART:
-                state = {
-                    ...state,
+                const index = state.items.findIndex(item => item._id === action.payload.id
+                    && item.size === action.payload.size
+                    && item.color.code === action.payload.color.code
+                );
 
-                };
+                if (index !== -1) {
+                    state = {
+                        ...state,
+                        quantity: state.quantity - state.items[index].quantity
+                    };
+                    state.items.splice(index, 1);
+                }
+
                 break;
 
             // add item in cart
@@ -91,6 +121,9 @@ export class CartReducer {
                 break;
 
         }
+
+        localStorage.setItem(NameItem.ITEMS_CART, JSON.stringify(state.items));
+        localStorage.setItem(NameItem.QUANTITY_CART, JSON.stringify(state.quantity));
 
         return state;
     }

@@ -7,7 +7,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    
+    increaseItemCart: (id) => dispatch(action.cart.increaseItemCart(id)),
+    decreaseItemCart: (id) => dispatch(action.cart.decreaseItemCart(id)),
+    removeItemCart: (id, size, color) => dispatch(action.cart.removeItemCart(id, size, color)),
+    increaseQuantityProduct: (id, quantity) => dispatch(action.product.increaseQuantityProduct(id, quantity)),
+    decreaseQuantityProduct: (id, quantity) => dispatch(action.product.decreaseQuantityProduct(id, quantity))
 });
 
 export default connect(

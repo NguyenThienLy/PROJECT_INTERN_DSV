@@ -24,6 +24,8 @@ export function ProductInfo({
     getItem,
     getListFromBrand,
     getListSimilarProduct,
+    increaseQuantityProduct,
+    decreaseQuantityProduct,
     addItemCart,
     match
 }) {
@@ -59,7 +61,12 @@ export function ProductInfo({
                     </Col>
 
                     <Col span={9} offset={1} productItem={productItem}>
-                        {!_.isEqual(productItem, {}) && <InfoProduct addItemCart={addItemCart} productItem={productItem} />}
+                        {!_.isEqual(productItem, {}) && <InfoProduct
+                            addItemCart={addItemCart}
+                            productItem={productItem}
+                            increaseQuantityProduct={increaseQuantityProduct}
+                            decreaseQuantityProduct={decreaseQuantityProduct}
+                        />}
                     </Col>
 
                     <Col span={2} offset={2}>

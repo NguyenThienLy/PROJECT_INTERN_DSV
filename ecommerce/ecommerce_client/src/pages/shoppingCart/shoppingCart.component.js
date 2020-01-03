@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { Row, Col, Divider, Layout, Empty } from 'antd'
 
 import { api } from '../../services'
@@ -14,9 +14,19 @@ import {
 } from '../../components'
 
 export function ShoppingCart({
-    cart
+    cart,
+    increaseItemCart,
+    decreaseItemCart,
+    removeItemCart,
+    addItemCart,
+    increaseQuantityProduct,
+    decreaseQuantityProduct
 }) {
     const { Content } = Layout;
+
+    useEffect(() => {
+        
+    });
 
     return (
         <div className="shopping-cart">
@@ -34,7 +44,6 @@ export function ShoppingCart({
                 {cart.items.length !== 0 &&
                     <Row>
                         <Col span={16}>
-
                             <Row type="flex" align="middle" className="container-header">
                                 <Col span={9}>
                                     <p className="header-item align-start">Product</p>
@@ -60,7 +69,14 @@ export function ShoppingCart({
 
                             {cart.items.map((item, index) => {
                                 return (<div key={index}><Divider className="divider-item-cart" />
-                                    <ItemDetailCart cartItem={item} /></div>);
+                                    <ItemDetailCart 
+                                    increaseQuantityProduct={increaseQuantityProduct}
+                                    decreaseQuantityProduct={decreaseQuantityProduct} 
+                                    increaseItemCart={increaseItemCart} 
+                                    decreaseItemCart={decreaseItemCart} 
+                                    removeItemCart={removeItemCart} 
+                                    cartItem={item} />
+                                </div>);
                             })}
                         </Col>
 
@@ -71,7 +87,7 @@ export function ShoppingCart({
                                 </Col>
                             </Row>
 
-                            <TotalCart />
+                            <TotalCart cart={cart}/>
                         </Col>
                     </Row>
                 }

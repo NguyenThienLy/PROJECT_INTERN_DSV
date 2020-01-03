@@ -51,4 +51,22 @@ export class ProductAction {
         })
     }
   }
+
+  decreaseQuantityProduct = (id, quantity) => {
+    return dispatch => {
+      dispatch({
+        type: ProductType.DECREASE_QUANTITY_PRODUCT,
+        payload: { id, quantity }
+      });
+    }
+  }
+
+  increaseQuantityProduct = (id, quantity) => {
+    return dispatch => {
+      dispatch({
+        type: ProductType.INCREASE_QUANTITY_PRODUCT,
+        payload: { id, quantity }
+      });
+    }
+  }
 }

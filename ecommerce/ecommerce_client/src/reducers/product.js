@@ -80,6 +80,34 @@ export class ProductReducer {
           fetchError: action.payload
         };
         break;
+
+      // increase quantity product 
+      case ProductType.INCREASE_QUANTITY_PRODUCT:
+        const indexIncrease = state.items.findIndex(item => item._id === action.payload.id);
+
+        if (indexIncrease !== -1) {
+          const itemsUpdate = state.items;
+          itemsUpdate[indexIncrease].quantity += action.payload.quantity;
+          state = {
+            ...state,
+            items: itemsUpdate
+          };
+        }
+        break;
+
+      // decrease quantity product 
+      case ProductType.DECREASE_QUANTITY_PRODUCT:
+        const indexDecrease = state.items.findIndex(item => item._id === action.payload.id);
+
+        if (indexDecrease !== -1) {
+          const itemsUpdate = state.items;
+          itemsUpdate[indexDecrease].quantity -= action.payload.quantity;
+          state = {
+            ...state,
+            items: itemsUpdate
+          };
+        }
+        break;
     }
 
     return state;

@@ -22,11 +22,11 @@ export class CartAction {
         }
     }
 
-    removeItemCart = (id) => {
+    removeItemCart = (id, size, color) => {
         return dispatch => {
             dispatch({
                 type: CartType.REMOVE_ITEM_CART,
-                payload: id
+                payload: { id, size, color }
             });
         }
     }
@@ -46,5 +46,5 @@ export class CartAction {
                 type: CartType.CANCEL_CART
             });
         }
-    } 
+    }
 }

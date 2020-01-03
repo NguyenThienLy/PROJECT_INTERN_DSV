@@ -13,7 +13,7 @@ export function ItemFastCart({
       <div className="container-content">
         <div className="tilte"><p>{cartItem.name}</p></div>
         <div className="container-description">
-          <div className="price">${cartItem.price}</div>
+          <div className="price">${+cartItem.price * cartItem.quantity}</div>
           <div className="props">{cartItem.size} - {cartItem.color.name} - {cartItem.quantity} pcs</div>
         </div>
       </div>

@@ -8,7 +8,9 @@ import './infoProduct.scss'
 
 export function InfoProduct({
     productItem,
-    addItemCart
+    addItemCart,
+    increaseQuantityProduct,
+    decreaseQuantityProduct
 }) {
     const [currQuantity, setCurrQuantity] = useState(1);
     const [color, setColor] = useState(productItem.color[0]);
@@ -26,12 +28,13 @@ export function InfoProduct({
             price: productItem.price,
             color: color,
             size: size,
-            quantity: currQuantity
+            quantity: currQuantity,
+            maxQuantity: productItem.quantity,
+            slug: productItem.slug
         };
 
         addItemCart(item);
-
-
+        decreaseQuantityProduct(productItem._id, currQuantity);
     }
 
     useEffect(() => {
