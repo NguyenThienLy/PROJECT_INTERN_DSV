@@ -40,7 +40,7 @@ export class CartAction {
         }
     }
 
-    cancelCart = (item) => {
+    cancelCart = () => {
         return dispatch => {
             dispatch({
                 type: CartType.CANCEL_CART

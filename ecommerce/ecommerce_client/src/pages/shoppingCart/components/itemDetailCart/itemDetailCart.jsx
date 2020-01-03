@@ -60,8 +60,8 @@ export function ItemDetailCart({
                 visible={visibleRemoveItem}
                 onOk={onOkeModalRemoveItem}
                 onCancel={onCancelModalRemoveItem}
-                okText="Cancel"
-                cancelText="Oke"
+                okText="Oke"
+                cancelText="Cancel"
             >
                 Delete item in cart?
             </Modal>

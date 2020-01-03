@@ -19,13 +19,14 @@ export function ShoppingCart({
     decreaseItemCart,
     removeItemCart,
     addItemCart,
+    cancelCart,
     increaseQuantityProduct,
     decreaseQuantityProduct
 }) {
     const { Content } = Layout;
 
     useEffect(() => {
-        
+
     });
 
     return (
@@ -69,13 +70,13 @@ export function ShoppingCart({
 
                             {cart.items.map((item, index) => {
                                 return (<div key={index}><Divider className="divider-item-cart" />
-                                    <ItemDetailCart 
-                                    increaseQuantityProduct={increaseQuantityProduct}
-                                    decreaseQuantityProduct={decreaseQuantityProduct} 
-                                    increaseItemCart={increaseItemCart} 
-                                    decreaseItemCart={decreaseItemCart} 
-                                    removeItemCart={removeItemCart} 
-                                    cartItem={item} />
+                                    <ItemDetailCart
+                                        increaseQuantityProduct={increaseQuantityProduct}
+                                        decreaseQuantityProduct={decreaseQuantityProduct}
+                                        increaseItemCart={increaseItemCart}
+                                        decreaseItemCart={decreaseItemCart}
+                                        removeItemCart={removeItemCart}
+                                        cartItem={item} />
                                 </div>);
                             })}
                         </Col>
@@ -87,7 +88,9 @@ export function ShoppingCart({
                                 </Col>
                             </Row>
 
-                            <TotalCart cart={cart}/>
+                            <TotalCart
+                                cancelCart={cancelCart}
+                                cart={cart} />
                         </Col>
                     </Row>
                 }
