@@ -1,0 +1,30 @@
+.product-table {
+  .table {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+    .ant-table-column-title {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #acacac;
+    }
+
+    .ant-table-row-cell-break-word {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.43;
+      color: #3d3d3f;
+    }
+  }
+
+  .btn-action-product-table {
+    border-color: white;
+    color: #3d3d3f;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+    width: 100%;
+  }
+}

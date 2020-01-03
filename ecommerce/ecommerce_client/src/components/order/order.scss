@@ -1,14 +1,23 @@
 .order {
-    .ant-select {
-        width: 179px;
+  height: 100% !important;
+  .ant-select {
+    height: 100% !important;
+    width: 179px;
 
-        .ant-select-selection {
-            border-radius: 0px;
-
-            .ant-select-selection-selected-value {
-                font-weight: bold;
-                font-size: 13px;
-            }
+    .ant-select-selection {
+      border-radius: 0px;
+      height: 100% !important;
+      .ant-select-selection__rendered {
+          height: 100%;
+          display: flex;
+          align-items: center;
+        .ant-select-selection-selected-value {
+          font-weight: bold;
+          font-size: 13px;
+          height: 100% !important;
+          height: 30px !important;
         }
+      }
     }
+  }
 }

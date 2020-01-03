@@ -10,7 +10,7 @@ export function OrderTable({ }) {
             dataIndex: 'orderId',
             key: 'orderId',
             render: text => <a>{text}</a>,
-            width: 75,
+            width: 85,
         },
         {
             title: 'ORDER DATE',
@@ -37,7 +37,7 @@ export function OrderTable({ }) {
             width: 80,
             render:
                 status =>
-                    <Tag color="#87d068" ke>
+                    <Tag color="#87d068">
                         {status}
                     </Tag>
         },
@@ -59,7 +59,7 @@ export function OrderTable({ }) {
             status: ['complete']
         },
         {
-            key: '1',
+            key: '2',
             orderId: 'AB12345',
             orderDate: 'Today, 8th Aug, 2018',
             detail: 'Collete Stretch Linen Minidress (M) x 1',
@@ -67,7 +67,7 @@ export function OrderTable({ }) {
             status: ['complete']
         },
         {
-            key: '1',
+            key: '3',
             orderId: 'AB12345',
             orderDate: 'Today, 8th Aug, 2018',
             detail: 'Collete Stretch Linen Minidress (M) x 1',
@@ -75,7 +75,7 @@ export function OrderTable({ }) {
             status: ['complete']
         },
         {
-            key: '1',
+            key: '4',
             orderId: 'AB12345',
             orderDate: 'Today, 8th Aug, 2018',
             detail: 'Collete Stretch Linen Minidress (M) x 1',

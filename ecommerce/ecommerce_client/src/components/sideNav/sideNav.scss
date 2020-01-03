@@ -29,16 +29,26 @@
       }
     }
 
+    .link-name {
+      color: #3d3d3f;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        color: #ffa15f;
+      }
+    }
+
     .ant-menu-item-selected::after {
-      right: unset !important;
-      left: 0;
-      border-right: unset !important;
-      border-left: 4px solid #ffa15f !important;
+      border-right: 5px solid #ffa15f !important;
     }
 
     .ant-menu-item-selected {
       color: #ffa15f;
-      left: 0;
+
+      a {
+        color: #ffa15f;
+      }
     }
 
     .ant-menu-sub {

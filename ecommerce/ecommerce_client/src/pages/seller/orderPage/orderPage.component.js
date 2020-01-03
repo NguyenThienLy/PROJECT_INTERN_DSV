@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Avatar, Layout, Col, Row, Button } from 'antd'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Avatar, Layout, Col, Row, Button } from 'antd';
 
-import { api } from '../../../reducers'
+import { api } from '../../../reducers';
 
-import './orderPage.component.scss'
+import './orderPage.component.scss';
 import {
     Datepicker,
     OrderTable
-} from './components/'
+} from './components/';
 import {
     SideNav,
     HeaderSeller,
     SearchSeller
-} from '../../../components'
+} from '../../../components';
 
 export function OrderPage({ }) {
     const { Content } = Layout;
     return (
         <div className="order-page">
             <Content className="body-page">
-                <Col span={3}>
+                <Col span={4}>
                     <SideNav />
                 </Col>
 
-                <Col span={21} className="container-content">
+                <Col span={20} className="container-content">
                     <HeaderSeller />
                     <Row className="container-header">
                         <Col span={3} className="container-titler">ORDERED DATE</Col>

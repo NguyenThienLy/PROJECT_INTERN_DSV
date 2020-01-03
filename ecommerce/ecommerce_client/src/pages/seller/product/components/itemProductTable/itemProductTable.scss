@@ -1,0 +1,41 @@
+.item-product-table {
+    height: 100%;
+    display: flex;
+    .img-table-item {
+        width: 30px;
+        height: 40px;
+    }
+
+    .container-content {
+        padding-left: 10px;
+        .title {
+            height: 50%;
+            width: 100%;
+          
+            p {
+                margin: 0;
+                width: 100%;
+                text-align: start;
+                color: #3d3d3f;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1.43;
+            }
+        }
+
+        .category {
+            height: 50%;
+            width: 100%;
+        
+            p {
+                margin: 0;
+                width: 100%;
+                text-align: start;
+                color: #3d3d3f;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 1.43;
+            }
+        }
+    }
+}

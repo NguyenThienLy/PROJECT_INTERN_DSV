@@ -27,7 +27,7 @@ export function LoginSeller({ }) {
                 </Form.Item>
 
                 <Form.Item className="footer">
-                    <Link to="/seller/order">
+                    <Link to="/seller/order-page">
                         <Button type="primary" htmlType="submit" className="btn-primary">
                             Log in
                         </Button>

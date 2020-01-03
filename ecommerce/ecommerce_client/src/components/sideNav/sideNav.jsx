@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Menu, Icon, Avatar } from 'antd'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, Icon, Avatar } from 'antd';
 
-import './sideNav.scss'
+import './sideNav.scss';
 
 export function SideNav({ }) {
     const { SubMenu } = Menu;
@@ -24,8 +24,10 @@ export function SideNav({ }) {
                     <span>Overview</span>
                 </Menu.Item>
                 <Menu.Item key="2">
-                    <Icon type="ordered-list" />
-                    <span>Orders</span>
+                    <Link className="link-name" to="/seller/order-page">
+                        <Icon type="ordered-list" />
+                        <span>Orders</span>
+                    </Link>
                 </Menu.Item>
                 <SubMenu
                     key="sub1"
@@ -36,19 +38,25 @@ export function SideNav({ }) {
                         </span>
                     }
                 >
-                    <Menu.Item key="3">Main</Menu.Item>
-                    <Menu.Item key="4">Add</Menu.Item>
-
+                    <Menu.Item key="3">
+                        <Link className="link-name" to="/seller/product-main">Main </Link>
+                    </Menu.Item>
+                    <Menu.Item key="4">
+                        <Link className="link-name" to="/seller/product-add">Add</Link>
+                    </Menu.Item>
+                    <Menu.Item key="5">
+                        <Link className="link-name" to="/seller/product-update">Update</Link>
+                    </Menu.Item>
                 </SubMenu>
-                <Menu.Item key="5">
+                <Menu.Item key="6">
                     <Icon type="pay-circle" />
                     <span>Payments</span>
                 </Menu.Item>
-                <Menu.Item key="6">
+                <Menu.Item key="7">
                     <Icon type="tag" />
                     <span>Promotions</span>
                 </Menu.Item>
-                <Menu.Item key="7">
+                <Menu.Item key="8">
                     <Icon type="setting" />
                     <span>Setting</span>
                 </Menu.Item>
