@@ -19,12 +19,12 @@ export function ListSimilarProduct({
 
     return (
         <div className="list-similar-product">
-            <Row type="flex" justify="space-between" gutter={20}>
-                <Col span={4}>
-                    {subCategory.dataSimilarProduct.map(item => {
-                        return (<SimilarProduct key={item._id} productItem={item} />);
-                    })}
-                </Col>
+            <Row type="flex" justify="center" gutter={20}>
+
+                {subCategory.dataSimilarProduct.map(item => {
+                    return (<Col key={item._id} span={4}><SimilarProduct productItem={item} />  </Col>);
+                })}
+
             </Row>
         </div>
     );

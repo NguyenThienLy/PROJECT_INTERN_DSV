@@ -1,22 +1,22 @@
 import * as React from "react";
-import { Card, Icon, Avatar } from 'antd';
 
 import "./itemFastCart.scss";
 
-export function ItemFastCart({ }) {
-  const { Meta } = Card;
-
+export function ItemFastCart({ 
+  cartItem
+}) {
   return (
-    <div>
-      <Card className="item-fast-cart"
-        style={{ width: 300 }}
-      >
-        <Meta
-          avatar={<Avatar shape="square" src="https://i.imgur.com/KhjpIwg.jpg" />}
-          title="New Balance Men's Street Backpack"
-          description="$485 S - Black - 1 pcs"
-        />
-      </Card>
+    <div className="item-fast-cart">
+      <div className="container-image">
+        <img src={cartItem.mainImage}></img>
+      </div>
+      <div className="container-content">
+        <div className="tilte"><p>{cartItem.name}</p></div>
+        <div className="container-description">
+          <div className="price">${+cartItem.price * cartItem.quantity}</div>
+          <div className="props">{cartItem.size} - {cartItem.color.name} - {cartItem.quantity} pcs</div>
+        </div>
+      </div>
     </div>
   );
 

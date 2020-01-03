@@ -65,9 +65,9 @@ export class ProductReducer {
           fetchError: null
         };
         // Check exist in state yet
-        const item = state.items.find(item => item._id === action.payload._id);
+        const index = state.items.findIndex(item => item._id === action.payload._id);
 
-        if (item === undefined)
+        if (index === -1)
           state.items.unshift(action.payload);
         break;
 
@@ -79,6 +79,34 @@ export class ProductReducer {
           isGetSuccess: false,
           fetchError: action.payload
         };
+        break;
+
+      // increase quantity product 
+      case ProductType.INCREASE_QUANTITY_PRODUCT:
+        const indexIncrease = state.items.findIndex(item => item._id === action.payload.id);
+
+        if (indexIncrease !== -1) {
+          const itemsUpdate = state.items;
+          itemsUpdate[indexIncrease].quantity += action.payload.quantity;
+          state = {
+            ...state,
+            items: itemsUpdate
+          };
+        }
+        break;
+
+      // decrease quantity product 
+      case ProductType.DECREASE_QUANTITY_PRODUCT:
+        const indexDecrease = state.items.findIndex(item => item._id === action.payload.id);
+
+        if (indexDecrease !== -1) {
+          const itemsUpdate = state.items;
+          itemsUpdate[indexDecrease].quantity -= action.payload.quantity;
+          state = {
+            ...state,
+            items: itemsUpdate
+          };
+        }
         break;
     }
 

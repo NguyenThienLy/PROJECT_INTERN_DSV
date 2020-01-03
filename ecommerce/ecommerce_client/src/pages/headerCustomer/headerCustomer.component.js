@@ -26,7 +26,8 @@ export function HeaderCustomer({
     getListCategory,
     login,
     register,
-    logout
+    logout,
+    cart
 }) {
     const [isLogin, setIsLogin] = useState(false);
     const [userInfo, setUserInfo] = useState({});
@@ -83,9 +84,6 @@ export function HeaderCustomer({
     }
 
     useEffect(() => {
-        // load list category
-        // getListCategory();
-
         // local storage not exist
         if (localStorage.getItem(NameLocal.EXPIRED_TOKEN) !== null &&
             localStorage.getItem(NameLocal.USER_INFO) !== null) {
@@ -165,7 +163,7 @@ export function HeaderCustomer({
                         </div>
                     }
 
-                    <Link to="/shopping-cart"><Cart className="cart" /></Link>
+                    <Link to="/shopping-cart"><Cart cart={cart} className="cart" /></Link>
                 </div>
             </div>
 
