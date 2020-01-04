@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Icon, Avatar } from 'antd';
 
 import './sideNav.scss';
 
-export function SideNav({ }) {
+export function SideNav({
+    selectDefault
+ }) {
     const { SubMenu } = Menu;
+
+    useEffect(()=>{
+        console.log("selectDefault", selectDefault)
+    })
 
     return (
         <div className="side-nav">
@@ -15,7 +21,7 @@ export function SideNav({ }) {
 
             <Menu
                 className="menu-seller"
-                defaultSelectedKeys={['2']}
+                selectedKeys={[`${selectDefault}`]}
                 defaultOpenKeys={['sub1']}
                 mode="inline"
             >

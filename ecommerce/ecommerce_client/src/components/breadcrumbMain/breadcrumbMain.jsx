@@ -4,14 +4,25 @@ import { Breadcrumb } from 'antd';
 
 import "./breadcrumbMain.scss";
 
-export function BreadcrumbMain({ visible, onOk, onCancel, showModalLogin }) {
+export function BreadcrumbMain({
+    content
+}) {
     return (
         <div>
             <Breadcrumb>
-                <Breadcrumb.Item>Ladies</Breadcrumb.Item>
-                <Breadcrumb.Item>
-                    <Link to="/" href="">Dresses</Link>
-                </Breadcrumb.Item>
+                <Breadcrumb.Item>{content.main}</Breadcrumb.Item>
+
+                {content.sub1 !== null &&
+                    <Breadcrumb.Item>
+                        <Link to={`/${content.main}/${content.sub1}`} >{content.sub1}</Link>
+                    </Breadcrumb.Item>
+                }
+
+                {content.sub2 !== null &&
+                    <Breadcrumb.Item>
+                        <Link to={`/${content.main}/${content.sub1}/${content.sub2}`} >{content.sub2}</Link>
+                    </Breadcrumb.Item>
+                }
             </Breadcrumb>
         </div>
     );

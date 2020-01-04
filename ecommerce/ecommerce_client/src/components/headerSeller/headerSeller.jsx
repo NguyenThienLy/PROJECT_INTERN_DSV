@@ -3,12 +3,14 @@ import * as React from "react";
 import "./headerSeller.scss";
 import { Row, Col, Avatar, Icon, Badge } from 'antd'
 
-export function HeaderSeller({ }) {
+export function HeaderSeller({
+    namePage
+ }) {
 
     return (
         <div className="header-seller">
             <Col span={6} className="txt-primary">
-                Orders
+                {namePage}
                 </Col>
 
             <Col span={8} offset={10}>

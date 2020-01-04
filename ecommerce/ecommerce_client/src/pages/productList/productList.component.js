@@ -17,7 +17,8 @@ import './productList.component.scss'
 
 function ProductList({ 
     product,
-    getProductFilter
+    getProductFilter,
+    match
  }) {
     const { Content } = Layout;
 
@@ -32,7 +33,11 @@ function ProductList({
 
             <Content className="body-page">
                 <Row className="top-product-list" type="flex" justify="space-around" align="middle">
-                    <BreadcrumbMain />
+                    <BreadcrumbMain content={{
+                        main: "product-list",
+                        sub1: match.params.slugCategory,
+                        sub2: null
+                    }}/>
                 </Row>
 
                 <Row type="flex" align="middle">

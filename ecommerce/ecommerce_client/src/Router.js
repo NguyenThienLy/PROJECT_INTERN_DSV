@@ -18,8 +18,8 @@ const Router = () => (
         <Route exact path='/' component={HomePage} />
         <Route exact path='/profile' component={Profile} />
         <Route exact path='/product-info/:slug' component={ProductInfo} />
-        <Route exact path='/product-list/:slugCategory'><ProductList/></Route>
-        <Route exact path='/product-list/:slugCategory/:slugSubCategory'><ProductList/></Route>
+        <Route exact path='/product-list/:slugCategory' component={ProductList}></Route>
+        <Route exact path='/product-list/:slugCategory/:slugSubCategory' component={ProductList}></Route>
         <Route exact path='/shopping-cart' component={ShoppingCart} />
 
         <Route exact path='/seller/login-seller' component={LoginSellerPage} />

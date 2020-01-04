@@ -52,7 +52,11 @@ export function ProductInfo({
 
             <Content className="body-page">
                 <Row className="top-product-info" type="flex" justify="space-around" align="middle">
-                    <BreadcrumbMain />
+                    <BreadcrumbMain content={{
+                        main: "product-info",
+                        sub1: match.params.slug,
+                        sub2: null
+                    }} />
                 </Row>
 
                 <Row >
