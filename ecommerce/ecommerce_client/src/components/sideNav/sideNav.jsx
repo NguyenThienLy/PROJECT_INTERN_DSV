@@ -10,7 +10,7 @@ export function SideNav({
     const { SubMenu } = Menu;
 
     useEffect(()=>{
-        console.log("selectDefault", selectDefault)
+    
     })
 
     return (

@@ -9,12 +9,17 @@ import {
     LoginSeller
 } from './components/'
 
-export function LoginSellerPage({ }) {
-
+export function LoginSellerPage({
+    seller,
+    login
+}) {
     return (
         <div className="login-seller-page">
             <Link to="/"> <Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" /> </Link>
-            <LoginSeller />
+            <LoginSeller
+                login={login}
+                seller={seller}
+            />
         </div >
     );
 }

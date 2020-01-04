@@ -20,6 +20,11 @@ const productSchema = new mongoose.Schema({
         ref: "SubCategory",
         required: true
     },
+    subCategory: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        required: true
+    },
     color: {
         type: [{ type: Object }],
         default: []
@@ -48,6 +53,10 @@ const productSchema = new mongoose.Schema({
     quantity: {
         type: Number,
         required: true
+    },
+    soldQuantity: {
+        type: Number,
+        default: 0
     },
     rate: {
         type: Number,

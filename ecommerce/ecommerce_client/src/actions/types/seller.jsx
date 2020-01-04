@@ -1,0 +1,12 @@
+export class SellerType {
+    constructor() {}
+
+    static FETCH_LOGIN_PENDING = 'FETCH_LOGIN_PENDING';
+    static FETCH_LOGIN_SUCCESS = 'FETCH_LOGIN_SUCCESS';
+    static FETCH_LOGIN_ERROR = 'FETCH_LOGIN_ERROR';
+    static FETCH_LOGOUT_PENDING = 'FETCH_LOGOUT_PENDING';
+    static FETCH_LOGOUT_SUCCESS = 'FETCH_LOGOUT_SUCCESS';
+    static FETCH_LOGOUT_ERROR = 'FETCH_LOGOUT_ERROR';
+}
+
+export default SellerType

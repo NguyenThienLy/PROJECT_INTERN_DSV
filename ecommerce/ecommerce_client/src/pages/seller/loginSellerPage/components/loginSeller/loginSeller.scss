@@ -1,6 +1,6 @@
 .login-seller {
   width: 380px;
-  height: 424px;
+  height: 440px;
   background-color: rgba(61, 61, 63, 0.8);
   padding: 32px;
 
@@ -71,13 +71,21 @@
               border-radius: 0;
               font-size: 15px;
               font-weight: bold;
+              position: relative;
+            }
+
+            .alert-content {
+              width: 100%;
+              bottom: 23%;
+              margin-top: -10px;
+              position: absolute;
             }
 
             .btn-link {
               font-size: 12px;
               font-weight: 600;
               margin: 0;
-              margin-top: 32px;
+              margin-top: 50px;
               color: white;
               text-align: center;
             }

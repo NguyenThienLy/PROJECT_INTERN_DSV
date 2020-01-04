@@ -30,6 +30,11 @@ module.exports = function(app) {
   );
 
   app.use(
+    "/api/v1/seller",
+    sellerRoute
+  );
+
+  app.use(
     "/api/v1/order",
     orderRoute
   );

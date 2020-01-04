@@ -13,9 +13,15 @@ import {
 import './main.component.scss';
 
 export function ProductMain({
-
+    seller,
+    product,
+    getProductFilter
 }) {
     const { Content } = Layout;
+
+    useEffect(() => {
+        console.log("product", product);
+    });
 
     return (
         <div className="product-main-page">
@@ -35,7 +41,10 @@ export function ProductMain({
                             <Col span={3} className="container-btn"><Button style={{ color: '#ffa15f' }} className="btn-primary" type="primary" icon="export">Export</Button></Col>
                         </Row>
                         <Row className="container-table">
-                            <ProductTable />
+                            <ProductTable
+                                product={product}
+                                getProductFilter={getProductFilter}
+                            />
                         </Row>
                     </Col>
                 </Row>

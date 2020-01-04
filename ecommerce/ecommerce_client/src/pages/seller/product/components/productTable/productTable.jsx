@@ -1,12 +1,18 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Tag, Button, Dropdown, Menu, Icon } from 'antd';
-
+import * as _ from 'lodash';
+import * as moment from 'moment';
 import './productTable.scss';
 import {
     ItemProductTable
 } from '../index';
 
-export function ProductTable({ }) {
+export function ProductTable({
+    product,
+    getProductFilter
+}) {
+   // const [productList, setProductList] = useState([]);
+
     const styleBtnEdit = {
         width: '100%',
         backgroundColor: '#ffa15f',
@@ -22,14 +28,14 @@ export function ProductTable({ }) {
 
     const menu = (
         <Menu>
-          <Menu.Item>
-          <Button style={styleBtnEdit} className="btn-action-product-table" type="primary" icon="edit">Edit</Button>
-          </Menu.Item>
-          <Menu.Item>
-          <Button style={styleBtnRemove} className="btn-action-product-table"  type="primary"  icon="delete">Remove</Button>
-          </Menu.Item>
+            <Menu.Item>
+                <Button style={styleBtnEdit} className="btn-action-product-table" type="primary" icon="edit">Edit</Button>
+            </Menu.Item>
+            <Menu.Item>
+                <Button style={styleBtnRemove} className="btn-action-product-table" type="primary" icon="delete">Remove</Button>
+            </Menu.Item>
         </Menu>
-      );
+    );
 
     const columns = [
         {
@@ -70,60 +76,28 @@ export function ProductTable({ }) {
         },
     ];
 
-    const data = [
-        {
-            key: '1',
+    let productList =product.items.map(item => {
+        return {
+            key: item._id,
             products: {
-                mainImage: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-                name: 'Collete Stretch Linen Minidress',
-                category: 'Girls',
-                subCategory: 'Long dresse'
+                mainImage: item.mainImage,
+                name: item.name,
+                subCategory: item.subCategoryList.length !== 0 ? item.subCategoryList[0].name : "No Sub category",
+                category: item.categoryList.length !== 0 ? item.categoryList[0].name : "No category"
             },
-            sold: '4/10',
-            dateAdded: 'Today, 8th Aug, 2018',
-            profit: '60.00'
-        },
-        {
-            key: '2',
-            products: {
-                mainImage: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-                name: 'Collete Stretch Linen Minidress',
-                category: 'Girls',
-                subCategory: 'Long dresse'
-            },
-            sold: '4/10',
-            dateAdded: 'Today, 8th Aug, 2018',
-            profit: '60.00'
-        },
-        {
-            key: '3',
-            products: {
-                mainImage: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-                name: 'Collete Stretch Linen Minidress',
-                category: 'Girls',
-                subCategory: 'Long dresse'
-            },
-            sold: '4/10',
-            dateAdded: 'Today, 8th Aug, 2018',
-            profit: '60.00'
-        },
-        {
-            key: '4',
-            products: {
-                mainImage: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
-                name: 'Collete Stretch Linen Minidress',
-                category: 'Girls',
-                subCategory: 'Long dresse'
-            },
-            sold: '4/10',
-            dateAdded: 'Today, 8th Aug, 2018',
-            profit: '60.00'
+            sold: `${item.soldQuantity} / ${item.soldQuantity + item.quantity}`,
+            dateAdded: moment(item.createdAt).format('LL'),
+            profit: `$ ${Math.round(item.price * item.quantity)}`
         }
-    ];
+    });
+
+    useEffect(() => {
+        getProductFilter({ order: 11 });
+    }, []);
 
     return (
         <div className="product-table">
-            <Table className="table" columns={columns} dataSource={data} />
+            <Table className="table" columns={columns} dataSource={productList} />
         </div>
     );
 
