@@ -20,23 +20,25 @@ export function ProductMain({
     return (
         <div className="product-main-page">
             <Content className="body-page">
-                <Col span={4}>
-                    <SideNav selectDefault="3"/>
-                </Col>
+                <Row>
+                    <Col span={4} className="container-side-nav">
+                        <SideNav selectDefault="3" />
+                    </Col>
 
-                <Col span={20} className="container-content">
-                    <HeaderSeller namePage="Products"/>
-                    <Row className="container-header">
-                        <Col span={2} className="container-titler">SORT BY</Col>
-                        <Col span={3} className="container-btn"><Order/></Col>
-                        <Col span={5} offset={6} className="container-search"><SearchSeller/></Col>
-                        <Col span={4} className="container-btn"><Button style={{backgroundColor: '#ffa15f', color: 'white'}} className="btn-primary" type="primary" icon="plus">Add product</Button></Col>
-                        <Col span={3} className="container-btn"><Button style={{color: '#ffa15f'}} className="btn-primary" type="primary" icon="export">Export</Button></Col>
-                    </Row>
-                    <Row className="container-table">
-                        <ProductTable/>
-                    </Row>
-                </Col>
+                    <Col span={20} className="container-content">
+                        <HeaderSeller namePage="Products" />
+                        <Row className="container-header">
+                            <Col span={2} className="container-titler">SORT BY</Col>
+                            <Col span={3} className="container-btn"><Order /></Col>
+                            <Col span={5} offset={6} className="container-search"><SearchSeller /></Col>
+                            <Col span={4} className="container-btn"><Button style={{ backgroundColor: '#ffa15f', color: 'white' }} className="btn-primary" type="primary" icon="plus">Add product</Button></Col>
+                            <Col span={3} className="container-btn"><Button style={{ color: '#ffa15f' }} className="btn-primary" type="primary" icon="export">Export</Button></Col>
+                        </Row>
+                        <Row className="container-table">
+                            <ProductTable />
+                        </Row>
+                    </Col>
+                </Row>
             </Content>
         </div >
     );
