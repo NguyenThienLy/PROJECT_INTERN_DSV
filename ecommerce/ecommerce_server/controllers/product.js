@@ -2,7 +2,27 @@ const model = require('../models/product');
 const { ObjectId } = require('bson');
 
 module.exports.getListFitler = async (params) => {
-    const list = await model.find();
+    const list = await model.aggregate([
+        {
+            $lookup:
+              {
+                from: "subCategory",
+                localField: "subCategory",
+                foreignField: "_id",
+                as: "subCategoryList"
+              }
+         },
+
+         {
+            $lookup:
+              {
+                from: "category",
+                localField: "category",
+                foreignField: "_id",
+                as: "categoryList"
+              }
+         }
+    ]);
 
     return list;
 };

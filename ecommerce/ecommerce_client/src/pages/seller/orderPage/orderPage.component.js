@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Avatar, Layout, Col, Row, Button } from 'antd';
 
 import { api } from '../../../reducers';
@@ -14,9 +14,13 @@ import {
     HeaderSeller,
     SearchSeller
 } from '../../../components';
+import NameLocal from '../../../config/localStorage';
 
-export function OrderPage({ }) {
+export function OrderPage({
+    seller
+}) {
     const { Content } = Layout;
+ 
     return (
         <div className="order-page">
             <Content className="body-page">

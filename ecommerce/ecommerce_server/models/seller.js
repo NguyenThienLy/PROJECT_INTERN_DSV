@@ -19,10 +19,9 @@ const sellerSchema = new mongoose.Schema({
         enum: ['active', 'deactive'], 
         default: 'active'
     },
-    role: {
-        type: String,
-        enum: ['admin', 'editor'],
-        default: 'admin'
+    avatar: {
+        type: String, 
+        default: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'
     },
     createdAt: {
         type: Date,

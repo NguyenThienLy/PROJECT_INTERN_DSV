@@ -10,7 +10,7 @@ const { ObjectId } = require('bson');
 const saltRounds = 10;
 
 module.exports.login = async (body) => {
-    const item = await model.findOne({ email: body.email });
+    const item = await model.findOne({ email: body.email, status: "active" });
 
     if (item) {
         const isEqual = await bcrypt.compare(body.password, item.password);
@@ -23,7 +23,7 @@ module.exports.login = async (body) => {
             return {
                 isLogin: true,
                 message: "Logged in successfully!",
-                customer: item,
+                user: item,
                 accessToken: jwtToken,
                 expired: expired
             };

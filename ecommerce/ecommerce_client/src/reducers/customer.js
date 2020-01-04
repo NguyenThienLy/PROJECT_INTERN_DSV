@@ -41,7 +41,7 @@ export class CustomerReducer {
             case CustomerType.FETCH_LOGIN_SUCCESS:
                 if (action.payload.isLogin) {
                     localStorage.setItem(NameItem.TOKEN_JWT, action.payload.accessToken);
-                    localStorage.setItem(NameItem.USER_INFO, JSON.stringify(action.payload.customer));
+                    localStorage.setItem(NameItem.USER_INFO, JSON.stringify(action.payload.user));
                     localStorage.setItem(NameItem.EXPIRED_TOKEN, JSON.stringify(action.payload.expired));
                 }
 
