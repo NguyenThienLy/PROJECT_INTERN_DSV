@@ -1,15 +1,5 @@
-//import 'isomorphic-unfetch';
-import { environment } from '../environments';
-
 export class ImgurApi {
     constructor() {
-        this.clientID = '';
-        this.clientToken = '';
-    }
-    clientID;
-    clientToken;
-    baseUrl() {
-        return `https://api.imgur.com/3`;
     }
 
     async uploadImage(file) {
@@ -17,7 +7,7 @@ export class ImgurApi {
             try {
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', 'https://api.imgur.com/3/image', true);
-                xhr.setRequestHeader('Authorization', 'Client-ID d4de8224fa0042f');
+                xhr.setRequestHeader('Authorization', 'Client-ID ce7b221a68f72a2');
                 xhr.setRequestHeader('Content-Type', 'multipart/form-data');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {

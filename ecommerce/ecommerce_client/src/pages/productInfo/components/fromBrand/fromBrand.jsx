@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Col, Row } from 'antd'
 
 import './fromBrand.scss'
@@ -9,9 +9,10 @@ export function FromBrand({
     getListFromBrand,
     brand
 }) {
+
     useEffect(() => {
         getListFromBrand(idBrand, idProduct);
-    }, []);
+    }, [idBrand, idProduct]);
 
     return (
         <div className="from-brand">

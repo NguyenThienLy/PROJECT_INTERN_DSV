@@ -52,6 +52,36 @@ export class BrandReducer {
                     dataFromBrand: []
                 };
                 break;
+
+            // getting brand pending
+            case BrandType.FETCH_BRAND_PENDING:
+                state = {
+                    ...state,
+                    items: [],
+                    fetching: true,
+                    fetchError: null
+                };
+                break;
+
+            // getting brand success
+            case BrandType.FETCH_BRAND_SUCCESS:
+                state = {
+                    ...state,
+                    items: action.payload,
+                    fetching: false,
+                    fetchError: null
+                };
+                break;
+
+            // getting brand error
+            case BrandType.FETCH_BRAND_ERROR:
+                state = {
+                    ...state,
+                    items: [],
+                    fetching: false,
+                    fetchError: action.payload
+                };
+                break;
         }
 
         return state;

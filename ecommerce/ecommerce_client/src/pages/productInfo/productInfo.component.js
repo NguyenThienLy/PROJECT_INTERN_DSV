@@ -64,7 +64,7 @@ export function ProductInfo({
                         {!_.isEqual(productItem, {}) && <ImageProduct productItem={productItem} />}
                     </Col>
 
-                    <Col span={9} offset={1} productItem={productItem}>
+                    <Col span={9} offset={1}>
                         {!_.isEqual(productItem, {}) && <InfoProduct
                             addItemCart={addItemCart}
                             productItem={productItem}

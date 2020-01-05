@@ -9,7 +9,7 @@ import ShoppingCart from './pages/shoppingCart/shoppingCart.container';
 
 import LoginSellerPage from './pages/seller/loginSellerPage/loginSellerPage.container';
 import OrderPage from './pages/seller/orderPage/orderPage.component';
-import ProductAdd from './pages/seller/product/add/add.component';
+import ProductAdd from './pages/seller/product/add/add.container';
 import ProductMain from './pages/seller/product/main/main.container';
 import ProductUpdate from './pages/seller/product/update/update.component';
 

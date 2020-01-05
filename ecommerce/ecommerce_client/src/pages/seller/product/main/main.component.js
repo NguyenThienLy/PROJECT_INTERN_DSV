@@ -20,7 +20,7 @@ export function ProductMain({
     const { Content } = Layout;
 
     useEffect(() => {
-        console.log("product", product);
+       
     });
 
     return (

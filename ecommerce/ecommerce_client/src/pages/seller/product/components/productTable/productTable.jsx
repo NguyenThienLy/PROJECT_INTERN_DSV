@@ -11,7 +11,8 @@ export function ProductTable({
     product,
     getProductFilter
 }) {
-   // const [productList, setProductList] = useState([]);
+    // const [productList, setProductList] = useState([]);
+    const [order, setOrder] = useState(1);
 
     const styleBtnEdit = {
         width: '100%',
@@ -76,7 +77,7 @@ export function ProductTable({
         },
     ];
 
-    let productList =product.items.map(item => {
+    let productList = product.items.map(item => {
         return {
             key: item._id,
             products: {
@@ -87,7 +88,7 @@ export function ProductTable({
             },
             sold: `${item.soldQuantity} / ${item.soldQuantity + item.quantity}`,
             dateAdded: moment(item.createdAt).format('LL'),
-            profit: `$ ${Math.round(item.price * item.quantity)}`
+            profit: `$ ${Math.round(item.price * item.soldQuantity)}`
         }
     });
 
@@ -97,7 +98,9 @@ export function ProductTable({
 
     return (
         <div className="product-table">
-            <Table className="table" columns={columns} dataSource={productList} />
+            <div className="scrollbar">
+                <Table className="table" columns={columns} dataSource={productList} />
+            </div>
         </div>
     );
 

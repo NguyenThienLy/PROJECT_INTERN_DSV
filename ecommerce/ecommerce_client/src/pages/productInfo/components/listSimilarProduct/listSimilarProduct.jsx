@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Col, Row } from 'antd'
+import { Card, Col, Row, Skeleton } from 'antd'
 import moment from 'moment';
 
 import './listSimilarProduct.scss';
@@ -15,16 +15,19 @@ export function ListSimilarProduct({
 }) {
     useEffect(() => {
         getListSimilarProduct(idSubCategory, idProduct);
-    }, []);
+    }, [idSubCategory, idProduct]);
 
     return (
         <div className="list-similar-product">
             <Row type="flex" justify="center" gutter={20}>
 
                 {subCategory.dataSimilarProduct.map(item => {
-                    return (<Col key={item._id} span={4}><SimilarProduct productItem={item} />  </Col>);
+                    return (
+                        <Col key={item._id} span={4}>
+                            <SimilarProduct productItem={item} />
+                        </Col>
+                    );
                 })}
-
             </Row>
         </div>
     );
