@@ -1,27 +1,27 @@
-const model = require('../models/product');
 const { ObjectId } = require('bson');
+const firebase = require('../services/firebase');
+const model = require('../models/product');
 
 module.exports.getListFitler = async (params) => {
     const list = await model.aggregate([
         {
             $lookup:
-              {
+            {
                 from: "subCategory",
                 localField: "subCategory",
                 foreignField: "_id",
                 as: "subCategoryList"
-              }
-         },
-
-         {
+            }
+        },
+        {
             $lookup:
-              {
+            {
                 from: "category",
                 localField: "category",
                 foreignField: "_id",
                 as: "categoryList"
-              }
-         }
+            }
+        }
     ]);
 
     return list;
@@ -39,8 +39,15 @@ module.exports.getItem = async (slug) => {
     return item;
 };
 
-module.exports.create = async (body) => {
-    const item = await model.create(body);
+module.exports.create = async (file, body) => {
+    if (file) {
+        const url = await firebase.uploadImageToStorage(file,123456);
+
+        console.log(url)
+    }
+
+    //const item = await model.create(body);
+    const item = 0;
 
     return item;
 };
@@ -57,3 +64,4 @@ module.exports.delete = async (id) => {
 
     return item;
 };
+

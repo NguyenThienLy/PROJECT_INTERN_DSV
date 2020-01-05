@@ -8,5 +8,13 @@
         .ant-card-body {
            padding: 10px 0 24px 0;
         }
+
+        .ant-card-cover {
+            height: 70%;
+
+            img {
+                height: 100%;
+            }
+        }
     }
 }

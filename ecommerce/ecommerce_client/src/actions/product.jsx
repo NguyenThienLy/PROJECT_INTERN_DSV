@@ -29,7 +29,7 @@ export class ProductAction {
     };
   };
 
-  getItem(slug, option) {
+  getItem(slug, option = {}) {
     return dispatch => {
       dispatch({
         type: ProductType.GET_PRODUCT_PENDING
@@ -67,6 +67,29 @@ export class ProductAction {
         type: ProductType.INCREASE_QUANTITY_PRODUCT,
         payload: { id, quantity }
       });
+    }
+  }
+
+  createProduct = (body, option = {}) => {
+    return dispatch => {
+      dispatch({
+        type: ProductType.CREATE_PRODUCT_PENDING
+      })
+      api
+        .product
+        .createProduct(body, option)
+        .then(res => {
+          dispatch({
+            type: ProductType.CREATE_PRODUCT_SUCCESS,
+            payload: res.result.object
+          })
+        })
+        .catch(error => {
+          dispatch({
+            type: ProductType.CREATE_PRODUCT_ERROR,
+            payload: error
+          })
+        })
     }
   }
 }

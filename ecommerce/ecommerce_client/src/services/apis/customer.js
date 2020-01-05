@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-import NameLocal from '../../config/localStorage'
+import NameLocal from '../../config/localStorage';
 import { CrudApi } from '../crud';
 
 export class CustomerApi extends CrudApi {
