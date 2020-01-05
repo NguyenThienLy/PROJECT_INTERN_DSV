@@ -10,7 +10,8 @@ import {
     Icon,
     Modal,
     Select,
-    Form
+    Form,
+    Spin
 } from 'antd';
 import {
     SideNav,
@@ -142,16 +143,22 @@ export function ProductAdd({
 
     const handleOnChangeSelectMutiSize = (key) => {
         const arrayValue = key.map(item => sizes[Number(item)]);
-        setInputValue(prevState => ({ ...prevState, sizeValue : arrayValue }));
+        setInputValue(prevState => ({ ...prevState, sizeValue: arrayValue }));
     };
 
     const handleOnChangeSelectMutiColor = (key) => {
         const arrayValue = key.map(item => colors[Number(item)]);
-        setInputValue(prevState => ({ ...prevState, colorValue : arrayValue }));
+        setInputValue(prevState => ({ ...prevState, colorValue: arrayValue }));
     };
 
     const handleFormSubmit = async (e) => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          });
         e.preventDefault();
+
         const body = new FormData();
         fileList.forEach(item => {
             body.append('subImage', item.originFileObj);
@@ -166,7 +173,7 @@ export function ProductAdd({
         body.append('quantity', quantityValue);
         body.append('description', descriptionValue);
 
-        createProduct(body);
+       createProduct(body);
     }
 
     useEffect(() => {
@@ -176,198 +183,200 @@ export function ProductAdd({
     }, [])
 
     return (
-        <div className="product-add-page">
-            <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
-                <img alt="example" style={{ width: '100%' }} src={previewImage} />
-            </Modal>
+        <Spin spinning={product.creating} delay={500} tip="Creating...">
+            <div className="product-add-page">
+                <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
+                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                </Modal>
 
-            <Content className="body-page">
-                <Row>
-                    <Col span={4} className="container-side-nav">
-                        <SideNav selectDefault="4" />
-                    </Col>
+                <Content className="body-page">
+                    <Row>
+                        <Col span={4} className="container-side-nav">
+                            <SideNav selectDefault="4" />
+                        </Col>
 
-                    <Col span={20} className="container-content">
-                        <HeaderSeller namePage="Products/Add" />
+                        <Col span={20} className="container-content">
+                            <HeaderSeller namePage="Products/Add" />
 
-                        <Row className="container-props">
-                            <Form onSubmit={handleFormSubmit} encType="multipart/form-data">
-                                <Form.Item className="container-photos">
-                                    <Col className="name-props photos" span={3}><p>PHOTOS</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Upload
-                                            customRequest={handleUploadFile}
-                                            accept=".jpg"
-                                            listType="picture-card"
-                                            fileList={fileList}
-                                            onPreview={handlePreview}
-                                            onChange={handleChange}
-                                            multiple={true}
+                            <Row className="container-props">
+                                <Form onSubmit={handleFormSubmit} encType="multipart/form-data">
+                                    <Form.Item className="container-photos">
+                                        <Col className="name-props photos" span={3}><p>PHOTOS</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Upload
+                                                customRequest={handleUploadFile}
+                                                accept=".jpg"
+                                                listType="picture-card"
+                                                fileList={fileList}
+                                                onPreview={handlePreview}
+                                                onChange={handleChange}
+                                                multiple={true}
 
-                                        >
-                                            {fileList.length >= 4 ? null : (
-                                                <div>
-                                                    <Icon type="plus" />
-                                                    <div className="ant-upload-text">Upload</div>
-                                                </div>
-                                            )}
-                                        </Upload>
+                                            >
+                                                {fileList.length >= 4 ? null : (
+                                                    <div>
+                                                        <Icon type="plus" />
+                                                        <div className="ant-upload-text">Upload</div>
+                                                    </div>
+                                                )}
+                                            </Upload>
 
-                                        <p className="note">You can add up to 4 photos. The 1st photo will be set as cover (main photo).</p>
-                                    </Col>
-                                </Form.Item>
+                                            <p className="note">You can add up to 4 photos. The 1st photo will be set as cover (main photo).</p>
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-input">
-                                    <Col className="name-props" span={3}><p>NAME</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Input
-                                            className="input"
-                                            placeholder="Enter name product..."
-                                            value={nameValue}
-                                            name="nameValue"
-                                            onChange={handleOnChangeInput}
-                                        />
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-input">
+                                        <Col className="name-props" span={3}><p>NAME</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Input
+                                                className="input"
+                                                placeholder="Enter name product..."
+                                                value={nameValue}
+                                                name="nameValue"
+                                                onChange={handleOnChangeInput}
+                                            />
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-select">
-                                    <Col className="name-props" span={3}><p>CATEGORIES</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Select
-                                            className="select"
-                                            placeholder="Please select category"
-                                            name="categoryValue"
-                                            onChange={handleOnSelectCategory}
-                                        >
-                                            {category.items.map(item => {
-                                                return <Option key={item._id}>{item.name}</Option>;
-                                            })}
-                                        </Select>
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-select">
+                                        <Col className="name-props" span={3}><p>CATEGORIES</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Select
+                                                className="select"
+                                                placeholder="Please select category"
+                                                name="categoryValue"
+                                                onChange={handleOnSelectCategory}
+                                            >
+                                                {category.items.map(item => {
+                                                    return <Option key={item._id}>{item.name}</Option>;
+                                                })}
+                                            </Select>
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-select">
-                                    <Col className="name-props" span={3}><p>SUB CATEGORIES</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Select
-                                            className="select"
-                                            placeholder="Please select sub category"
-                                            name="subCategoryValue"
-                                            onChange={handleOnChangeSelectSubCategory}
-                                        >
-                                            {subCategory.map(item => {
-                                                return <Option key={item._id}>{item.name}</Option>;
-                                            })}
-                                        </Select>
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-select">
+                                        <Col className="name-props" span={3}><p>SUB CATEGORIES</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Select
+                                                className="select"
+                                                placeholder="Please select sub category"
+                                                name="subCategoryValue"
+                                                onChange={handleOnChangeSelectSubCategory}
+                                            >
+                                                {subCategory.map(item => {
+                                                    return <Option key={item._id}>{item.name}</Option>;
+                                                })}
+                                            </Select>
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-select">
-                                    <Col className="name-props" span={3}><p>BRAND</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Select
-                                            className="select"
-                                            placeholder="Please select brand"
-                                            name="brandValue"
-                                            onChange={handleOnChangeSelectBrand}
-                                        >
-                                            {brand.items.map(item => {
-                                                return <Option key={item._id}>{item.name}</Option>;
-                                            })}
-                                        </Select>
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-select">
+                                        <Col className="name-props" span={3}><p>BRAND</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Select
+                                                className="select"
+                                                placeholder="Please select brand"
+                                                name="brandValue"
+                                                onChange={handleOnChangeSelectBrand}
+                                            >
+                                                {brand.items.map(item => {
+                                                    return <Option key={item._id}>{item.name}</Option>;
+                                                })}
+                                            </Select>
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-input">
-                                    <Col className="name-props" span={3}><p>PRICE($)</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Input className="input"
-                                            value={priceValue}
-                                            name="priceValue"
-                                            placeholder="Enter price product..."
-                                            onChange={handleOnChangeInput} />
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-input">
+                                        <Col className="name-props" span={3}><p>PRICE($)</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Input className="input"
+                                                value={priceValue}
+                                                name="priceValue"
+                                                placeholder="Enter price product..."
+                                                onChange={handleOnChangeInput} />
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-select">
-                                    <Col className="name-props" span={3}><p>SIZE</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Select
-                                            className="select"
-                                            mode="multiple"
-                                            placeholder="Please select size"
-                                            name="sizeValue"
-                                            onChange={handleOnChangeSelectMutiSize}
-                                        >
-                                            {sizes.map((item, index) => {
-                                                return <Option key={index}>{item}</Option>;
-                                            })}
-                                        </Select>
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-select">
+                                        <Col className="name-props" span={3}><p>SIZE</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Select
+                                                className="select"
+                                                mode="multiple"
+                                                placeholder="Please select size"
+                                                name="sizeValue"
+                                                onChange={handleOnChangeSelectMutiSize}
+                                            >
+                                                {sizes.map((item, index) => {
+                                                    return <Option key={index}>{item}</Option>;
+                                                })}
+                                            </Select>
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-select">
-                                    <Col className="name-props" span={3}><p>COLORS</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Select
-                                            className="select"
-                                            mode="multiple"
-                                            placeholder="Please select colors"
-                                            name="colorValue"
-                                            onChange={handleOnChangeSelectMutiColor}
-                                        >
-                                            {colors.map((item, index) => {
-                                                return <Option key={index}>{item.name}</Option>;
-                                            })}
-                                            {/* {['Pink', 'Pale yellow', 'Pale blue', 'Orange', 'Pale black']} */}
-                                        </Select>
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-select">
+                                        <Col className="name-props" span={3}><p>COLORS</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Select
+                                                className="select"
+                                                mode="multiple"
+                                                placeholder="Please select colors"
+                                                name="colorValue"
+                                                onChange={handleOnChangeSelectMutiColor}
+                                            >
+                                                {colors.map((item, index) => {
+                                                    return <Option key={index}>{item.name}</Option>;
+                                                })}
+                                                {/* {['Pink', 'Pale yellow', 'Pale blue', 'Orange', 'Pale black']} */}
+                                            </Select>
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-input">
-                                    <Col className="name-props" span={3}><p>QUANTITY</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <Input
-                                            className="input"
-                                            value={1}
-                                            name="quantityValue"
-                                            value={quantityValue}
-                                            placeholder="Enter quantity product..."
-                                            onChange={handleOnChangeInput} />
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-input">
+                                        <Col className="name-props" span={3}><p>QUANTITY</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <Input
+                                                className="input"
+                                                value={1}
+                                                name="quantityValue"
+                                                value={quantityValue}
+                                                placeholder="Enter quantity product..."
+                                                onChange={handleOnChangeInput} />
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-text-area">
-                                    <Col className="name-props" span={3}><p>DESCRIPTION</p></Col>
-                                    <Col span={20} offset={1}>
-                                        <TextArea
-                                            className="text-area"
-                                            rows={4}
-                                            value={descriptionValue}
-                                            name="decriptionValue"
-                                            placeholder="Enter description product..."
-                                            onChange={handleOnChangeInput} />
-                                    </Col>
-                                </Form.Item>
+                                    <Form.Item className="container-text-area">
+                                        <Col className="name-props" span={3}><p>DESCRIPTION</p></Col>
+                                        <Col span={20} offset={1}>
+                                            <TextArea
+                                                className="text-area"
+                                                rows={4}
+                                                value={descriptionValue}
+                                                name="decriptionValue"
+                                                placeholder="Enter description product..."
+                                                onChange={handleOnChangeInput} />
+                                        </Col>
+                                    </Form.Item>
 
-                                <Form.Item className="container-btn">
-                                    <Col span={4} offset={15}>
-                                        <Button className="btn-secondary" type="primary">Cancel</Button>
-                                    </Col>
-                                    <Col span={4} offset={1}>
-                                        <Button
-                                            className="btn-primary"
-                                            type="primary"
-                                            htmlType="submit"
-                                        >Complete</Button>
-                                    </Col>
-                                </Form.Item>
-                            </Form>
-                        </Row>
-                    </Col>
-                </Row>
-            </Content>
-        </div >
+                                    <Form.Item className="container-btn">
+                                        <Col span={4} offset={15}>
+                                            <Button className="btn-secondary" type="primary">Cancel</Button>
+                                        </Col>
+                                        <Col span={4} offset={1}>
+                                            <Button
+                                                className="btn-primary"
+                                                type="primary"
+                                                htmlType="submit"
+                                            >Complete</Button>
+                                        </Col>
+                                    </Form.Item>
+                                </Form>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Content>
+            </div >
+        </Spin>
     );
 }
 

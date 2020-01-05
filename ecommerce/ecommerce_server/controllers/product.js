@@ -23,6 +23,12 @@ module.exports.getListFitler = async (params) => {
                 foreignField: "_id",
                 as: "categoryList"
             }
+        },
+        {
+            $sort: { createdAt: -1 }
+        },
+        {
+            $limit : 12
         }
     ]);
 

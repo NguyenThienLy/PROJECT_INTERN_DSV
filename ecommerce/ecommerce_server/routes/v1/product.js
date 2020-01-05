@@ -1,6 +1,7 @@
 const express = require("express");
 const Multer = require('multer');
 
+const authencation = require("../../middlewares/authencation");
 const controller = require("../../controllers/product");
 const router = express.Router();
 
@@ -42,10 +43,13 @@ router.get('/:slug', async (req, res) => {
 });
 
 // Create one
-router.post('/', multer.array("subImage"), async (req, res) => {
+router.post('/', authencation.isAuth, multer.array("subImage"), async (req, res) => {
     try {
-        const result = await controller.create(req.files, req.body);
-        res.status(200).json({ code: 200, result: { object: result } });
+        if (req.authInfo === "seller") {
+            const result = await controller.create(req.files, req.body);
+            res.status(200).json({ code: 200, result: { object: result } });
+        }
+        else { res.status(401).json({ message: 'You need login!' }); }
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

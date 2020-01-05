@@ -35,7 +35,7 @@ export class ProductApi extends CrudApi {
   }
 
   async createProduct(body, option = {}) {
-    const tokenJWT = localStorage.getItem(NameLocal.TOKEN_JWT);
+    const tokenJWT = localStorage.getItem(NameLocal.TOKEN_JWT_ADMIN);
 
     let url = this.baseUrl();
     const query = this._serialize(option.query || {});

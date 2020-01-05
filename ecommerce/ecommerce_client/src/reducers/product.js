@@ -10,6 +10,10 @@ export class ProductReducer {
       fetching: false,
       fetchError: null,
 
+      creating: false,
+      isCreateSuccess: false,
+      createError: null,
+
       getting: false,
       isGetSuccess: false,
       getError: null,
@@ -108,6 +112,40 @@ export class ProductReducer {
           };
         }
         break;
+
+
+      // creating data pedding
+      case ProductType.CREATE_PRODUCT_PENDING:
+        state = {
+          ...state,
+          creating: true,
+          isCreateSuccess: false,
+          createError: null
+        };
+        break;
+
+
+      // creating item success
+      case ProductType.CREATE_PRODUCT_SUCCESS:
+        state = {
+          ...state,
+          creating: false,
+          isCreateSuccess: true,
+          createError: null
+        };
+
+        break;
+
+      // creating item error
+      case ProductType.CREATE_PRODUCT_PENDING:
+        state = {
+          ...state,
+          creating: false,
+          isCreateSuccess: false,
+          createError: null
+        };
+        break;
+
     }
 
     return state;
