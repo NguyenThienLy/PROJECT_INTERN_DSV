@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema({
         ref: "SubCategory",
         required: true
     },
-    subCategory: {
+    category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
         required: true

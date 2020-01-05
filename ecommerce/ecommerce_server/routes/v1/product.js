@@ -42,9 +42,9 @@ router.get('/:slug', async (req, res) => {
 });
 
 // Create one
-router.post('/', multer.single('mainImage'), async (req, res) => {
+router.post('/', multer.array("subImage"), async (req, res) => {
     try {
-        const result = await controller.create(req.file, req.body);
+        const result = await controller.create(req.files, req.body);
         res.status(200).json({ code: 200, result: { object: result } });
     } catch (err) {
         res.status(500).json({ message: err.message });

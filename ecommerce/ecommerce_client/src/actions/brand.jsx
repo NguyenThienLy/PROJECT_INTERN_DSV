@@ -27,4 +27,27 @@ export class BrandAction {
                 })
         }
     }
+
+    getList = (option = {}) => {
+        return dispatch => {
+            dispatch({
+                type: BrandType.FETCH_BRAND_PENDING
+            })
+            api
+                .brand
+                .getList(option)
+                .then(res => {
+                    dispatch({
+                        type: BrandType.FETCH_BRAND_SUCCESS,
+                        payload: res.result.object
+                    })
+                })
+                .catch(error => {
+                    dispatch({
+                        type: BrandType.FETCH_BRAND_ERROR,
+                        payload: error
+                    })
+                })
+        }
+    }
 }

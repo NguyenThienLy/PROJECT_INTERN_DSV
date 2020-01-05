@@ -15,41 +15,47 @@ const storage = new Storage({
 
 const bucket = storage.bucket(bucketName);
 
-module.exports.uploadImageToStorage = (file, productID) => {
+module.exports.uploadImageToStorage = (files, productID) => {
     return new Promise((resolve, reject) => {
-        if (!file) {
+        let urls = [];
+
+        if (!files) {
             reject('No image file');
         }
-        // new local file
-        let newLocalName = Date.now();
-        // create path 
-        let fileUpload = bucket.file(`/ProductImages/${productID}/` + newLocalName);
-        // upload image
-        let uuid = UUID();
 
-        const metadata = {
-            contentType: file.mimetype,
-            metadata: {
-                firebaseStorageDownloadTokens: uuid
-            }
-        };
+        files.forEach(file => {
+            // new local file
+            let newLocalName = Date.now();
+            // create path 
+            let fileUpload = bucket.file(`/ProductImages/${productID}/` + newLocalName);
+            // upload image
+            let uuid = UUID();
 
-        const blobStream = fileUpload.createWriteStream({
-            metadata: metadata,
-            resumable: false
+            const metadata = {
+                contentType: file.mimetype,
+                metadata: {
+                    firebaseStorageDownloadTokens: uuid
+                }
+            };
+
+            const blobStream = fileUpload.createWriteStream({
+                metadata: metadata,
+                resumable: false
+            });
+
+            blobStream.on('error', (error) => {
+                reject(error);
+            });
+
+            blobStream.on('finish', () => {
+                urls.push(getPublicUrl(newLocalName, productID, uuid));
+
+                if (urls.length === files.length)
+                    resolve(urls);
+            });
+
+            blobStream.end(file.buffer);
         });
-
-        blobStream.on('error', (error) => {
-            reject(error);
-        });
-
-        blobStream.on('finish', () => {
-            const url = getPublicUrl(newLocalName, productID, uuid);
-
-            resolve(url);
-        });
-
-        blobStream.end(file.buffer);
     });
 }
 

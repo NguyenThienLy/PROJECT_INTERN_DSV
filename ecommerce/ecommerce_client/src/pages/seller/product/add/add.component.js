@@ -31,16 +31,73 @@ function getBase64(file) {
 }
 
 export function ProductAdd({
-    createProduct
+    seller,
+    product,
+    category,
+    brand,
+    createProduct,
+    getListBrand,
+    getListCategory
 }) {
     const { Content } = Layout;
     const { TextArea } = Input;
     const { Option } = Select;
+    const initialInputValue = {
+        nameValue: "",
+        categoryValue: "",
+        subCategoryValue: "",
+        brandValue: "",
+        priceValue: 1.00,
+        sizeValue: ['S'],
+        colorValue: [{
+            code: "#ff5f6d",
+            name: "Pink"
+        }],
+        quantityValue: 1,
+        descriptionValue: "No decription"
+    };
 
+    const [sizes, setSizes] = useState(['S', 'M', 'L']);
+    const [colors, setColors] = useState([
+        {
+            code: "#ff5f6d",
+            name: "Pink"
+        },
+        {
+            code: "rgba(255, 195, 113, 0.5)",
+            name: "Pale yellow"
+        },
+        {
+            code: "rgba(95, 109, 255, 0.5)",
+            name: "Pale blue"
+        },
+        {
+            code: "rgba(255, 161, 95, 0.5)",
+            name: "Orange"
+        },
+        {
+            code: "rgba(61, 61, 63, 0.5)",
+            name: "Pale black"
+        }
+    ]);
     const [previewImage, setPreviewImage] = useState('');
     const [previewVisible, setPreviewVisible] = useState(false);
     const [fileList, setFileList] = useState([]);
-    const [file, setFile] = useState(null);
+    const [subCategory, setSubCategory] = useState([]);
+    const [{
+        nameValue,
+        categoryValue,
+        subCategoryValue,
+        brandValue,
+        priceValue,
+        sizeValue,
+        colorValue,
+        quantityValue,
+        descriptionValue
+    },
+        setInputValue
+    ] = useState(initialInputValue);
+
 
     const handleCancel = () => setPreviewVisible(false);
 
@@ -58,32 +115,65 @@ export function ProductAdd({
     };
 
     const handleUploadFile = ({ file, onSuccess }) => {
-        console.log(file);
         setTimeout(() => {
             onSuccess("ok");
         }, 0)
     }
 
+    const handleOnChangeInput = e => {
+        const { name, value } = e.target;
+        setInputValue(prevState => ({ ...prevState, [name]: value }));
+    };
+
+    const handleOnSelectCategory = (key) => {
+        const item = category.items.find(item => item._id === key);
+
+        setInputValue(prevState => ({ ...prevState, categoryValue: key }));
+        setSubCategory(item.listSub);
+    };
+
+    const handleOnChangeSelectSubCategory = (key) => {
+        setInputValue(prevState => ({ ...prevState, subCategoryValue: key }));
+    };
+
+    const handleOnChangeSelectBrand = (key) => {
+        setInputValue(prevState => ({ ...prevState, brandValue: key }));
+    };
+
+    const handleOnChangeSelectMutiSize = (key) => {
+        const arrayValue = key.map(item => sizes[Number(item)]);
+        setInputValue(prevState => ({ ...prevState, sizeValue : arrayValue }));
+    };
+
+    const handleOnChangeSelectMutiColor = (key) => {
+        const arrayValue = key.map(item => colors[Number(item)]);
+        setInputValue(prevState => ({ ...prevState, colorValue : arrayValue }));
+    };
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-       // console.log(fileList)
-
         const body = new FormData();
-        body.append('mainImage', fileList[0].originFileObj);
-        body.append('name', "Product 1")
-        body.append('category', "ABC");
+        fileList.forEach(item => {
+            body.append('subImage', item.originFileObj);
+        })
+        body.append('name', nameValue);
+        body.append('category', categoryValue);
+        body.append('subCategory', subCategoryValue);
+        body.append('brand', brandValue);
+        body.append('price', priceValue);
+        body.append('size', JSON.stringify(sizeValue));
+        body.append('color', JSON.stringify(colorValue));
+        body.append('quantity', quantityValue);
+        body.append('description', descriptionValue);
 
         createProduct(body);
     }
 
-    // const onChangeHandler = event => {
-    //     setFile(event.target.files[0]);
-    // }
-
     useEffect(() => {
+        getListBrand();
+        getListCategory();
 
-    })
+    }, [])
 
     return (
         <div className="product-add-page">
@@ -108,11 +198,12 @@ export function ProductAdd({
                                         <Upload
                                             customRequest={handleUploadFile}
                                             accept=".jpg"
-                                            // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                             listType="picture-card"
                                             fileList={fileList}
                                             onPreview={handlePreview}
                                             onChange={handleChange}
+                                            multiple={true}
+
                                         >
                                             {fileList.length >= 4 ? null : (
                                                 <div>
@@ -129,7 +220,13 @@ export function ProductAdd({
                                 <Form.Item className="container-input">
                                     <Col className="name-props" span={3}><p>NAME</p></Col>
                                     <Col span={20} offset={1}>
-                                        <Input className="input" placeholder="Enter name product..." />
+                                        <Input
+                                            className="input"
+                                            placeholder="Enter name product..."
+                                            value={nameValue}
+                                            name="nameValue"
+                                            onChange={handleOnChangeInput}
+                                        />
                                     </Col>
                                 </Form.Item>
 
@@ -138,14 +235,13 @@ export function ProductAdd({
                                     <Col span={20} offset={1}>
                                         <Select
                                             className="select"
-                                            mode="multiple"
-                                            placeholder="Please select categories"
-                                            defaultValue={["Men", "Girls"]}
+                                            placeholder="Please select category"
+                                            name="categoryValue"
+                                            onChange={handleOnSelectCategory}
                                         >
-                                            <Option key="Men">Men</Option>
-                                            <Option key="Girls">Girls</Option>
-                                            <Option key="Boys">Boys</Option>
-                                            <Option key="Ladies">Ladies</Option>
+                                            {category.items.map(item => {
+                                                return <Option key={item._id}>{item.name}</Option>;
+                                            })}
                                         </Select>
                                     </Col>
                                 </Form.Item>
@@ -155,14 +251,13 @@ export function ProductAdd({
                                     <Col span={20} offset={1}>
                                         <Select
                                             className="select"
-                                            mode="multiple"
-                                            placeholder="Please select sub categories"
-                                            defaultValue={["Men", "Girls"]}
+                                            placeholder="Please select sub category"
+                                            name="subCategoryValue"
+                                            onChange={handleOnChangeSelectSubCategory}
                                         >
-                                            <Option key="Men">Men</Option>
-                                            <Option key="Girls">Girls</Option>
-                                            <Option key="Boys">Boys</Option>
-                                            <Option key="Ladies">Ladies</Option>
+                                            {subCategory.map(item => {
+                                                return <Option key={item._id}>{item.name}</Option>;
+                                            })}
                                         </Select>
                                     </Col>
                                 </Form.Item>
@@ -172,10 +267,13 @@ export function ProductAdd({
                                     <Col span={20} offset={1}>
                                         <Select
                                             className="select"
-                                            defaultValue="Zara" >
-                                            <Option value="H&M">H&M</Option>
-                                            <Option value="Dior">Dior</Option>
-                                            <Option value="VL">VL</Option>
+                                            placeholder="Please select brand"
+                                            name="brandValue"
+                                            onChange={handleOnChangeSelectBrand}
+                                        >
+                                            {brand.items.map(item => {
+                                                return <Option key={item._id}>{item.name}</Option>;
+                                            })}
                                         </Select>
                                     </Col>
                                 </Form.Item>
@@ -183,7 +281,11 @@ export function ProductAdd({
                                 <Form.Item className="container-input">
                                     <Col className="name-props" span={3}><p>PRICE($)</p></Col>
                                     <Col span={20} offset={1}>
-                                        <Input className="input" placeholder="Enter price product..." />
+                                        <Input className="input"
+                                            value={priceValue}
+                                            name="priceValue"
+                                            placeholder="Enter price product..."
+                                            onChange={handleOnChangeInput} />
                                     </Col>
                                 </Form.Item>
 
@@ -194,11 +296,12 @@ export function ProductAdd({
                                             className="select"
                                             mode="multiple"
                                             placeholder="Please select size"
-                                            defaultValue={["S", "M", "L"]}
+                                            name="sizeValue"
+                                            onChange={handleOnChangeSelectMutiSize}
                                         >
-                                            <Option key="S">S</Option>
-                                            <Option key="M">M</Option>
-                                            <Option key="L">L</Option>
+                                            {sizes.map((item, index) => {
+                                                return <Option key={index}>{item}</Option>;
+                                            })}
                                         </Select>
                                     </Col>
                                 </Form.Item>
@@ -210,13 +313,12 @@ export function ProductAdd({
                                             className="select"
                                             mode="multiple"
                                             placeholder="Please select colors"
-                                            defaultValue={["Pink"]}
+                                            name="colorValue"
+                                            onChange={handleOnChangeSelectMutiColor}
                                         >
-                                            <Option key="Pink">Pink</Option>
-                                            <Option key="Pale yellow">Pale yellow</Option>
-                                            <Option key="Pale blue">Pale blu</Option>
-                                            <Option key="Orange">Orange</Option>
-                                            <Option key="Pale black">Pale black</Option>
+                                            {colors.map((item, index) => {
+                                                return <Option key={index}>{item.name}</Option>;
+                                            })}
                                             {/* {['Pink', 'Pale yellow', 'Pale blue', 'Orange', 'Pale black']} */}
                                         </Select>
                                     </Col>
@@ -225,14 +327,26 @@ export function ProductAdd({
                                 <Form.Item className="container-input">
                                     <Col className="name-props" span={3}><p>QUANTITY</p></Col>
                                     <Col span={20} offset={1}>
-                                        <Input className="input" placeholder="Enter quantity product..." />
+                                        <Input
+                                            className="input"
+                                            value={1}
+                                            name="quantityValue"
+                                            value={quantityValue}
+                                            placeholder="Enter quantity product..."
+                                            onChange={handleOnChangeInput} />
                                     </Col>
                                 </Form.Item>
 
                                 <Form.Item className="container-text-area">
                                     <Col className="name-props" span={3}><p>DESCRIPTION</p></Col>
                                     <Col span={20} offset={1}>
-                                        <TextArea className="text-area" rows={4} placeholder="Enter description product..." />
+                                        <TextArea
+                                            className="text-area"
+                                            rows={4}
+                                            value={descriptionValue}
+                                            name="decriptionValue"
+                                            placeholder="Enter description product..."
+                                            onChange={handleOnChangeInput} />
                                     </Col>
                                 </Form.Item>
 
@@ -249,12 +363,6 @@ export function ProductAdd({
                                     </Col>
                                 </Form.Item>
                             </Form>
-
-
-                            {/* <form encType="multipart/form-data" onSubmit={handleFormSubmit}>
-                                <input type="file" name="file" onChange={onChangeHandler}/>
-                                 <button type="submit"> sumbmit</button>
-                            </form> */}
                         </Row>
                     </Col>
                 </Row>

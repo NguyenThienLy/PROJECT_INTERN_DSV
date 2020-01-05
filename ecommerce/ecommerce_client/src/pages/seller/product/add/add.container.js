@@ -6,11 +6,13 @@ const mapStateToProps = (state, ownProps) => ({
     seller: state.seller,
     product: state.product,
     category: state.category,
-    subCategory: state.subCategory
+    brand: state.brand
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     createProduct: (body) => dispatch(action.product.createProduct(body)),
+    getListBrand: () => dispatch(action.brand.getList()),
+    getListCategory: () => dispatch(action.category.getList())
 });
 
 export default connect(
