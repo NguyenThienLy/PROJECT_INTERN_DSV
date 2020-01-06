@@ -78,9 +78,9 @@ export class SellerReducer {
 
             // Getting data for logout success
             case SellerType.FETCH_LOGOUT_SUCCESS:
-                localStorage.removeItem(NameItem.TOKEN_JWT);
-                localStorage.removeItem(NameItem.USER_INFO);
-                localStorage.removeItem(NameItem.EXPIRED_TOKEN);
+                localStorage.removeItem(NameItem.TOKEN_JWT_ADMIN);
+                localStorage.removeItem(NameItem.USER_INFO_ADMIN);
+                localStorage.removeItem(NameItem.EXPIRED_TOKEN_ADMIN);
 
                 state = {
                     ...state,

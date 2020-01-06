@@ -42,7 +42,8 @@ export function ProductUpdate({
     getListCategory,
     getItem,
     match,
-    form
+    form,
+    logout
 }) {
     const { getFieldDecorator, validateFields } = form;
     const { Content } = Layout;
@@ -278,7 +279,7 @@ export function ProductUpdate({
                     </Col>
 
                     <Col span={20} className="container-content">
-                        <HeaderSeller namePage="Products/Update" />
+                        <HeaderSeller logout={logout} namePage="Products/Update" />
 
                         <Row className="container-props">
                             <Form onSubmit={handleFormSubmit} encType="multipart/form-data">

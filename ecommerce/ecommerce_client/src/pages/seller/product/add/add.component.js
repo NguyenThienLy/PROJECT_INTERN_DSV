@@ -39,7 +39,8 @@ export function ProductAdd({
     brand,
     createProduct,
     getListBrand,
-    getListCategory
+    getListCategory,
+    logout
 }) {
     const { Content } = Layout;
     const { TextArea } = Input;
@@ -209,7 +210,7 @@ export function ProductAdd({
                     </Col>
 
                     <Col span={20} className="container-content">
-                        <HeaderSeller namePage="Products/Add" />
+                        <HeaderSeller logout={logout} namePage="Products/Add" />
 
                         <Row className="container-props">
                             <Form onSubmit={handleFormSubmit} encType="multipart/form-data">

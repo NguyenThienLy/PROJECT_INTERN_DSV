@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  
+    logout: () => dispatch(action.seller.logout())
 });
 
 export default connect(

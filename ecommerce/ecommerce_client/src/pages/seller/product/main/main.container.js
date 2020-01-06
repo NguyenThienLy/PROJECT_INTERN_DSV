@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    getProductFilter: (filter = {}) => dispatch(action.product.getProductFilter(filter))
+    getProductFilter: (filter = {}) => dispatch(action.product.getProductFilter(filter)),
+    logout: () => dispatch(action.seller.logout())
 });
 
 export default connect(

@@ -51,7 +51,7 @@ export function SideNav({
                         <Link className="link-name" to="/seller/product-add">Add</Link>
                     </Menu.Item>
                     <Menu.Item key="5">
-                        <Link className="link-name" to="/seller/product-update">Update</Link>
+                        Update
                     </Menu.Item>
                 </SubMenu>
                 <Menu.Item key="6">

@@ -19,7 +19,6 @@ router.post('/login', async (req, res) => {
 router.get('/logout', async (req, res) => {
     try {
         const token = req.headers['authorization'].split(' ')[1];
-        console.log("token", token);
         const result = await controller.logout(token);
         res.status(200).json({ code: 200, result: { object: result }});
     } catch (err) {
