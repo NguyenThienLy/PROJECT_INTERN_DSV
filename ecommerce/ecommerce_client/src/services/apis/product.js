@@ -58,4 +58,29 @@ export class ProductApi extends CrudApi {
       throw res
     }
   }
+
+  async updateProduct(id, body, option = {}) {
+    const tokenJWT = localStorage.getItem(NameLocal.TOKEN_JWT_ADMIN);
+
+    let url = this.baseUrl(id);
+    const query = this._serialize(option.query || {});
+    url += `${query}`;
+
+    const options = {
+      method: "PUT",
+      headers: _.merge(
+        {
+          "User-Agent": "Request-Promise",
+          "authorization": `Bearer ${tokenJWT}`
+        }
+      ),
+      body: body
+    };
+    const res = await this.exec(url, options);
+    if (res.code && res.code === 200) {
+      return res;
+    } else {
+      throw res
+    }
+  }
 }

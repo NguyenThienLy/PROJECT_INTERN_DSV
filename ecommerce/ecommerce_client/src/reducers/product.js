@@ -17,6 +17,10 @@ export class ProductReducer {
       getting: false,
       isGetSuccess: false,
       getError: null,
+
+      updating: false,
+      isUpdateSuccess: false,
+      updateError: null,
     };
   }
 
@@ -113,7 +117,6 @@ export class ProductReducer {
         }
         break;
 
-
       // creating data pedding
       case ProductType.CREATE_PRODUCT_PENDING:
         state = {
@@ -124,7 +127,6 @@ export class ProductReducer {
         };
         break;
 
-
       // creating item success
       case ProductType.CREATE_PRODUCT_SUCCESS:
         state = {
@@ -133,11 +135,12 @@ export class ProductReducer {
           isCreateSuccess: true,
           createError: null
         };
+        state.items.unshift(action.payload);
 
         break;
 
       // creating item error
-      case ProductType.CREATE_PRODUCT_PENDING:
+      case ProductType.CREATE_PRODUCT_ERROR:
         state = {
           ...state,
           creating: false,
@@ -146,6 +149,42 @@ export class ProductReducer {
         };
         break;
 
+      // update data pedding
+      case ProductType.UPDATE_PRODUCT_PENDING:
+        state = {
+          ...state,
+          updating: true,
+          isUpdateSuccess: false,
+          updateError: null,
+        };
+        break;
+
+      // update item success
+      case ProductType.UPDATE_PRODUCT_SUCCESS:
+        state = {
+          ...state,
+          creating: false,
+          isCreateSuccess: true,
+          createError: null
+        };
+        // const itemUpdate = state.items.findIndex(item => {
+        //   return item._id === action.payload._id;
+        // });
+        // if (itemUpdate !== -1) {
+        //   state.items[itemUpdate] = action.payload;
+        // }
+
+        break;
+
+      // update item error
+      case ProductType.UPDATE_PRODUCT_ERROR:
+        state = {
+          ...state,
+          updating: false,
+          isUpdateSuccess: false,
+          updateError: action.payload,
+        };
+        break;
     }
 
     return state;

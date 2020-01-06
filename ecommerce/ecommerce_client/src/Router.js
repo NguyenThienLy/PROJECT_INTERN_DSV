@@ -11,7 +11,7 @@ import LoginSellerPage from './pages/seller/loginSellerPage/loginSellerPage.cont
 import OrderPage from './pages/seller/orderPage/orderPage.component';
 import ProductAdd from './pages/seller/product/add/add.container';
 import ProductMain from './pages/seller/product/main/main.container';
-import ProductUpdate from './pages/seller/product/update/update.component';
+import ProductUpdate from './pages/seller/product/update/update.container';
 
 const Router = () => (
     <Switch>
