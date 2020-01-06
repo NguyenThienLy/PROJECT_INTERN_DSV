@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Tag, Button, Dropdown, Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import './productTable.scss';
@@ -26,17 +27,6 @@ export function ProductTable({
         backgroundColor: '#ff5f6d',
         border: 'none'
     };
-
-    const menu = (
-        <Menu>
-            <Menu.Item>
-                <Button style={styleBtnEdit} className="btn-action-product-table" type="primary" icon="edit">Edit</Button>
-            </Menu.Item>
-            <Menu.Item>
-                <Button style={styleBtnRemove} className="btn-action-product-table" type="primary" icon="delete">Remove</Button>
-            </Menu.Item>
-        </Menu>
-    );
 
     const columns = [
         {
@@ -68,7 +58,16 @@ export function ProductTable({
             title: 'ACTION',
             dataIndex: 'action',
             key: 'action',
-            render: () => (<Dropdown overlay={menu}>
+            render: (slug) => (<Dropdown overlay={
+                <Menu>
+                    <Menu.Item>
+                        <Link to={`/seller/product-update/${slug}`}><Button style={styleBtnEdit} className="btn-action-product-table" type="primary" icon="edit">Edit</Button></Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Button style={styleBtnRemove} className="btn-action-product-table" type="primary" icon="delete">Remove</Button>
+                    </Menu.Item>
+                </Menu>
+            }>
                 <span className="ant-dropdown-link">
                     Actions <Icon type="down" />
                 </span>
@@ -88,7 +87,8 @@ export function ProductTable({
             },
             sold: `${item.soldQuantity} / ${item.soldQuantity + item.quantity}`,
             dateAdded: moment(item.createdAt).format('LL'),
-            profit: `$ ${Math.round(item.price * item.soldQuantity)}`
+            profit: `$ ${Math.round(item.price * item.soldQuantity)}`,
+            action: item.slug
         }
     });
 

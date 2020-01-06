@@ -10,7 +10,6 @@ const invalidTokenModel = require('../models/invalidToken');
 exports.isAuth = async (req, res, next) => {
     try {
         const authorization =req.headers['authorization'];
-        console.log("authorization", authorization)
 
         if (!authorization) res.status(401).json({ message: 'You need login!' });
 

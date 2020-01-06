@@ -25,10 +25,19 @@ module.exports.getListFitler = async (params) => {
             }
         },
         {
+            $lookup:
+            {
+                from: "brand",
+                localField: "brand",
+                foreignField: "_id",
+                as: "brandList"
+            }
+        },
+        {
             $sort: { createdAt: -1 }
         },
         {
-            $limit : 12
+            $limit: 12
         }
     ]);
 
@@ -42,9 +51,40 @@ module.exports.getList = async () => {
 };
 
 module.exports.getItem = async (slug) => {
-    const item = await model.findOne({ slug });
+    const item = await model.aggregate([
+        {
+            $match: { slug: slug }
+        },
+        {
+            $lookup:
+            {
+                from: "subCategory",
+                localField: "subCategory",
+                foreignField: "_id",
+                as: "subCategoryList"
+            }
+        },
+        {
+            $lookup:
+            {
+                from: "category",
+                localField: "category",
+                foreignField: "_id",
+                as: "categoryList"
+            }
+        },
+        {
+            $lookup:
+            {
+                from: "brand",
+                localField: "brand",
+                foreignField: "_id",
+                as: "brandList"
+            }
+        }
+    ]);
 
-    return item;
+    return item[0];
 };
 
 module.exports.create = async (files, body) => {
@@ -84,9 +124,11 @@ module.exports.create = async (files, body) => {
     return item;
 };
 
-module.exports.update = async (id, body) => {
-    const item = await model.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
+module.exports.update = async (id, files, body) => {
+    console.log("id", "files", "body", id, files, body)
+    // const item = await model.findOneAndUpdate({ _id: new ObjectId(id) }, body, { new: true });
 
+    let item = 0;
     return item;
 };
 

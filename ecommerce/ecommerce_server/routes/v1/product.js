@@ -56,10 +56,12 @@ router.post('/', authencation.isAuth, multer.array("subImage"), async (req, res)
 });
 
 // Update one
-router.put('/:id', async (req, res) => {
+router.put('/:id', authencation.isAuth, multer.array("subImage"), async (req, res) => {
     try {
-        const result = await controller.update(req.params.id, req.body);
-        res.status(200).json({ code: 200, result: { object: result } });
+        if (req.authInfo === "seller") {
+            const result = await controller.update(req.params.id, req.files, req.body);
+            res.status(200).json({ code: 200, result: { object: result } });
+        }
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

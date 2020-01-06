@@ -92,4 +92,27 @@ export class ProductAction {
         })
     }
   }
+
+  updateProduct = (id, body, option = {}) => {
+    return dispatch => {
+      dispatch({
+        type: ProductType.UPDATE_PRODUCT_PENDING
+      })
+      api
+        .product
+        .updateProduct(id, body, option)
+        .then(res => {
+          dispatch({
+            type: ProductType.UPDATE_PRODUCT_SUCCESS,
+            payload: res.result.object
+          })
+        })
+        .catch(error => {
+          dispatch({
+            type: ProductType.UPDATE_PRODUCT_ERROR,
+            payload: error
+          })
+        })
+    }
+  }
 }
