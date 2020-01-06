@@ -11,7 +11,8 @@ import {
     Modal,
     Select,
     Form,
-    Spin
+    Spin,
+    message
 } from 'antd';
 import {
     SideNav,
@@ -63,6 +64,7 @@ export function ProductUpdate({
         quantityValue: 1,
         descriptionValue: "No decription"
     };
+    const keyMessage = 'updatable';
 
     const [sizes, setSizes] = useState(['S', 'M', 'L']);
     const [colors, setColors] = useState([
@@ -142,14 +144,10 @@ export function ProductUpdate({
     };
 
     const handleOnChangeSelectSubCategory = (key) => {
-        const item = subCategory.find(item => item._id === key);
-
         setInputValue(prevState => ({ ...prevState, subCategoryValue: key }));
     };
 
     const handleOnChangeSelectBrand = (key) => {
-        const item = brand.items.find(item => item._id === key);
-
         setInputValue(prevState => ({ ...prevState, brandValue: key }));
     };
 
@@ -170,6 +168,7 @@ export function ProductUpdate({
             behavior: 'smooth',
         });
         e.preventDefault();
+        message.loading({ content: 'creating...', keyMessage });
 
         const listLink = [];
         const body = new FormData();
@@ -179,6 +178,7 @@ export function ProductUpdate({
             else
                 body.append('subImage', item.originFileObj);
         })
+
         body.append('listLink', JSON.stringify(listLink))
         body.append('name', nameValue);
         body.append('category', categoryValue);
@@ -250,7 +250,20 @@ export function ProductUpdate({
             getListBrand();
             getListCategory();
         }
-    }, [product.isGetSuccess])
+
+        // if (!product.updating &&
+        //     product.isUpdateSuccess &&
+        //     product.updateError === null) {
+        //         console.log("true")
+        //     message.success({ content: 'Update product success!', keyMessage, duration: 2 });
+        // }
+        // else if (!product.updating &&
+        //     !product.isUpdateSuccess &&
+        //     product.updateError !== null) {
+        //         console.log("false")
+        //     message.error({ content: 'Update product fail!', keyMessage, duration: 2 });
+        // }
+    }, [product.isGetSuccess, product.isUpdateSuccess])
 
     return (
         <div className="product-update-page">
@@ -302,6 +315,7 @@ export function ProductUpdate({
                                         })(
                                             <Input
                                                 className="input"
+                                                name="nameValue"
                                                 placeholder="Enter name product..."
                                                 onChange={handleOnChangeInput}
                                             />
@@ -373,6 +387,7 @@ export function ProductUpdate({
                                             rules: [{ required: true, message: 'Please input price product!' }]
                                         })(
                                             <Input className="input"
+                                                name="priceValue"
                                                 placeholder="Enter price product..."
                                                 onChange={handleOnChangeInput} />
                                         )}
@@ -429,6 +444,7 @@ export function ProductUpdate({
                                         })(
                                             <Input
                                                 className="input"
+                                                name="quantityValue"
                                                 placeholder="Enter quantity product..."
                                                 onChange={handleOnChangeInput} />
                                         )}
@@ -444,6 +460,7 @@ export function ProductUpdate({
                                             <TextArea
                                                 className="text-area"
                                                 rows={4}
+                                                name="descriptionValue"
                                                 placeholder="Enter description product..."
                                                 onChange={handleOnChangeInput} />
                                         )}

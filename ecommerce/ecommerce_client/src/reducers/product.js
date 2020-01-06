@@ -167,12 +167,12 @@ export class ProductReducer {
           isCreateSuccess: true,
           createError: null
         };
-        const itemUpdate = state.items.findIndex(item => {
-          return item._id === action.payload._id;
-        });
-        if (itemUpdate !== -1) {
-          state.items[itemUpdate] = action.payload;
-        }
+        // const itemUpdate = state.items.findIndex(item => {
+        //   return item._id === action.payload._id;
+        // });
+        // if (itemUpdate !== -1) {
+        //   state.items[itemUpdate] = action.payload;
+        // }
 
         break;
 
