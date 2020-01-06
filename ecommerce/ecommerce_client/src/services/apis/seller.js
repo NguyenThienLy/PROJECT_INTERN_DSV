@@ -35,7 +35,7 @@ export class SellerApi extends CrudApi {
     }
 
     async logout() {
-        const tokenJWT = localStorage.getItem(NameLocal.TOKEN_JWT);
+        const tokenJWT = localStorage.getItem(NameLocal.TOKEN_JWT_ADMIN);
 
         let url = this.baseUrl("logout");
         const query = this._serialize({});

@@ -25,7 +25,7 @@ function ProductList({
     useEffect(() => {
         //order, color, brand, size, status, subCategory, category
         getProductFilter({order: 11});
-    }, []);
+    }, [product.items]);
 
     return (
         <div className="product-list">

@@ -8,7 +8,7 @@ import ProductList from './pages/productList/productList.container';
 import ShoppingCart from './pages/shoppingCart/shoppingCart.container';
 
 import LoginSellerPage from './pages/seller/loginSellerPage/loginSellerPage.container';
-import OrderPage from './pages/seller/orderPage/orderPage.component';
+import OrderPage from './pages/seller/orderPage/orderPage.container';
 import ProductAdd from './pages/seller/product/add/add.container';
 import ProductMain from './pages/seller/product/main/main.container';
 import ProductUpdate from './pages/seller/product/update/update.container';

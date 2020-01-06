@@ -135,7 +135,6 @@ export class ProductReducer {
           isCreateSuccess: true,
           createError: null
         };
-        state.items.unshift(action.payload);
 
         break;
 

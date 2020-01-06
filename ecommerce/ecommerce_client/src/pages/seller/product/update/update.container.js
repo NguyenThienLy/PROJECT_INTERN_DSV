@@ -13,7 +13,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     updateProduct: (id, body) => dispatch(action.product.updateProduct(id, body)),
     getListBrand: () => dispatch(action.brand.getList()),
     getListCategory: () => dispatch(action.category.getList()),
-    getItem: (slug) => dispatch(action.product.getItem(slug))
+    getItem: (slug) => dispatch(action.product.getItem(slug)),
+    logout: () => dispatch(action.seller.logout())
 });
 
 export default connect(

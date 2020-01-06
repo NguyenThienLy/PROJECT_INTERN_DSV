@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
+const invalidToken = require('../models/invalidToken');
 const model = require('../models/seller');
 const { ObjectId } = require('bson');
 const saltRounds = 10;
@@ -40,6 +41,12 @@ module.exports.login = async (body) => {
     };
 }
 
+module.exports.logout = async (token) => {
+    const item = await invalidToken.create({ token });
+
+    return item
+}
+
 module.exports.getList = async () => {
     const list = await model.find();
 
@@ -54,7 +61,7 @@ module.exports.getItem = async (id) => {
 
 module.exports.create = async (body) => {
     body.password = await bcrypt.hash(body.password, saltRounds);
-    
+
     const item = await model.create(body);
 
     return item;

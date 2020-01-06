@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import * as moment from 'moment';
 import * as _ from 'lodash';
-import { Row, Col, Avatar, Icon, Badge } from 'antd';
+import { Row, Col, Avatar, Icon, Badge, Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import "./headerSeller.scss";
 import NameLocal from '../../config/localStorage';
 
 export function HeaderSeller({
-    namePage
+    namePage,
+    logout
 }) {
     let history = useHistory();
     const [userInfo, setUserInfo] = useState({});
+
+    const onLogout = () => {
+        logout();
+        history.push('/seller/login-seller');
+    }
 
     useEffect(() => {
         // local storage not exist
@@ -59,7 +65,7 @@ export function HeaderSeller({
                     <Avatar className="avt-seller" src={userInfo.avatar} />
                 </Col>
 
-                <Col span={13} className="name">{userInfo.name}</Col>
+                <Col span={12} className="name">{userInfo.name}</Col>
 
                 <Col span={3} className="container-badge">
                     <Badge count={100} overflowCount={9}>
@@ -67,10 +73,13 @@ export function HeaderSeller({
                     </Badge>
                 </Col>
 
-                <Col span={3} className="container-badge">
-                    <Badge count={100} overflowCount={9}>
-                        <span className="container-icon"><Icon type="bell" /></span>
-                    </Badge>
+                <Col span={3} offset={1} className="container-badge">
+                    <Button 
+                    className="btn-logout" 
+                     type="primary" 
+                     shape="circle" 
+                     onClick={onLogout}
+                     icon="logout" />
                 </Col>
             </Col>
         </div>

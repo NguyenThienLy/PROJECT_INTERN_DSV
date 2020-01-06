@@ -109,7 +109,7 @@ module.exports.create = async (files, body) => {
             { new: true }
         );
 
-        if (files) {
+        if (files.length > 0) {
             const listUrl = await firebase.uploadImageToStorage(files, item._id);
 
             if (listUrl.length > 0) {
@@ -176,7 +176,8 @@ module.exports.update = async (id, files, body) => {
             );
         }
 
-        if (files) {
+       // console.log("files", files)
+        if (files.length > 0) {
             const listUrl = await firebase.uploadImageToStorage(files, item._id);
 
             if (listUrl.length > 0) {

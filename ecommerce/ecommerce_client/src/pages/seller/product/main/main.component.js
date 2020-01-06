@@ -15,7 +15,8 @@ import './main.component.scss';
 export function ProductMain({
     seller,
     product,
-    getProductFilter
+    getProductFilter,
+    logout
 }) {
     const { Content } = Layout;
 
@@ -32,7 +33,7 @@ export function ProductMain({
                     </Col>
 
                     <Col span={20} className="container-content">
-                        <HeaderSeller namePage="Products" />
+                        <HeaderSeller logout={logout} namePage="Products" />
                         <Row className="container-header">
                             <Col span={2} className="container-titler">SORT BY</Col>
                             <Col span={3} className="container-btn"><Order /></Col>

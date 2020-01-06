@@ -17,7 +17,8 @@ import {
 import NameLocal from '../../../config/localStorage';
 
 export function OrderPage({
-    seller
+    seller,
+    logout
 }) {
     const { Content } = Layout;
  
@@ -30,7 +31,7 @@ export function OrderPage({
                     </Col>
 
                     <Col span={20} className="container-content">
-                        <HeaderSeller namePage="Orders" />
+                        <HeaderSeller logout={logout} namePage="Orders" />
 
                         <Row className="container-header">
                             <Col span={3} className="container-titler">ORDERED DATE</Col>
