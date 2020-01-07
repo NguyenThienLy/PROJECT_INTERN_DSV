@@ -44,7 +44,7 @@ export function ProductInfo({
         else if (!_.isEqual(productItem, item)) {
             setProductItem(item);
         }
-    }, [product.isUpdateSuccess]);
+    });
 
     return (
         <div className="product-info">

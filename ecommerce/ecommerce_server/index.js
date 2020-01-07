@@ -12,14 +12,18 @@ const port = 4000;
 
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-const db = mongoose.connection
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('connected to database'))
+mongoose.connect(process.env.DATABASE_URL_TEST, {
+  keepAlive: 1,
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('connected to database'));
 
 app.use(morgan("dev"));
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SESSION_SECRET));
@@ -34,6 +38,6 @@ app.use((err, req, res, next) => {
   console.log(err.status || 500);
 })
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log("Server listening on port " + port);
 });

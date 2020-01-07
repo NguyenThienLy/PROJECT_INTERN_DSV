@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "nodemon --inspect index.js",
-    "test": "mocha test"
+    "test": "mocha tests"
   },
   "author": "",
   "license": "ISC",
@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "nodemon": "^1.18.10"
   }
 }

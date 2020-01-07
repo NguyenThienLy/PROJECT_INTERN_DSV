@@ -48,6 +48,8 @@ module.exports.getListFitler = async (params) => {
 module.exports.getList = async () => {
     const list = await model.find();
 
+    console.log("list", list);
+
     return list;
 };
 
@@ -88,27 +90,38 @@ module.exports.getItem = async (slug) => {
     return item[0];
 };
 
+module.exports.createNewItem = async (body) =>  {
+    return await model.create(body);
+}
+
+module.exports.pushProductIdInBrand = async (idBrand, idNewProduct) => {
+    return await brandModel.findOneAndUpdate(
+        { _id: new ObjectId(idBrand) },
+        { $push: { product: new ObjectId(idNewProduct) } },
+        { new: true }
+    );
+}
+
+module.exports.pushProductIdInSubCategory = async (idSubCategory, idNewProduct) => {
+    return await subCategoryModel.findOneAndUpdate(
+        { _id: new ObjectId(idSubCategory) },
+        { $push: { product: new ObjectId(idNewProduct) } },
+        { new: true }
+    );
+}
+
 module.exports.create = async (files, body) => {
     body.size = JSON.parse(body.size);
     body.color = JSON.parse(body.color);
-    body.slug = body.name.replace(/ /g, "_");
+    body.slug = body.name.replace(/ /g, "-");
     body.mainImage = "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png";
 
-    let item = await model.create(body);
+    createNewItem(body);
 
     if (item !== null) {
-        await brandModel.findOneAndUpdate(
-            { _id: new ObjectId(body.brand) },
-            { $push: { product: new ObjectId(item._id) } },
-            { new: true }
-        );
-
-        await subCategoryModel.findOneAndUpdate(
-            { _id: new ObjectId(body.subCategory) },
-            { $push: { product: new ObjectId(item._id) } },
-            { new: true }
-        );
-
+        pushProductIdInBrand(body.brand, item._id);
+        pushProductIdInSubCategory(body.subCategory, item._id);
+       
         if (files.length > 0) {
             const listUrl = await firebase.uploadImageToStorage(files, item._id);
 
@@ -207,6 +220,4 @@ module.exports.delete = async (id) => {
 
     return item;
 };
-
-
 
