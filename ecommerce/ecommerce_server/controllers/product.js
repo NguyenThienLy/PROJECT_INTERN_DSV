@@ -118,23 +118,34 @@ module.exports.updateImageProduct = async (idNewProduct, listUrl) => {
     );
 }
 
-module.exports.create = async (files, body) => {
-    body.size = JSON.parse(body.size);
-    body.color = JSON.parse(body.color);
-    body.slug = body.name.replace(/ /g, "-");
-    body.mainImage = "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png";
+module.exports.formatBodyProduct = (body) => {
+    return {
+        ...body,
+        size: JSON.parse(body.size),
+        color:  JSON.parse(body.color),
+        slug: body.name.replace(/ /g, "-"),
+        mainImage: mainImage = "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+    }
+}
 
-    createNewItem(body);
+module.exports.uploadImageToStorage = async (files, idNewProduct) => {
+    return await firebase.uploadImageToStorage(files, idNewProduct);
+}
+
+module.exports.create = async (files, body) => {
+    const newBody = this.formatBodyProduct(body);
+
+    const item  = this.createNewItem(newBody);
 
     if (item !== null) {
-        pushProductIdInBrand(body.brand, item._id);
-        pushProductIdInSubCategory(body.subCategory, item._id);
+        this.pushProductIdInBrand(newBody.brand, item._id);
+        this.pushProductIdInSubCategory(newBody.subCategory, item._id);
 
         if (files.length > 0) {
-            const listUrl = await firebase.uploadImageToStorage(files, item._id);
+            const listUrl = this.uploadImageToStorage(files, item._id)
 
             if (listUrl.length > 0) {
-                updateImageProduct(item._id, listUrl);
+               item = this.updateImageProduct(item._id, listUrl);
             }
         }
     }
