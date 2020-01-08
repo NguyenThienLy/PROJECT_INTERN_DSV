@@ -48,6 +48,8 @@ module.exports.getListFitler = async (params) => {
 module.exports.getList = async () => {
     const list = await model.find();
 
+    console.log("list", list);
+
     return list;
 };
 
@@ -88,36 +90,62 @@ module.exports.getItem = async (slug) => {
     return item[0];
 };
 
-module.exports.create = async (files, body) => {
-    body.size = JSON.parse(body.size);
-    body.color = JSON.parse(body.color);
-    body.slug = body.name.replace(/ /g, "_");
-    body.mainImage = "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png";
+module.exports.createNewItem = async (body) => {
+    return await model.create(body);
+}
 
-    let item = await model.create(body);
+module.exports.pushProductIdInBrand = async (idBrand, idNewProduct) => {
+    return await brandModel.findOneAndUpdate(
+        { _id: new ObjectId(idBrand) },
+        { $push: { product: new ObjectId(idNewProduct) } },
+        { new: true }
+    );
+}
+
+module.exports.pushProductIdInSubCategory = async (idSubCategory, idNewProduct) => {
+    return await subCategoryModel.findOneAndUpdate(
+        { _id: new ObjectId(idSubCategory) },
+        { $push: { product: new ObjectId(idNewProduct) } },
+        { new: true }
+    );
+}
+
+module.exports.updateImageProduct = async (idNewProduct, listUrl) => {
+    return await model.findOneAndUpdate(
+        { _id: new ObjectId(idNewProduct) },
+        { mainImage: listUrl[0], subImage: listUrl },
+        { new: true }
+    );
+}
+
+module.exports.formatBodyProduct = (body) => {
+    return {
+        ...body,
+        size: JSON.parse(body.size),
+        color:  JSON.parse(body.color),
+        slug: body.name.replace(/ /g, "-"),
+        mainImage: mainImage = "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+    }
+}
+
+module.exports.uploadImageToStorage = async (files, idNewProduct) => {
+    return await firebase.uploadImageToStorage(files, idNewProduct);
+}
+
+module.exports.create = async (files, body) => {
+    const newBody = this.formatBodyProduct(body);
+
+    const item  = this.createNewItem(newBody);
 
     if (item !== null) {
-        await brandModel.findOneAndUpdate(
-            { _id: new ObjectId(body.brand) },
-            { $push: { product: new ObjectId(item._id) } },
-            { new: true }
-        );
-
-        await subCategoryModel.findOneAndUpdate(
-            { _id: new ObjectId(body.subCategory) },
-            { $push: { product: new ObjectId(item._id) } },
-            { new: true }
-        );
+        this.pushProductIdInBrand(newBody.brand, item._id);
+        this.pushProductIdInSubCategory(newBody.subCategory, item._id);
 
         if (files.length > 0) {
-            const listUrl = await firebase.uploadImageToStorage(files, item._id);
+            const listUrl = this.uploadImageToStorage(files, item._id)
 
             if (listUrl.length > 0) {
-                item = await model.findOneAndUpdate(
-                    { _id: new ObjectId(item._id) },
-                    { mainImage: listUrl[0], subImage: listUrl },
-                    { new: true }
-                );
+               item = this.updateImageProduct(item._id, listUrl);
             }
         }
     }
@@ -176,7 +204,7 @@ module.exports.update = async (id, files, body) => {
             );
         }
 
-       // console.log("files", files)
+        // console.log("files", files)
         if (files.length > 0) {
             const listUrl = await firebase.uploadImageToStorage(files, item._id);
 
